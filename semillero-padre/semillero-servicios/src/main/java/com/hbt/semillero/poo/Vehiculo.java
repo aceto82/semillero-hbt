@@ -81,4 +81,8 @@ public class Vehiculo {
 				+ capacidad + ", precio=" + precio + "]";
 	}
 
+	public void arrancarEnMedio() {
+		System.out.println("El vehiculo está avanzando");
+	}
+
 }

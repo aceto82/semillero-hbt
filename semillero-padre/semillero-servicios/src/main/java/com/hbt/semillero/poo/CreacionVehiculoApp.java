@@ -24,6 +24,15 @@ public class CreacionVehiculoApp {
 		Barco otroBarco = new Barco("Semillero", "San Andres", new BigDecimal(1102));
 		System.out.println("Datos del otroBarco: " + otroBarco.toString());
 
+		//Polimorfismo
+		Vehiculo vehiculo1 = new Vehiculo();
+		vehiculo1.arrancarEnMedio();
+		
+		Avion avion = new Avion();
+		avion.arrancarEnMedio();
+		
+		Vehiculo avion2 = new Avion();
+		avion2.arrancarEnMedio();
 	}
 
 }
