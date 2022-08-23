@@ -24,15 +24,21 @@ public class CreacionVehiculoApp {
 		Barco otroBarco = new Barco("Semillero", "San Andres", new BigDecimal(1102));
 		System.out.println("Datos del otroBarco: " + otroBarco.toString());
 
-		//Polimorfismo
+		// Polimorfismo
 		Vehiculo vehiculo1 = new Vehiculo();
 		vehiculo1.arrancarEnMedio();
-		
+
 		Avion avion = new Avion();
 		avion.arrancarEnMedio();
-		
+
 		Vehiculo avion2 = new Avion();
 		avion2.arrancarEnMedio();
+
+		//clases abstractas
+		Bicicleta bicicleta = new Bicicleta();
+		bicicleta.acelerar();
+		System.out.println("Peso maximo es de: " + bicicleta.obtenerPesoMaximoCarga());
+		System.out.println("Velocidad maxima es de: " + bicicleta.obtenerVelocidadMaxima());
 	}
 
 }
