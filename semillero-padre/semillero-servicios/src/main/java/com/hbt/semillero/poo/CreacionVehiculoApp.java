@@ -34,11 +34,16 @@ public class CreacionVehiculoApp {
 		Vehiculo avion2 = new Avion();
 		avion2.arrancarEnMedio();
 
-		//clases abstractas
+		// clases abstractas
 		Bicicleta bicicleta = new Bicicleta();
 		bicicleta.acelerar();
 		System.out.println("Peso maximo es de: " + bicicleta.obtenerPesoMaximoCarga());
 		System.out.println("Velocidad maxima es de: " + bicicleta.obtenerVelocidadMaxima());
+
+		Automovil automovil = new Automovil(new BigDecimal(98645));
+		automovil.acelerar();
+		System.out.println("Peso maximo es de: " + automovil.obtenerPesoMaximoCarga());
+		System.out.println("Velocidad maxima es de: " + automovil.obtenerVelocidadMaxima());
 	}
 
 }
