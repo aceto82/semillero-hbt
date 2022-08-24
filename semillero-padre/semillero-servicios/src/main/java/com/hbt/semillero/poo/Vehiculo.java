@@ -2,10 +2,12 @@ package com.hbt.semillero.poo;
 
 import java.math.BigDecimal;
 
+import com.hbt.semillero.enums.TipoVehiculoEnum;
+
 public class Vehiculo {
 
 	private Short modelo;
-	private String tipo;
+	private TipoVehiculoEnum tipo;
 	private double peso;
 	private String color;
 	private int capacidad;
@@ -18,7 +20,7 @@ public class Vehiculo {
 		this.precio = precio;
 	}
 
-	public Vehiculo(Short modelo, String tipo, double peso, String color, int capacidad, BigDecimal precio) {
+	public Vehiculo(Short modelo, TipoVehiculoEnum tipo, double peso, String color, int capacidad, BigDecimal precio) {
 		this.modelo = modelo;
 		this.tipo = tipo;
 		this.peso = peso;
@@ -35,11 +37,11 @@ public class Vehiculo {
 		this.modelo = modelo;
 	}
 
-	public String getTipo() {
+	public TipoVehiculoEnum getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoVehiculoEnum tipo) {
 		this.tipo = tipo;
 	}
 

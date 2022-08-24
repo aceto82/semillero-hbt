@@ -2,6 +2,8 @@ package com.hbt.semillero.poo;
 
 import java.math.BigDecimal;
 
+import com.hbt.semillero.enums.TipoVehiculoEnum;
+
 public class CreacionVehiculoApp {
 
 	public static void main(String[] args) {
@@ -13,8 +15,14 @@ public class CreacionVehiculoApp {
 		mazda.setPrecio(new BigDecimal(104));
 		System.out.println("Valor del vehiculo mazda: " + mazda.getPrecio());
 
-		Vehiculo kia = new Vehiculo((short) 2022, "Terrestre", 1000, "Azul", 6, new BigDecimal(1122));
+		Vehiculo kia = new Vehiculo((short) 2022, TipoVehiculoEnum.TERRESTRE, 1000, "Azul", 6, new BigDecimal(1122));
 		System.out.println("Valores del kia: " + kia.toString());
+
+		if (kia.getTipo().equals(TipoVehiculoEnum.TERRESTRE)) {
+			System.out.println("El vehiculo es terrestre");
+		} else {
+			System.out.println("El vehiculo es: " + kia.getTipo());
+		}
 
 		Barco barco = new Barco();
 		barco.setPuertoLlegada("Cartagena");
