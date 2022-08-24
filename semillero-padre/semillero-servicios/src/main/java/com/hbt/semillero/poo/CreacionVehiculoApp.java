@@ -49,9 +49,17 @@ public class CreacionVehiculoApp {
 		System.out.println("Velocidad maxima es de: " + bicicleta.obtenerVelocidadMaxima());
 
 		Automovil automovil = new Automovil(new BigDecimal(98645));
+		automovil.setTipo(TipoVehiculoEnum.ACUATICO);
 		automovil.acelerar();
+		System.out.println(automovil.toString());
 		System.out.println("Peso maximo es de: " + automovil.obtenerPesoMaximoCarga());
 		System.out.println("Velocidad maxima es de: " + automovil.obtenerVelocidadMaxima());
+
+		try {
+			automovil.determinarTipoVehiculo(automovil.getTipo());
+		} catch (Exception e) {
+			System.out.println("SE HA PRESENTADO UN ERROR: " + e.getMessage());
+		}
 	}
 
 }
