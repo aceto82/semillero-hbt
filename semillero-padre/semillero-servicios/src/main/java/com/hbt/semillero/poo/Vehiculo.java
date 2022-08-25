@@ -14,32 +14,32 @@ import com.hbt.semillero.enums.TipoVehiculoEnum;
  */
 public class Vehiculo {
 
-	/**
+	/*
 	 * Atributo que determina el modelo del vehiculo
 	 */
 	private Short modelo;
 
-	/**
+	/*
 	 * Atributo que determina el tipo del vehiculo
 	 */
 	private TipoVehiculoEnum tipo;
 
-	/**
+	/*
 	 * Atributo que determina el peso del vehiculo
 	 */
 	private double peso;
 
-	/**
+	/*
 	 * Atributo que determina el color del vehiculo
 	 */
 	private String color;
 
-	/**
+	/*
 	 * Atributo que determina la capacidad del vehiculo
 	 */
 	private int capacidad;
 
-	/**
+	/*
 	 * Atributo que determina el precio del vehiculo
 	 */
 	private BigDecimal precio;
@@ -189,6 +189,9 @@ public class Vehiculo {
 		this.precio = precio;
 	}
 
+	/** 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Vehiculo [modelo=" + modelo + ", tipo=" + tipo + ", peso=" + peso + ", color=" + color + ", capacidad="

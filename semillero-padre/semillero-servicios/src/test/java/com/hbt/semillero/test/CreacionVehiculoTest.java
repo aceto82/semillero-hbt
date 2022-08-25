@@ -29,6 +29,9 @@ import com.hbt.semillero.poo.Automovil;
  */
 public class CreacionVehiculoTest {
 
+	/*
+	 * Atributo que determina el logger, la cual muestra en consola los mensajes
+	 */
 	private final static Logger LOGGER = Logger.getLogger(CreacionVehiculoTest.class);
 
 	@Before

@@ -6,10 +6,27 @@ import org.apache.log4j.Logger;
 
 import com.hbt.semillero.enums.TipoVehiculoEnum;
 
+/**
+ * 
+ * <b>Descripción:<b> Clase que ejecuta la logica del negocio
+ * <b>Caso de Uso:<b> Semillero2022
+ * @author Diego Armando Ortiz Bastidas
+ * @version 1.0
+ */
 public class CreacionVehiculoApp {
 
+	/*
+	 * Atributo que determina el logger, la cual muestra en consola los mensajes
+	 */
 	private final static Logger LOGGER = Logger.getLogger(CreacionVehiculoApp.class);
 
+	/**
+	 * Metodo encargado de ejecutar la aplicacion
+	 * <b>Caso de Uso</b> Semillero2022
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		LOGGER.info("Inicia ejecución del main()");
 		Vehiculo mazda = new Vehiculo();
