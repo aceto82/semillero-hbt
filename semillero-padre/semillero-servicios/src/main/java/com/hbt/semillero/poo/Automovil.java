@@ -2,10 +2,15 @@ package com.hbt.semillero.poo;
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.hbt.semillero.enums.TipoVehiculoEnum;
 import com.hbt.semillero.poo.interfaces.IAccionesVehiculo;
 
+
 public class Automovil extends Vehiculo implements IAccionesVehiculo {
+	
+	private final static Logger LOGGER = Logger.getLogger(IAccionesVehiculo.class);
 
 	public Automovil() {
 
@@ -33,6 +38,7 @@ public class Automovil extends Vehiculo implements IAccionesVehiculo {
 			System.out.println("El vehiculo si es del tipo asignado (" + TipoVehiculoEnum.TERRESTRE + ")");
 			return true;
 		} else {
+			LOGGER.error("Se ha presentado un error de XYZ");
 			throw new Exception(
 					"El tipo de vehiculo asignado es erroneo, debe ser " + TipoVehiculoEnum.TERRESTRE.getTipo());
 		}

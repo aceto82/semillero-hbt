@@ -2,11 +2,16 @@ package com.hbt.semillero.poo;
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.hbt.semillero.enums.TipoVehiculoEnum;
 
 public class CreacionVehiculoApp {
 
+	private final static Logger LOGGER = Logger.getLogger(CreacionVehiculoApp.class);
+
 	public static void main(String[] args) {
+		LOGGER.info("Inicia ejecución del main()");
 		Vehiculo mazda = new Vehiculo();
 		// BigDecimal precio = new BigDecimal(105);
 		// mazda.setPrecio(precio);
@@ -58,8 +63,10 @@ public class CreacionVehiculoApp {
 		try {
 			automovil.determinarTipoVehiculo(automovil.getTipo());
 		} catch (Exception e) {
+			LOGGER.error("Se ha presentado un error de " + e.getMessage());
 			System.out.println("SE HA PRESENTADO UN ERROR: " + e.getMessage());
 		}
+		LOGGER.info("Finaliza ejecución del main()");
 	}
 
 }

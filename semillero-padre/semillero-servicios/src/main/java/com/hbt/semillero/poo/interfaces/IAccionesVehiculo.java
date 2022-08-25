@@ -10,8 +10,9 @@ public interface IAccionesVehiculo {
 
 	public boolean determinarTipoVehiculo(TipoVehiculoEnum tipoVehiculoEnum) throws Exception;
 
-	public default void acelerar() {
+	public default String acelerar() {
 		System.out.println("El vehiculo ha iniciado acelerar");
+		return "El vehiculo ha iniciado acelerar";
 	}
 
 }
