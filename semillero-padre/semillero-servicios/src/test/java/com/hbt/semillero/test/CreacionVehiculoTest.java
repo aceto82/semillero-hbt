@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.hbt.semillero.enums.TipoVehiculoEnum;
@@ -47,8 +48,9 @@ public class CreacionVehiculoTest {
 		assertEquals(4, mazda.getCapacidad());
 		LOGGER.info("Finaliza ejecución del test whenCreateCarGivenSuccesThenOk()");
 	}
-	/*
+	
 	@Test
+	@Disabled
 	public void whenDeterminarTipoVehiculoGiventrueThenExito() {
 		LOGGER.info("Inicia ejecución del test whenDeterminarTipoVehiculoGiventrueThenExito()");
 		Automovil mazda = new Automovil();
@@ -64,7 +66,7 @@ public class CreacionVehiculoTest {
 		assertNotNull(exception);
 		//assertEquals(null, null);
 		LOGGER.info("Finaliza ejecución del test whenDeterminarTipoVehiculoGiventrueThenExito()");
-	}*/
+	}
 	
 	@Test
 	public void whenCreateCarGivenSuccesThenOk2() {
