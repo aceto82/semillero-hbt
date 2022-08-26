@@ -40,8 +40,10 @@ public class CreacionComicTest {
 	private List<Comic> listaComics = new ArrayList<>();
 
 	/**
-	 * Metodo encargado de inicializar el listado de los comics para la prueba unitaria
+	 * Metodo encargado de inicializar el listado de los comics para la prueba
+	 * unitaria 
 	 * <b>Caso de Uso</b> Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
 	 */
@@ -94,64 +96,69 @@ public class CreacionComicTest {
 
 	private List<Comic> verificaComicActivos() {
 		List<Comic> activos = new ArrayList<>();
-		for (Comic comic : this.listaComics) {
+		this.listaComics.forEach((comic) -> {
 			if (comic.getEstado().equals(EstadoEnum.ACTIVO)) {
 				activos.add(comic);
 			}
-		}
+		});
 		return activos;
 	}
 
 	private List<Comic> verificaComicInactivos() {
 		List<Comic> inactivos = new ArrayList<>();
-		for (Comic comic : this.listaComics) {
-			if (comic.getEstado().equals(EstadoEnum.INACTIVO)) {
+		this.listaComics.forEach((comic) -> {
+			if (comic.getEstado().name().equals("INACTIVO")) {
 				inactivos.add(comic);
 			}
-		}
+		});
 		return inactivos;
 	}
 
 	@Test
-	public void whenVerifyComicStateThenActive() {
-		LOG.info("Inicia ejecución del test whenVerifyComicStateThenActive()");
+	public void whenVerifyComicsListStateActiveThenIsActive() {
+		LOG.info("Inicia ejecución del test whenVerifyComicsListStateActiveThenIsActive()");
 
 		List<Comic> activos = this.verificaComicActivos();
 
-		for (Comic comic : activos) {
+		activos.forEach((comic) -> {
 			System.out.println(comic.toString());
 			assertEquals(EstadoEnum.ACTIVO, comic.getEstado());
-		}
+		});
 
-		LOG.info("finaliza ejecución del test whenVerifyComicStateThenActive()");
+		LOG.info("finaliza ejecución del test whenVerifyComicsListStateActiveThenIsActive()");
 	}
 
-	private String resumenComics() throws Exception {
+	public String resumenComics() throws Exception {
 		List<Comic> activos = this.verificaComicActivos();
 		List<Comic> inactivos = this.verificaComicInactivos();
 		String mensajeError = "Se ha detectado que de " + this.listaComics.size() + " comics se encontraron que "
 				+ activos.size() + " se encuentran activos y " + inactivos.size()
 				+ " inactivos. Los comics inactivos son: ";
+		boolean primer = true;
 		for (Comic comic : inactivos) {
-			mensajeError += comic.getNombre() + ", ";
+			if (!primer) {
+				mensajeError += ", ";
+			}
+			mensajeError += comic.getNombre();
+			primer = false;
 		}
 		System.out.println(mensajeError);
 		throw new Exception(mensajeError);
 	}
 
 	@Test
-	public void whenGetSumaryThenException() {
-		LOG.info("Inicia ejecución del test whenGetSumaryThenException()");
+	public void whenGetSumaryComicsThenError() {
+		LOG.info("Inicia ejecución del test whenGetSumaryComicsThenError()");
 		Exception exception = assertThrows(Exception.class, () -> {
 			this.resumenComics();
 		});
-		
+
 		assertTrue(exception.getMessage(), exception.getMessage().contains("Se ha detectado que de"));
 
-//		assertTrue(exception.getMessage().equals(
-//				"Se ha detectado que de 10 comics se encontraron que 6 se encuentran activos y 4 inactivos. Los comics inactivos son: Yu-Gi-Oh!, Crest of the Royal Family, Futari Ecchi, Naruto, "));
+		assertTrue(exception.getMessage().equals(
+				"Se ha detectado que de 10 comics se encontraron que 6 se encuentran activos y 4 inactivos. Los comics inactivos son: Yu-Gi-Oh!, Crest of the Royal Family, Futari Ecchi, Naruto"));
 
-		LOG.info("Finaliza ejecución del test whenGetSumaryThenException()");
+		LOG.info("Finaliza ejecución del test whenGetSumaryComicsThenError()");
 	}
 
 }
