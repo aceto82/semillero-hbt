@@ -94,6 +94,9 @@ public class CreacionComicTest {
 		listaComics.add(sukeban);
 	}
 
+	/**
+	 * @return devuelve listado de comics activos
+	 */
 	private List<Comic> verificaComicActivos() {
 		List<Comic> activos = new ArrayList<>();
 		this.listaComics.forEach((comic) -> {
@@ -104,6 +107,9 @@ public class CreacionComicTest {
 		return activos;
 	}
 
+	/**
+	 * @return devuelve listado de comics inactivos
+	 */
 	private List<Comic> verificaComicInactivos() {
 		List<Comic> inactivos = new ArrayList<>();
 		this.listaComics.forEach((comic) -> {
@@ -114,6 +120,9 @@ public class CreacionComicTest {
 		return inactivos;
 	}
 
+	/**
+	 * Prueba unitaria que verifica si el estado de los comics verificados del metodo verificaComicActivos() es Activo
+	 */
 	@Test
 	public void whenVerifyComicsListStateActiveThenIsActive() {
 		LOG.info("Inicia ejecución del test whenVerifyComicsListStateActiveThenIsActive()");
@@ -128,6 +137,10 @@ public class CreacionComicTest {
 		LOG.info("finaliza ejecución del test whenVerifyComicsListStateActiveThenIsActive()");
 	}
 
+	/**
+	 * @return Metodo que genera una excepcion con la informacion resumen de los comics activos e inactivos
+	 * @throws Exception
+	 */
 	public String resumenComics() throws Exception {
 		List<Comic> activos = this.verificaComicActivos();
 		List<Comic> inactivos = this.verificaComicInactivos();
@@ -146,6 +159,9 @@ public class CreacionComicTest {
 		throw new Exception(mensajeError);
 	}
 
+	/**
+	 * Prueba unitaria que verifica el mensaje de la excepcion generada por el metodo resumenComics()
+	 */
 	@Test
 	public void whenGetSumaryComicsThenError() {
 		LOG.info("Inicia ejecución del test whenGetSumaryComicsThenError()");
