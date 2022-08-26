@@ -3,7 +3,8 @@ package com.hbt.semillero.poo;
 /**
  * 
  * <b>Descripción:<b> Clase que determina las caracteristicas de un avion,
- * hereda los atributos de la clase vehiculo <b>Caso de Uso:<b> Semillero2022
+ * hereda los atributos de la clase vehiculo 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0

@@ -21,7 +21,8 @@ import com.hbt.semillero.enums.TematicaEnum;
 
 /**
  * <b>Descripción:<b> Clase que determina las pruebas unitarias en la creación
- * de comics <b>Caso de Uso:<b> Semillero2022
+ * de comics 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -33,15 +34,14 @@ public class CreacionComicTest {
 	 */
 	private final static Logger LOG = Logger.getLogger(CreacionComicTest.class);
 
+	/*
+	 * Atributo que determina el listado de los comics a realizar las pruebas
+	 */
 	private List<Comic> listaComics = new ArrayList<>();
 
 	@BeforeEach
 	public void inicializar() {
 		LOG.info("Se inicia creando los 10 comic para las pruebas unitarias");
-
-		if (!listaComics.isEmpty()) {
-			listaComics.clear();
-		}
 
 		Comic yugioh = new Comic(1L, "Yu-Gi-Oh!", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 38,
 				new BigDecimal(0), "Kazuki Takahashi", false, null, EstadoEnum.INACTIVO, (short) 0);
@@ -84,7 +84,6 @@ public class CreacionComicTest {
 		listaComics.add(grayman);
 		listaComics.add(gantz);
 		listaComics.add(sukeban);
-
 	}
 
 	private List<Comic> verificaComicActivos() {
@@ -135,8 +134,8 @@ public class CreacionComicTest {
 	}
 
 	@Test
-	public void whenGetResumenThenException() {
-		LOG.info("Inicia ejecución del test whenGetResumenThenException()");
+	public void whenGetSumaryThenException() {
+		LOG.info("Inicia ejecución del test whenGetSumaryThenException()");
 		Exception exception = assertThrows(Exception.class, () -> {
 			this.resumenComics();
 		});
@@ -144,7 +143,7 @@ public class CreacionComicTest {
 		assertTrue(exception.getMessage().equals(
 				"Se ha detectado que de 10 comics se encontraron que 6 se encuentran activos y 4 inactivos. Los comics inactivos son: Yu-Gi-Oh!, Crest of the Royal Family, Futari Ecchi, Naruto, "));
 
-		LOG.info("Finaliza ejecución del test whenGetResumenThenException()");
+		LOG.info("Finaliza ejecución del test whenGetSumaryThenException()");
 	}
 
 }

@@ -2,7 +2,7 @@ package com.hbt.semillero.enums;
 
 /**
  * 
- * <b>Descripción:<b> Enumerador que determina una relación de tipos de vehiculo
+ * <b>Descripción:<b> Enumerador que determina una relación de tipos de vehiculos
  * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas

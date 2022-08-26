@@ -7,7 +7,8 @@ import com.hbt.semillero.enums.TipoVehiculoEnum;
 /**
  * 
  * <b>Descripción:<b> Clase que contiene la data de un vehiculo, actua como una
- * super clase <b>Caso de Uso:<b> Semillero2022
+ * super clase 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0

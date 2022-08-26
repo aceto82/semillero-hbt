@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 
 /**
  * <b>Descripción:<b> Clase que determina las caracteristicas de un barco,
- * hereda los atributos de la clase Vehiculo <b>Caso de Uso:<b> Semillero2022
+ * hereda los atributos de la clase Vehiculo 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0

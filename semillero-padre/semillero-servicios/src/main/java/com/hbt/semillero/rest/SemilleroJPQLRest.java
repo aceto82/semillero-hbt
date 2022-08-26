@@ -21,10 +21,11 @@ import org.apache.log4j.Logger;
 import com.hbt.semillero.entity.Comic;
 
 /**
- * <b>Descripción:<b> Clase que determina <b>Caso de Uso:<b>
+ * <b>Descripción:<b> Clase que determina 
+ * <b>Caso de Uso:<b>
  * 
  * @author Diego Armando Ortiz Bastidas
- * @version
+ * @version 1.0
  */
 @Path("/SemilleroJPQLRest")
 @Stateless
@@ -36,6 +37,9 @@ public class SemilleroJPQLRest {
 	 */
 	private final static Logger LOG = Logger.getLogger(SemilleroJPQLRest.class);
 
+	/*
+	 * Atributo que maneja la interacción de la base de datos y los metadatos
+	 */
 	@PersistenceContext
 	private EntityManager em;
 

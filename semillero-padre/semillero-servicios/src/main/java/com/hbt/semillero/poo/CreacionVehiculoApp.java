@@ -8,8 +8,9 @@ import com.hbt.semillero.enums.TipoVehiculoEnum;
 
 /**
  * 
- * <b>Descripción:<b> Clase que ejecuta la logica del negocio
+ * <b>Descripción:<b> Clase que ejecuta la logica del negocio 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -21,8 +22,9 @@ public class CreacionVehiculoApp {
 	private final static Logger LOGGER = Logger.getLogger(CreacionVehiculoApp.class);
 
 	/**
-	 * Metodo encargado de ejecutar la aplicacion
+	 * Metodo encargado de ejecutar la aplicacion de creacion de vehiculos 
 	 * <b>Caso de Uso</b> Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
 	 * @param args

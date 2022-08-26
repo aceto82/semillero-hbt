@@ -11,6 +11,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 
+ * <b>Descripción:<b> Clase que determina
+ * <b>Caso de Uso:<b> 
+ * @author Diego Armando Ortiz Bastidas
+ * @version 1.0
+ */
 public class CORSFilter implements Filter {
 	
 	

@@ -30,12 +30,12 @@ import com.hbt.semillero.enums.TematicaEnum;
 public class Comic implements Serializable {
 
 	/*
-	 * Atributo que determina
+	 * Atributo que determina el serial version UID
 	 */
 	private static final long serialVersionUID = 216164349106318793L;
 
 	/*
-	 * Atributo que determina
+	 * Atributo que determina Identificador unico del comic
 	 */
 	@Id
 	@Column(name = "SCID")
@@ -43,36 +43,73 @@ public class Comic implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
 	private Long id;
 
+	/*
+	 * Atributo que determina el Nombre o titulo del comic o revista grafica
+	 */
 	@Column(name = "SCNOMBRE", nullable = false, length = 50)
 	private String nombre;
 
+	/*
+	 * Atributo que determina la Empresa editorial quien publico el comic
+	 */
 	@Column(name = "SCEDITORIAL")
 	private String editorial;
 
+	/*
+	 * Atributo que permite identificar si el comic es de tipo AVENTURAS, BELICO,
+	 * HUMORISTICO, DEPORTIVO, FANTASTICO, CIENCIA_FICCION, HISTORICO, HORROR
+	 */
 	@Column(name = "SCTEMATICA")
 	private TematicaEnum tematica;
 
+	/*
+	 * Atributo que determina el Conjunto de publicaciones de la que el comic es
+	 * parte
+	 */
 	@Column(name = "SCCOLECCION")
 	private String coleccion;
 
+	/*
+	 * Atributo que determina la cantidad de las paginas que contiene el comic
+	 */
 	@Column(name = "SCNUMEROPAGINAS")
 	private Short numeropaginas;
 
+	/*
+	 * Atributo que determina el Valor en pesos del comic
+	 */
 	@Column(name = "SCPRECIO")
 	private BigDecimal precio;
 
+	/*
+	 * Atributo que determina el Autor u autores del comic
+	 */
 	@Column(name = "SCAUTORES")
 	private String autores;
 
+	/*
+	 * Atributo que Define si el comic es a color o no, campo de tipo booleano solo
+	 * acepta 1 o 0
+	 */
 	@Column(name = "SCCOLOR")
 	private Boolean color;
 
+	/*
+	 * Atributo que determina la Fecha de inicio de la venta del comic
+	 */
 	@Column(name = "SCFECHA_VENTA")
 	private LocalDate fechaVenta;
 
+	/*
+	 * Atributo que Define si el comic tiene existencia para la venta o no
+	 */
 	@Column(name = "SCESTADO")
 	private EstadoEnum estado;
 
+	/*
+	 * Atributo que determina la Cantidad de comics en inventario disponibles para
+	 * la venta
+	 */
 	@Column(name = "SCCANTIDAD")
 	private Short cantidad;
 
@@ -87,18 +124,22 @@ public class Comic implements Serializable {
 	/**
 	 * Constructor de la clase.
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param editorial
-	 * @param tematica
-	 * @param coleccion
-	 * @param numeropaginas
-	 * @param precio
-	 * @param autores
-	 * @param color
-	 * @param fechaVenta
-	 * @param estado
-	 * @param cantidad
+	 * @param id            Identificador unico del comic
+	 * @param nombre        Nombre o titulo del comic o revista grafica
+	 * @param editorial     Empresa editorial quien publico el comic
+	 * @param tematica      Permite identificar si el comic es de tipo AVENTURAS,
+	 *                      BELICO, HUMORISTICO, DEPORTIVO, FANTASTICO,
+	 *                      CIENCIA_FICCION, HISTORICO, HORROR
+	 * @param coleccion     Conjunto de publicaciones de la que el comic es parte
+	 * @param numeropaginas Cantidad de las paginas que contiene el comic
+	 * @param precio        Valor en pesos del comic
+	 * @param autores       Autor u autores del comic
+	 * @param color         Define si el comic es a color o no, campo de tipo
+	 *                      booleano solo acepta 1 o 0
+	 * @param fechaVenta    Fecha de inicio de la venta del comic
+	 * @param estado        Define si el comic tiene existencia para la venta o no
+	 * @param cantidad      Cantidad de comics en inventario disponibles para la
+	 *                      venta
 	 */
 	public Comic(Long id, String nombre, String editorial, TematicaEnum tematica, String coleccion, Short numeropaginas,
 			BigDecimal precio, String autores, Boolean color, LocalDate fechaVenta, EstadoEnum estado, Short cantidad) {

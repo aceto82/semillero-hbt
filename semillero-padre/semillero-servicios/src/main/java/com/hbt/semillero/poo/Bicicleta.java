@@ -5,8 +5,8 @@ import com.hbt.semillero.poo.abstracts.AccionesVehiculoAbstract;
 /**
  * 
  * <b>Descripción:<b> Clase que determina las caracteristicas de una bicicleta,
- * hereda los atributos de la clase abstracta AccionesVehiculoAbstract <b>Caso
- * de Uso:<b> Semillero2022
+ * hereda los atributos de la clase abstracta AccionesVehiculoAbstract 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0

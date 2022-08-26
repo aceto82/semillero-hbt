@@ -22,7 +22,8 @@ import com.hbt.semillero.poo.Automovil;
 /**
  * 
  * <b>Descripción:<b> Clase que determina las pruebas unitarias para la creacion
- * de vehiculos <b>Caso de Uso:<b> Semillero 2022
+ * de vehiculos 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
