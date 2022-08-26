@@ -16,13 +16,18 @@ public enum TematicaEnum {
 	HUMORISTICO("enum.tematica.humoristico"), 
 	DEPORTIVO("enum.tematica.deportivo"), 
 	FANTASTICO("enum.tematica.fantastico"), 
-	CIENCIA_FICCION("enum.tematica.cianciaficcion"), 
+	CIENCIA_FICCION("enum.tematica.cienciaficcion"), 
 	HISTORICO("enum.tematica.historico"), 
 	HORROR("enum.tematica.horror"),
 	;
 	
 	private String etiqueta;
 	
+	/**
+	 * 
+	 * Constructor de la clase.
+	 * @param etiqueta
+	 */
 	TematicaEnum(String etiqueta){
 		this.etiqueta = etiqueta;
 	}

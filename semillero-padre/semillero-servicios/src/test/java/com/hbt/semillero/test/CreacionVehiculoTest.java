@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +34,9 @@ public class CreacionVehiculoTest {
 	 */
 	private final static Logger LOGGER = Logger.getLogger(CreacionVehiculoTest.class);
 
-	@Before
+	@BeforeEach
 	public void inicializar() {
-		BasicConfigurator.configure();
+		//BasicConfigurator.configure();
 		LOGGER.info("Se inicia la configuración de Log4j antes de ejecutar las UT");
 	}
 

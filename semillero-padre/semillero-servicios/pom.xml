@@ -73,7 +73,12 @@
 		    <artifactId>mockito-core</artifactId>
         	<version>4.2.0</version>
 		    <scope>test</scope>
-		</dependency>		
+		</dependency>
+		<!-- Dependencia para el manejo de la persistencia -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			</dependency>		
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 	</dependencies>
 </project>
