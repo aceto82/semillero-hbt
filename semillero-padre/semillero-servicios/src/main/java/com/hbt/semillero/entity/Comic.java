@@ -161,9 +161,10 @@ public class Comic implements Serializable {
 		this.cantidad = cantidad;
 	}
 
+	
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo id
-	 * 
 	 * @return El id asociado a la clase
 	 */
 	public Long getId() {
@@ -172,7 +173,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo id
-	 * 
 	 * @param id El nuevo id a modificar.
 	 */
 	public void setId(Long id) {
@@ -181,7 +181,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo nombre
-	 * 
 	 * @return El nombre asociado a la clase
 	 */
 	public String getNombre() {
@@ -190,7 +189,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo nombre
-	 * 
 	 * @param nombre El nuevo nombre a modificar.
 	 */
 	public void setNombre(String nombre) {
@@ -199,7 +197,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo editorial
-	 * 
 	 * @return El editorial asociado a la clase
 	 */
 	public String getEditorial() {
@@ -208,7 +205,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo editorial
-	 * 
 	 * @param editorial El nuevo editorial a modificar.
 	 */
 	public void setEditorial(String editorial) {
@@ -216,26 +212,23 @@ public class Comic implements Serializable {
 	}
 
 	/**
-	 * Metodo encargado de retornar el valor del atributo tematica
-	 * 
-	 * @return El tematica asociado a la clase
+	 * Metodo encargado de retornar el valor del atributo tematicaEnum
+	 * @return El tematicaEnum asociado a la clase
 	 */
-	public TematicaEnum getTematica() {
+	public TematicaEnum getTematicaEnum() {
 		return tematicaEnum;
 	}
 
 	/**
-	 * Metodo encargado de modificar el valor del atributo tematica
-	 * 
-	 * @param tematica El nuevo tematica a modificar.
+	 * Metodo encargado de modificar el valor del atributo tematicaEnum
+	 * @param tematicaEnum El nuevo tematicaEnum a modificar.
 	 */
-	public void setTematica(TematicaEnum tematica) {
-		this.tematicaEnum = tematica;
+	public void setTematicaEnum(TematicaEnum tematicaEnum) {
+		this.tematicaEnum = tematicaEnum;
 	}
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo coleccion
-	 * 
 	 * @return El coleccion asociado a la clase
 	 */
 	public String getColeccion() {
@@ -244,7 +237,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo coleccion
-	 * 
 	 * @param coleccion El nuevo coleccion a modificar.
 	 */
 	public void setColeccion(String coleccion) {
@@ -253,7 +245,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo numeropaginas
-	 * 
 	 * @return El numeropaginas asociado a la clase
 	 */
 	public Short getNumeropaginas() {
@@ -262,7 +253,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo numeropaginas
-	 * 
 	 * @param numeropaginas El nuevo numeropaginas a modificar.
 	 */
 	public void setNumeropaginas(Short numeropaginas) {
@@ -271,7 +261,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo precio
-	 * 
 	 * @return El precio asociado a la clase
 	 */
 	public BigDecimal getPrecio() {
@@ -280,7 +269,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo precio
-	 * 
 	 * @param precio El nuevo precio a modificar.
 	 */
 	public void setPrecio(BigDecimal precio) {
@@ -289,7 +277,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo autores
-	 * 
 	 * @return El autores asociado a la clase
 	 */
 	public String getAutores() {
@@ -298,7 +285,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo autores
-	 * 
 	 * @param autores El nuevo autores a modificar.
 	 */
 	public void setAutores(String autores) {
@@ -307,7 +293,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo color
-	 * 
 	 * @return El color asociado a la clase
 	 */
 	public Boolean getColor() {
@@ -316,7 +301,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo color
-	 * 
 	 * @param color El nuevo color a modificar.
 	 */
 	public void setColor(Boolean color) {
@@ -325,7 +309,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo fechaVenta
-	 * 
 	 * @return El fechaVenta asociado a la clase
 	 */
 	public LocalDate getFechaVenta() {
@@ -334,7 +317,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo fechaVenta
-	 * 
 	 * @param fechaVenta El nuevo fechaVenta a modificar.
 	 */
 	public void setFechaVenta(LocalDate fechaVenta) {
@@ -342,26 +324,23 @@ public class Comic implements Serializable {
 	}
 
 	/**
-	 * Metodo encargado de retornar el valor del atributo estado
-	 * 
-	 * @return El estado asociado a la clase
+	 * Metodo encargado de retornar el valor del atributo estadoEnum
+	 * @return El estadoEnum asociado a la clase
 	 */
-	public EstadoEnum getEstado() {
+	public EstadoEnum getEstadoEnum() {
 		return estadoEnum;
 	}
 
 	/**
-	 * Metodo encargado de modificar el valor del atributo estado
-	 * 
-	 * @param estado El nuevo estado a modificar.
+	 * Metodo encargado de modificar el valor del atributo estadoEnum
+	 * @param estadoEnum El nuevo estadoEnum a modificar.
 	 */
-	public void setEstado(EstadoEnum estado) {
-		this.estadoEnum = estado;
+	public void setEstadoEnum(EstadoEnum estadoEnum) {
+		this.estadoEnum = estadoEnum;
 	}
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo cantidad
-	 * 
 	 * @return El cantidad asociado a la clase
 	 */
 	public Short getCantidad() {
@@ -370,7 +349,6 @@ public class Comic implements Serializable {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo cantidad
-	 * 
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
 	public void setCantidad(Short cantidad) {
@@ -386,15 +364,17 @@ public class Comic implements Serializable {
 		return serialVersionUID;
 	}
 
-	/**
+	/** 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematica=" + tematicaEnum
+		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematicaEnum=" + tematicaEnum
 				+ ", coleccion=" + coleccion + ", numeropaginas=" + numeropaginas + ", precio=" + precio + ", autores="
-				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estado=" + estadoEnum + ", cantidad="
-				+ cantidad + "]";
+				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estadoEnum=" + estadoEnum
+				+ ", cantidad=" + cantidad + "]";
 	}
+
+	
 
 }

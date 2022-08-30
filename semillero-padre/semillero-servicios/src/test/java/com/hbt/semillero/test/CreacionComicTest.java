@@ -100,7 +100,7 @@ public class CreacionComicTest {
 	private List<Comic> verificaComicActivos() {
 		List<Comic> activos = new ArrayList<>();
 		this.listaComics.forEach((comic) -> {
-			if (comic.getEstado().equals(EstadoEnum.ACTIVO)) {
+			if (comic.getEstadoEnum().equals(EstadoEnum.ACTIVO)) {
 				activos.add(comic);
 			}
 		});
@@ -113,7 +113,7 @@ public class CreacionComicTest {
 	private List<Comic> verificaComicInactivos() {
 		List<Comic> inactivos = new ArrayList<>();
 		this.listaComics.forEach((comic) -> {
-			if (comic.getEstado().name().equals("INACTIVO")) {
+			if (comic.getEstadoEnum().name().equals("INACTIVO")) {
 				inactivos.add(comic);
 			}
 		});
@@ -131,7 +131,7 @@ public class CreacionComicTest {
 
 		activos.forEach((comic) -> {
 			System.out.println(comic.toString());
-			assertEquals(EstadoEnum.ACTIVO, comic.getEstado());
+			assertEquals(EstadoEnum.ACTIVO, comic.getEstadoEnum());
 		});
 
 		LOG.info("finaliza ejecución del test whenVerifyComicsListStateActiveThenIsActive()");
