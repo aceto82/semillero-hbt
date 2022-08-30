@@ -9,6 +9,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -60,7 +62,8 @@ public class Comic implements Serializable {
 	 * HUMORISTICO, DEPORTIVO, FANTASTICO, CIENCIA_FICCION, HISTORICO, HORROR
 	 */
 	@Column(name = "SCTEMATICA")
-	private TematicaEnum tematica;
+	@Enumerated(value = EnumType.STRING)
+	private TematicaEnum tematicaEnum;
 
 	/*
 	 * Atributo que determina el Conjunto de publicaciones de la que el comic es
@@ -104,7 +107,8 @@ public class Comic implements Serializable {
 	 * Atributo que Define si el comic tiene existencia para la venta o no
 	 */
 	@Column(name = "SCESTADO")
-	private EstadoEnum estado;
+	@Enumerated(value = EnumType.STRING)
+	private EstadoEnum estadoEnum;
 
 	/*
 	 * Atributo que determina la Cantidad de comics en inventario disponibles para
@@ -146,14 +150,14 @@ public class Comic implements Serializable {
 		this.id = id;
 		this.nombre = nombre;
 		this.editorial = editorial;
-		this.tematica = tematica;
+		this.tematicaEnum = tematica;
 		this.coleccion = coleccion;
 		this.numeropaginas = numeropaginas;
 		this.precio = precio;
 		this.autores = autores;
 		this.color = color;
 		this.fechaVenta = fechaVenta;
-		this.estado = estado;
+		this.estadoEnum = estado;
 		this.cantidad = cantidad;
 	}
 
@@ -217,7 +221,7 @@ public class Comic implements Serializable {
 	 * @return El tematica asociado a la clase
 	 */
 	public TematicaEnum getTematica() {
-		return tematica;
+		return tematicaEnum;
 	}
 
 	/**
@@ -226,7 +230,7 @@ public class Comic implements Serializable {
 	 * @param tematica El nuevo tematica a modificar.
 	 */
 	public void setTematica(TematicaEnum tematica) {
-		this.tematica = tematica;
+		this.tematicaEnum = tematica;
 	}
 
 	/**
@@ -343,7 +347,7 @@ public class Comic implements Serializable {
 	 * @return El estado asociado a la clase
 	 */
 	public EstadoEnum getEstado() {
-		return estado;
+		return estadoEnum;
 	}
 
 	/**
@@ -352,7 +356,7 @@ public class Comic implements Serializable {
 	 * @param estado El nuevo estado a modificar.
 	 */
 	public void setEstado(EstadoEnum estado) {
-		this.estado = estado;
+		this.estadoEnum = estado;
 	}
 
 	/**
@@ -387,9 +391,9 @@ public class Comic implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematica=" + tematica
+		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematica=" + tematicaEnum
 				+ ", coleccion=" + coleccion + ", numeropaginas=" + numeropaginas + ", precio=" + precio + ", autores="
-				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estado=" + estado + ", cantidad="
+				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estado=" + estadoEnum + ", cantidad="
 				+ cantidad + "]";
 	}
 
