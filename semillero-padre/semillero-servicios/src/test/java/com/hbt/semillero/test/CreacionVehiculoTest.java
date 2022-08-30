@@ -96,12 +96,11 @@ public class CreacionVehiculoTest {
 		LOGGER.info("Finaliza ejecución del test ejemploMock()");
 	}
 	
-	@Test
-	@Disabled
+	@Test	
 	public void pruebaFallida() {
 		LOGGER.info("Inicia ejecución del test whenDeterminarTipoVehiculoGiventrueThenFallido()");
 		Automovil mazda = new Automovil();
-		mazda.setTipo(TipoVehiculoEnum.AEREO);
+		mazda.setTipo(TipoVehiculoEnum.TERRESTRE);
 
 		Exception exception = assertThrows(Exception.class, () -> {
 			mazda.determinarTipoVehiculo(mazda.getTipo());
