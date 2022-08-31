@@ -20,6 +20,11 @@ import javax.persistence.Table;
 import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * <b>Descripción:<b> Clase que contiene la información de la tabla comic
  * <b>Caso de Uso:<b> Semillero2022
@@ -29,6 +34,10 @@ import com.hbt.semillero.enums.TematicaEnum;
  */
 @Entity
 @Table(name = "COMIC")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Comic implements Serializable {
 
 	/*
@@ -121,9 +130,9 @@ public class Comic implements Serializable {
 	 * 
 	 * Constructor de la clase.
 	 */
-	public Comic() {
+	/*public Comic() {
 
-	}
+	}*/
 
 	/**
 	 * Constructor de la clase.
@@ -145,7 +154,7 @@ public class Comic implements Serializable {
 	 * @param cantidad      Cantidad de comics en inventario disponibles para la
 	 *                      venta
 	 */
-	public Comic(Long id, String nombre, String editorial, TematicaEnum tematica, String coleccion, Short numeropaginas,
+	/*public Comic(Long id, String nombre, String editorial, TematicaEnum tematica, String coleccion, Short numeropaginas,
 			BigDecimal precio, String autores, Boolean color, LocalDate fechaVenta, EstadoEnum estado, Short cantidad) {
 		this.id = id;
 		this.nombre = nombre;
@@ -160,201 +169,8 @@ public class Comic implements Serializable {
 		this.estadoEnum = estado;
 		this.cantidad = cantidad;
 	}
-
+*/
 	
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo id
-	 * @return El id asociado a la clase
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo id
-	 * @param id El nuevo id a modificar.
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo nombre
-	 * @return El nombre asociado a la clase
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo nombre
-	 * @param nombre El nuevo nombre a modificar.
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo editorial
-	 * @return El editorial asociado a la clase
-	 */
-	public String getEditorial() {
-		return editorial;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo editorial
-	 * @param editorial El nuevo editorial a modificar.
-	 */
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo tematicaEnum
-	 * @return El tematicaEnum asociado a la clase
-	 */
-	public TematicaEnum getTematicaEnum() {
-		return tematicaEnum;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo tematicaEnum
-	 * @param tematicaEnum El nuevo tematicaEnum a modificar.
-	 */
-	public void setTematicaEnum(TematicaEnum tematicaEnum) {
-		this.tematicaEnum = tematicaEnum;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo coleccion
-	 * @return El coleccion asociado a la clase
-	 */
-	public String getColeccion() {
-		return coleccion;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo coleccion
-	 * @param coleccion El nuevo coleccion a modificar.
-	 */
-	public void setColeccion(String coleccion) {
-		this.coleccion = coleccion;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo numeropaginas
-	 * @return El numeropaginas asociado a la clase
-	 */
-	public Short getNumeropaginas() {
-		return numeropaginas;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo numeropaginas
-	 * @param numeropaginas El nuevo numeropaginas a modificar.
-	 */
-	public void setNumeropaginas(Short numeropaginas) {
-		this.numeropaginas = numeropaginas;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo precio
-	 * @return El precio asociado a la clase
-	 */
-	public BigDecimal getPrecio() {
-		return precio;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo precio
-	 * @param precio El nuevo precio a modificar.
-	 */
-	public void setPrecio(BigDecimal precio) {
-		this.precio = precio;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo autores
-	 * @return El autores asociado a la clase
-	 */
-	public String getAutores() {
-		return autores;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo autores
-	 * @param autores El nuevo autores a modificar.
-	 */
-	public void setAutores(String autores) {
-		this.autores = autores;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo color
-	 * @return El color asociado a la clase
-	 */
-	public Boolean getColor() {
-		return color;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo color
-	 * @param color El nuevo color a modificar.
-	 */
-	public void setColor(Boolean color) {
-		this.color = color;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo fechaVenta
-	 * @return El fechaVenta asociado a la clase
-	 */
-	public LocalDate getFechaVenta() {
-		return fechaVenta;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo fechaVenta
-	 * @param fechaVenta El nuevo fechaVenta a modificar.
-	 */
-	public void setFechaVenta(LocalDate fechaVenta) {
-		this.fechaVenta = fechaVenta;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo estadoEnum
-	 * @return El estadoEnum asociado a la clase
-	 */
-	public EstadoEnum getEstadoEnum() {
-		return estadoEnum;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo estadoEnum
-	 * @param estadoEnum El nuevo estadoEnum a modificar.
-	 */
-	public void setEstadoEnum(EstadoEnum estadoEnum) {
-		this.estadoEnum = estadoEnum;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo cantidad
-	 * @return El cantidad asociado a la clase
-	 */
-	public Short getCantidad() {
-		return cantidad;
-	}
-
-	/**
-	 * Metodo encargado de modificar el valor del atributo cantidad
-	 * @param cantidad El nuevo cantidad a modificar.
-	 */
-	public void setCantidad(Short cantidad) {
-		this.cantidad = cantidad;
-	}
-
 	/**
 	 * Metodo encargado de retornar el valor del atributo serialVersionUID
 	 * 
@@ -367,13 +183,13 @@ public class Comic implements Serializable {
 	/** 
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
+	/*@Override
 	public String toString() {
 		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematicaEnum=" + tematicaEnum
 				+ ", coleccion=" + coleccion + ", numeropaginas=" + numeropaginas + ", precio=" + precio + ", autores="
 				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estadoEnum=" + estadoEnum
 				+ ", cantidad=" + cantidad + "]";
-	}
+	}*/
 
 	
 
