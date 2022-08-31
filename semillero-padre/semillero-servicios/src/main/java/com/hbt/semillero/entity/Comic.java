@@ -125,51 +125,7 @@ public class Comic implements Serializable {
 	 */
 	@Column(name = "SCCANTIDAD")
 	private Short cantidad;
-
-	/**
-	 * 
-	 * Constructor de la clase.
-	 */
-	/*public Comic() {
-
-	}*/
-
-	/**
-	 * Constructor de la clase.
-	 * 
-	 * @param id            Identificador unico del comic
-	 * @param nombre        Nombre o titulo del comic o revista grafica
-	 * @param editorial     Empresa editorial quien publico el comic
-	 * @param tematica      Permite identificar si el comic es de tipo AVENTURAS,
-	 *                      BELICO, HUMORISTICO, DEPORTIVO, FANTASTICO,
-	 *                      CIENCIA_FICCION, HISTORICO, HORROR
-	 * @param coleccion     Conjunto de publicaciones de la que el comic es parte
-	 * @param numeropaginas Cantidad de las paginas que contiene el comic
-	 * @param precio        Valor en pesos del comic
-	 * @param autores       Autor u autores del comic
-	 * @param color         Define si el comic es a color o no, campo de tipo
-	 *                      booleano solo acepta 1 o 0
-	 * @param fechaVenta    Fecha de inicio de la venta del comic
-	 * @param estado        Define si el comic tiene existencia para la venta o no
-	 * @param cantidad      Cantidad de comics en inventario disponibles para la
-	 *                      venta
-	 */
-	/*public Comic(Long id, String nombre, String editorial, TematicaEnum tematica, String coleccion, Short numeropaginas,
-			BigDecimal precio, String autores, Boolean color, LocalDate fechaVenta, EstadoEnum estado, Short cantidad) {
-		this.id = id;
-		this.nombre = nombre;
-		this.editorial = editorial;
-		this.tematicaEnum = tematica;
-		this.coleccion = coleccion;
-		this.numeropaginas = numeropaginas;
-		this.precio = precio;
-		this.autores = autores;
-		this.color = color;
-		this.fechaVenta = fechaVenta;
-		this.estadoEnum = estado;
-		this.cantidad = cantidad;
-	}
-*/
+	
 	
 	/**
 	 * Metodo encargado de retornar el valor del atributo serialVersionUID
@@ -179,18 +135,5 @@ public class Comic implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	/** 
-	 * @see java.lang.Object#toString()
-	 */
-	/*@Override
-	public String toString() {
-		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematicaEnum=" + tematicaEnum
-				+ ", coleccion=" + coleccion + ", numeropaginas=" + numeropaginas + ", precio=" + precio + ", autores="
-				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estadoEnum=" + estadoEnum
-				+ ", cantidad=" + cantidad + "]";
-	}*/
-
-	
 
 }
