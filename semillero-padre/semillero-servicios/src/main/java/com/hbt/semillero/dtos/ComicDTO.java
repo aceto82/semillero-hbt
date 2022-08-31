@@ -13,18 +13,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 
  * <b>Descripción:<b> Clase que determina
- * <b>Caso de Uso:<b> 
+ * <b>Caso de Uso:<b> Semillero2022
  * @author Diego Armando Ortiz Bastidas
- * @version
+ * @version 1.0
  */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ComicDTO {
 
 	/*
@@ -95,8 +97,7 @@ public class ComicDTO {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.estado = estado;
-	}	
-	
+	}
 	
 
 }
