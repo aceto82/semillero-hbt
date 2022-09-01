@@ -32,7 +32,8 @@ import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
 
 /**
- * <b>Descripción:<b> Clase que determina <b>Caso de Uso:<b>
+ * <b>Descripción:<b> Clase que determina 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -221,7 +222,7 @@ public class SemilleroJPQLRest {
 		return "";
 	}
 
-	public void addMyComics() {
+	private void addMyComics() {
 		/*List<Comic> listaComics = new ArrayList<>();
 		Comic yugioh = new Comic(11L, "Yu-Gi-Oh!", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 38,
 				new BigDecimal(0), "Kazuki Takahashi", false, null, EstadoEnum.INACTIVO, (short) 0);
@@ -272,4 +273,5 @@ public class SemilleroJPQLRest {
 */
 	}
 
+	
 }
