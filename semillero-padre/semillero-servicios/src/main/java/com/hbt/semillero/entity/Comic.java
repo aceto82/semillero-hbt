@@ -85,7 +85,7 @@ public class Comic implements Serializable {
 	 * Atributo que determina la cantidad de las paginas que contiene el comic
 	 */
 	@Column(name = "SCNUMEROPAGINAS")
-	private Short numeropaginas;
+	private Short numeroPaginas;
 
 	/*
 	 * Atributo que determina el Valor en pesos del comic
