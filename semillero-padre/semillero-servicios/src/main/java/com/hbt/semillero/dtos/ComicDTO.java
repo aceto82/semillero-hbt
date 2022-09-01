@@ -17,7 +17,7 @@ import lombok.ToString;
 
 /**
  * 
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase que permite transportar los datos de un Comic
  * <b>Caso de Uso:<b> Semillero2022
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -93,6 +93,12 @@ public class ComicDTO {
 	 */
 	private Short cantidad;
 
+	/**
+	 * Constructor de la clase.
+	 * @param nombre
+	 * @param estadoEnum
+	 * @param precio
+	 */
 	public ComicDTO(String nombre, EstadoEnum estadoEnum, BigDecimal precio) {		
 		this.nombre = nombre;
 		this.precio = precio;

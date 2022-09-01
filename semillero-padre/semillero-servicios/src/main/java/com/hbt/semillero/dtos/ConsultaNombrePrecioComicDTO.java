@@ -10,8 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase que permite transportar el nombre y precio
+ * de un Comic
+ * 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -21,23 +24,23 @@ import lombok.NoArgsConstructor;
 public class ConsultaNombrePrecioComicDTO extends ResultadoDTO implements Serializable {
 
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el serial version UID
 	 */
 	private static final long serialVersionUID = 5090815548125489135L;
-	
+
 	/**
-	 * Atributo que determina  
-	 */	
+	 * Atributo que determina el nombre de un comic
+	 */
 	private String nombre;
-	
+
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el precio de un comic
 	 */
 	private BigDecimal precio;
 
 	/**
 	 * Método encargado de convertir los datos recibidos en JSON al tipo ComicDTO.
-	 * <b>Caso de Uso:</b>
+	 * <b>Caso de Uso:</b> Semillero2022
 	 * 
 	 * @param arg Cadena que representa el objeto complejo JSON.
 	 * @return Instancia con los datos recibidos.

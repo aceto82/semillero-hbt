@@ -1,14 +1,14 @@
 package com.hbt.semillero.util;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 /**
  * <b>Descripción:<b> Clase que determina las utilidades para convertir DTO de
- * entrada a objetos JSON y viceversa
+ * entrada a objetos JSON y viceversa 
+ * 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -19,7 +19,6 @@ public class JsonUtils {
 	 */
 	private JsonUtils() {
 		throw new IllegalStateException("Utility class");
-
 	}
 
 	/**
@@ -54,5 +53,3 @@ public class JsonUtils {
 	}
 
 }
-
-

@@ -9,8 +9,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase padre que permite transportar si fue exitoso y su
+ * respectivo mensaje
+ * 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -19,25 +22,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResultadoDTO implements Serializable {
 
-	
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el serial version UID
 	 */
 	private static final long serialVersionUID = 5582450322892802061L;
-	
+
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina si fue exitoso o no el proceso
 	 */
-	private Boolean exitoso;	
-	
+	private Boolean exitoso;
+
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el mensaje del proceso ejecutado
 	 */
 	private String mensajeEjecucion;
-	
+
 	/**
 	 * Método encargado de convertir los datos recibidos en JSON al tipo ComicDTO.
-	 * <b>Caso de Uso:</b>
+	 * <b>Caso de Uso:</b> Semillero2022
 	 * 
 	 * @param arg Cadena que representa el objeto complejo JSON.
 	 * @return Instancia con los datos recibidos.

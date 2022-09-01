@@ -7,31 +7,40 @@ import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 
 /**
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Interface que determina las acciones que puede realizar en
+ * la gestion del comic
+ * 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
 @Local
 public interface IGestionarComicLocal {
-	
+
 	/**
-	 * Metodo encargado de 
+	 * Metodo encargado de consultar el nombre y precio de un comic dado el
+	 * identificador del mismo
+	 * 
 	 * <b>Caso de Uso</b> Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
-	 * @param idComic
-	 * @return
+	 * @param idComic identificador del comic
+	 * @return ConsultaNombrePrecioComicDTO dto de la consulta
 	 */
 	public ConsultaNombrePrecioComicDTO consultarNombrePrecioComic(Long idComic);
-	
+
 	/**
-	 * Metodo encargado de 
+	 * Metodo encargado de crear y verificar el comic, con la informacion recibida
+	 * del dto comic
+	 * 
 	 * <b>Caso de Uso</b> Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
-	 * @param comicDTO
-	 * @return
+	 * @param comicDTO dto con los datos del comic
+	 * @return ResultadoDTO dto resultado
 	 * @throws Exception
 	 */
 	public ResultadoDTO crearComic(ComicDTO comicDTO) throws Exception;

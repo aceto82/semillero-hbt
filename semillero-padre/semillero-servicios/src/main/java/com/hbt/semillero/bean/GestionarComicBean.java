@@ -20,8 +20,9 @@ import com.hbt.semillero.entity.Comic;
 import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
 
 /**
- * <b>Descripción:<b> Clase que determina
- * <b>Caso de Uso:<b> Semillero2022
+ * <b>Descripción:<b> Clase que determina la logica de verificar y procesar los
+ * datos <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -30,17 +31,17 @@ import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
 public class GestionarComicBean implements IGestionarComicLocal {
 
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el logger, la cual muestra en consola los mensajes
 	 */
 	private final static Logger LOGGER = Logger.getLogger(GestionarComicBean.class);
 
 	/*
-	 * Atributo que determina  
+	 * Atributo que maneja la interacción de la base de datos y los metadatos
 	 */
 	@PersistenceContext
 	private EntityManager em;
 
-	/** 
+	/**
 	 * @see com.hbt.semillero.poo.interfaces.IGestionarComicLocal#consultarNombrePrecioComic(java.lang.Long)
 	 */
 	@Override
@@ -96,7 +97,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		return dto;
 	}
 
-	/** 
+	/**
 	 * @see com.hbt.semillero.poo.interfaces.IGestionarComicLocal#crearComic(com.hbt.semillero.dtos.ComicDTO)
 	 */
 	@Override
@@ -117,8 +118,9 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	}
 
 	/**
-	 * Metodo encargado de 
-	 * <b>Caso de Uso</b>
+	 * Metodo encargado de pasar los datos del DTO a la clase entidad
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
 	 * @param comicDTO
