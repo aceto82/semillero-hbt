@@ -17,7 +17,7 @@ import lombok.ToString;
 
 /**
  * 
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase que permite transportar los datos de un Comic
  * <b>Caso de Uso:<b> Semillero2022
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -48,7 +48,7 @@ public class ComicDTO {
 	 * Atributo que permite identificar si el comic es de tipo AVENTURAS, BELICO,
 	 * HUMORISTICO, DEPORTIVO, FANTASTICO, CIENCIA_FICCION, HISTORICO, HORROR
 	 */
-	private TematicaEnum tematica;
+	private TematicaEnum tematicaEnum;
 
 	/*
 	 * Atributo que determina el Conjunto de publicaciones de la que el comic es
@@ -59,7 +59,7 @@ public class ComicDTO {
 	/*
 	 * Atributo que determina la cantidad de las paginas que contiene el comic
 	 */
-	private Short numeropaginas;
+	private Short numeroPaginas;
 
 	/*
 	 * Atributo que determina el Valor en pesos del comic
@@ -85,7 +85,7 @@ public class ComicDTO {
 	/*
 	 * Atributo que Define si el comic tiene existencia para la venta o no
 	 */
-	private EstadoEnum estado;
+	private EstadoEnum estadoEnum;
 
 	/*
 	 * Atributo que determina la Cantidad de comics en inventario disponibles para
@@ -93,10 +93,16 @@ public class ComicDTO {
 	 */
 	private Short cantidad;
 
-	public ComicDTO(String nombre, EstadoEnum estado, BigDecimal precio) {		
+	/**
+	 * Constructor de la clase.
+	 * @param nombre
+	 * @param estadoEnum
+	 * @param precio
+	 */
+	public ComicDTO(String nombre, EstadoEnum estadoEnum, BigDecimal precio) {		
 		this.nombre = nombre;
 		this.precio = precio;
-		this.estado = estado;
+		this.estadoEnum = estadoEnum;
 	}
 	
 
