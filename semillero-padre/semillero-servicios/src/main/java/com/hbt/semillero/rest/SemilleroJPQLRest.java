@@ -32,8 +32,7 @@ import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
 
 /**
- * <b>Descripción:<b> Clase que determina 
- * <b>Caso de Uso:<b> Semillero2022
+ * <b>Descripción:<b> Clase que determina <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -63,40 +62,40 @@ public class SemilleroJPQLRest {
 		Comic comic = null;
 
 		try {
+			// Agrego registros de prueba a la BD
+			// this.addMyComics();
+
 			// Obtencion de un registro de la tabla comic haciendo uso del metodo find de la
 			// clase EntityManager
-			// SELECT * FROM COMIC WHERE ID = 15;			
-			
-			//this.addMyComics();					
-			
+			// SELECT * FROM COMIC WHERE ID = 1;
 			comic = em.find(Comic.class, 1L);
 			LOG.info("DATA COMIC" + comic.toString());
+			
 
-			// Consults en JPQL para obtener un comic con el id 15 pero quemado o
+			// Consults en JPQL para obtener un comic con el id 1 pero quemado o
 			// hardcodeado haciendo uso del metodo getSingleResult
-			/**
-			 * String consulta = "SELECT c FROM Comic c WHERE c.id = 1 "; Query queryUnComic
-			 * = em.createQuery(consulta); comic = (Comic) queryUnComic.getSingleResult();
-			 */
+			String consulta = "SELECT c FROM Comic c WHERE c.id = 1 ";
+			Query queryUnComic = em.createQuery(consulta);
+			comic = (Comic) queryUnComic.getSingleResult();
+			
+
 			// Consulta en JPQL para obtener un comic con el id 6 tematicaenum y color
 			// haciendo uso del metodo getSingleResult y setParameter
-			/*
-			 * String consultaDos = "SELECT cm FROM Comic cm " + " WHERE cm.id = 2 " +
-			 * " AND cm.tematicaEnum = 'FANTASTICO'" + " AND cm.color = 0 " +
-			 * " AND cm.estadoEnum = 'ACTIVO' "; Query queryUnComicDos =
-			 * em.createQuery(consultaDos); comic = (Comic)
-			 * queryUnComicDos.getSingleResult();
-			 */
-			/*
-			 * String consultaTres = "SELECT cm FROM Comic cm " + " WHERE cm.id = :idComic "
-			 * + " AND cm.tematicaEnum = :tematicaEnum " + " AND cm.color = :color " +
-			 * " AND cm.estadoEnum = :estado "; Query queryUnComicTres =
-			 * em.createQuery(consultaTres); queryUnComicTres.setParameter("idComic",
-			 * comic.getId()); queryUnComicTres.setParameter("tematicaEnum",
-			 * TematicaEnum.FANTASTICO); queryUnComicTres.setParameter("color",
-			 * Boolean.FALSE); queryUnComicTres.setParameter("estado", EstadoEnum.ACTIVO);
-			 * comic = (Comic) queryUnComicTres.getSingleResult();
-			 */
+			String consultaDos = "SELECT cm FROM Comic cm " + " WHERE cm.id = 2 "
+					+ " AND cm.tematicaEnum = 'FANTASTICO'" + " AND cm.color = 0 " + " AND cm.estadoEnum = 'ACTIVO' ";
+			Query queryUnComicDos = em.createQuery(consultaDos);
+			comic = (Comic) queryUnComicDos.getSingleResult();
+
+			String consultaTres = "SELECT cm FROM Comic cm  " + " WHERE cm.id = :idComic "
+					+ " AND cm.tematicaEnum = :tematicaEnum " + " AND cm.color = :color "
+					+ " AND cm.estadoEnum = :estado ";
+			Query queryUnComicTres = em.createQuery(consultaTres);
+			queryUnComicTres.setParameter("idComic", comic.getId());
+			queryUnComicTres.setParameter("tematicaEnum", TematicaEnum.FANTASTICO);
+			queryUnComicTres.setParameter("color", Boolean.FALSE);
+			queryUnComicTres.setParameter("estado", EstadoEnum.ACTIVO);
+			comic = (Comic) queryUnComicTres.getSingleResult();
+
 			// Query que genera una exception de tipo NoResultException debido a que la
 			// consulta no retorna nada
 			// String consultaCuarto = "SELECT cm FROM Comic cm WHERE cm.id = :idComic "
@@ -107,19 +106,19 @@ public class SemilleroJPQLRest {
 			// queryUnComicCuatro.setParameter("colorComic", Boolean.TRUE);
 			// comic = (Comic) queryUnComicCuatro.getSingleResult();
 
+						
 			// Traer los comics filtrando por tematica y color como lista
-			/*
-			 * String consultaListaComics =
-			 * "SELECT cm FROM Comic cm WHERE cm.tematicaEnum = :tematicaEnum" +
-			 * " AND cm.color = :colorComic "; Query queryListComics =
-			 * em.createQuery(consultaListaComics);
-			 * queryListComics.setParameter("tematicaEnum", TematicaEnum.FANTASTICO);
-			 * queryListComics.setParameter("colorComic", Boolean.FALSE); List<Comic>
-			 * listComics = queryListComics.getResultList();
-			 * 
-			 * for (Comic comicList : listComics) { LOG.info("DATA COMIC" +
-			 * comicList.toString()); }
-			 */
+			String consultaListaComics = "SELECT cm FROM Comic cm WHERE cm.tematicaEnum = :tematicaEnum"
+					+ " AND cm.color = :colorComic ";
+			Query queryListComics = em.createQuery(consultaListaComics);
+			queryListComics.setParameter("tematicaEnum", TematicaEnum.FANTASTICO);
+			queryListComics.setParameter("colorComic", Boolean.FALSE);
+			List<Comic> listComics = queryListComics.getResultList();
+
+			for (Comic comicList : listComics) {
+				LOG.info("DATA COMIC" + comicList.toString());
+			}
+
 			// Query que genera una exception de tipo NonUniqueResultException debido a que
 			// la consulta retorna mas de 1 registro
 			/*
@@ -163,6 +162,8 @@ public class SemilleroJPQLRest {
 			 * Arrays.asList(1L, 3L)); int records = queryEliminarComic.executeUpdate();
 			 * LOG.error("Se eliminaron " + records);
 			 */
+			
+			
 			// consulta algunos campos de la entidad y retorn una lista de objetos
 			String consultaCampos = "SELECT c.nombre, c.estadoEnum, c.precio FROM Comic c " + " WHERE c.id = :idComic ";
 			Query queryCampos = em.createQuery(consultaCampos);
@@ -223,55 +224,60 @@ public class SemilleroJPQLRest {
 	}
 
 	private void addMyComics() {
-		/*List<Comic> listaComics = new ArrayList<>();
-		Comic yugioh = new Comic(11L, "Yu-Gi-Oh!", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 38,
-				new BigDecimal(0), "Kazuki Takahashi", false, null, EstadoEnum.INACTIVO, (short) 0);
-
-		Comic crest = new Comic(12L, "Crest of the Royal Family", "Akita Shoten", TematicaEnum.BELICO, "Manga Shojo",
-				(short) 66, new BigDecimal(0), "Chieko Hosokawa", false, null, EstadoEnum.INACTIVO, (short) 0);
-
-		Comic futari = new Comic(13L, "Futari Ecchi", "Hakusensha", TematicaEnum.HUMORISTICO, "Manga Seinen", (short) 84,
-				new BigDecimal(0), "Katsu Aki", false, null, EstadoEnum.INACTIVO, (short) 0);
-
-		Comic onepiece = new Comic(14L, "One Piece", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 103,
-				new BigDecimal(25), "Eiichiro Oda", false, LocalDate.of(2022, 8, 31), EstadoEnum.ACTIVO, (short) 180);
-
-		Comic naruto = new Comic(15L, "Naruto", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 72,
-				new BigDecimal(0), "Masashi Kishimoto", false, null, EstadoEnum.INACTIVO, (short) 0);
-
-		Comic hajime = new Comic(16L, "Hajime no Ippo", "Kodansha", TematicaEnum.DEPORTIVO, "Manga Shonen", (short) 132,
-				new BigDecimal(20), "George Morikawa", false, LocalDate.of(2022, 9, 15), EstadoEnum.ACTIVO, (short) 54);
-
-		Comic captainTsubasa = new Comic(17L, "Captain Tsubasa", "Shueisha", TematicaEnum.DEPORTIVO,
-				"Manga Shonen/Seinen", (short) 96, new BigDecimal(15), "Yoichi Takahashi", false,
-				LocalDate.of(2022, 9, 25), EstadoEnum.ACTIVO, (short) 27);
-
-		Comic grayman = new Comic(18L, "D.Gray-man", "Shueisha", TematicaEnum.FANTASTICO, "Manga Shonen", (short) 27,
-				new BigDecimal(18), "Katsura Hoshino", false, LocalDate.now(), EstadoEnum.ACTIVO, (short) 47);
-
-		Comic gantz = new Comic(19L, "Gantz", "Shueisha", TematicaEnum.CIENCIA_FICCION, "Manga Seinen", (short) 37,
-				new BigDecimal(22), "Hiroya Oku", false, LocalDate.of(2022, 9, 5), EstadoEnum.ACTIVO, (short) 27);
-
-		Comic sukeban = new Comic(20L, "Sukeban Deka", "Hakusensha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 27,
-				new BigDecimal(25), "Katsura Hoshino", false, LocalDate.now(), EstadoEnum.ACTIVO, (short) 180);
-
-		listaComics.add(yugioh);
-		listaComics.add(crest);
-		listaComics.add(futari);
-		listaComics.add(onepiece);
-		listaComics.add(naruto);
-		listaComics.add(hajime);
-		listaComics.add(captainTsubasa);
-		listaComics.add(grayman);
-		listaComics.add(gantz);
-		listaComics.add(sukeban);
-
-		for (Comic comic : listaComics) {
-			comic.setId(null);
-			em.persist(comic); // operacion insert			
-		}
-*/
+		/*
+		 * List<Comic> listaComics = new ArrayList<>(); Comic yugioh = new Comic(11L,
+		 * "Yu-Gi-Oh!", "Shueisha", TematicaEnum.AVENTURAS, "Manga Shonen", (short) 38,
+		 * new BigDecimal(0), "Kazuki Takahashi", false, null, EstadoEnum.INACTIVO,
+		 * (short) 0);
+		 * 
+		 * Comic crest = new Comic(12L, "Crest of the Royal Family", "Akita Shoten",
+		 * TematicaEnum.BELICO, "Manga Shojo", (short) 66, new BigDecimal(0),
+		 * "Chieko Hosokawa", false, null, EstadoEnum.INACTIVO, (short) 0);
+		 * 
+		 * Comic futari = new Comic(13L, "Futari Ecchi", "Hakusensha",
+		 * TematicaEnum.HUMORISTICO, "Manga Seinen", (short) 84, new BigDecimal(0),
+		 * "Katsu Aki", false, null, EstadoEnum.INACTIVO, (short) 0);
+		 * 
+		 * Comic onepiece = new Comic(14L, "One Piece", "Shueisha",
+		 * TematicaEnum.AVENTURAS, "Manga Shonen", (short) 103, new BigDecimal(25),
+		 * "Eiichiro Oda", false, LocalDate.of(2022, 8, 31), EstadoEnum.ACTIVO, (short)
+		 * 180);
+		 * 
+		 * Comic naruto = new Comic(15L, "Naruto", "Shueisha", TematicaEnum.AVENTURAS,
+		 * "Manga Shonen", (short) 72, new BigDecimal(0), "Masashi Kishimoto", false,
+		 * null, EstadoEnum.INACTIVO, (short) 0);
+		 * 
+		 * Comic hajime = new Comic(16L, "Hajime no Ippo", "Kodansha",
+		 * TematicaEnum.DEPORTIVO, "Manga Shonen", (short) 132, new BigDecimal(20),
+		 * "George Morikawa", false, LocalDate.of(2022, 9, 15), EstadoEnum.ACTIVO,
+		 * (short) 54);
+		 * 
+		 * Comic captainTsubasa = new Comic(17L, "Captain Tsubasa", "Shueisha",
+		 * TematicaEnum.DEPORTIVO, "Manga Shonen/Seinen", (short) 96, new
+		 * BigDecimal(15), "Yoichi Takahashi", false, LocalDate.of(2022, 9, 25),
+		 * EstadoEnum.ACTIVO, (short) 27);
+		 * 
+		 * Comic grayman = new Comic(18L, "D.Gray-man", "Shueisha",
+		 * TematicaEnum.FANTASTICO, "Manga Shonen", (short) 27, new BigDecimal(18),
+		 * "Katsura Hoshino", false, LocalDate.now(), EstadoEnum.ACTIVO, (short) 47);
+		 * 
+		 * Comic gantz = new Comic(19L, "Gantz", "Shueisha",
+		 * TematicaEnum.CIENCIA_FICCION, "Manga Seinen", (short) 37, new BigDecimal(22),
+		 * "Hiroya Oku", false, LocalDate.of(2022, 9, 5), EstadoEnum.ACTIVO, (short)
+		 * 27);
+		 * 
+		 * Comic sukeban = new Comic(20L, "Sukeban Deka", "Hakusensha",
+		 * TematicaEnum.AVENTURAS, "Manga Shonen", (short) 27, new BigDecimal(25),
+		 * "Katsura Hoshino", false, LocalDate.now(), EstadoEnum.ACTIVO, (short) 180);
+		 * 
+		 * listaComics.add(yugioh); listaComics.add(crest); listaComics.add(futari);
+		 * listaComics.add(onepiece); listaComics.add(naruto); listaComics.add(hajime);
+		 * listaComics.add(captainTsubasa); listaComics.add(grayman);
+		 * listaComics.add(gantz); listaComics.add(sukeban);
+		 * 
+		 * for (Comic comic : listaComics) { comic.setId(null); em.persist(comic); //
+		 * operacion insert }
+		 */
 	}
 
-	
 }
