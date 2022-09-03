@@ -2,10 +2,8 @@ package com.hbt.semillero.poo.interfaces;
 
 import javax.ejb.Local;
 
-import com.hbt.semillero.dtos.ComicDTO;
-import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicTamanioNombreDTO;
-import com.hbt.semillero.dtos.ResultadoDTO;
+
 
 /**
  * <b>Descripción:<b> Interface que determina las acciones que puede realizar en
@@ -20,17 +18,20 @@ import com.hbt.semillero.dtos.ResultadoDTO;
 public interface IGestionarComicTallerIILocal {
 
 	/**
-	 * Metodo encargado de consultar el nombre y precio de un comic dado el
-	 * identificador del mismo
+	 * Método encargado de verificar el tipo de dato del parametro, una vez validado
+	 * realizara el proceso destinado
 	 * 
 	 * <b>Caso de Uso</b> Semillero2022
 	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
-	 * @param idComic identificador del comic
-	 * @return ConsultaNombrePrecioComicDTO dto de la consulta
+	 * @param lengthComic
+	 * @return ConsultarComicTamanioNombreDTO dto de la consulta
+	 * @throws Exception
 	 */
-	public ConsultarComicTamanioNombreDTO consultarComicTamanioNombre(Short lengthComic) throws Exception;
+	public ConsultarComicTamanioNombreDTO consultarComicTamanioNombre(String lengthComic) throws Exception;
 
-	
+	// public ConsultarComicTamanioNombreDTO consultarComicTamanioNombre(Short
+	// lengthComic) throws Exception;
+
 }

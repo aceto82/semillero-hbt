@@ -11,7 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <b>Descripción:<b> Clase que permite transportar el nombre del comic
+ * <b>Descripción:<b> Clase que permite transportar el nombre del comic para el
+ * servicio web del taller 2
  * 
  * <b>Caso de Uso:<b> Semillero2022
  * 
@@ -29,12 +30,20 @@ public class ConsultarComicTamanioNombreDTO extends ResultadoDTO implements Seri
 	private static final long serialVersionUID = 8165909979471289450L;
 
 	/**
-	 * Atributo que determina el nombre de un comic
+	 * Atributo que determina el nombre de un comic en la consulta sql
 	 */
 	private String nombre;
 
+	/*
+	 * Atributo que determina el listado de los nombres de los comics que no superan
+	 * la longitud recibida en el proceso
+	 */
 	private List<String> comicsNoSuperanTamanio;
 
+	/*
+	 * Atributo que determina el listado de los nombres de los comics que superan la
+	 * longitud recibida en el proceso
+	 */
 	private List<String> comicsSuperanTamanio;
 
 	/**
