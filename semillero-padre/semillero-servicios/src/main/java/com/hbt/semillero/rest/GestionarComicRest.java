@@ -10,6 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.hbt.semillero.dtos.ComicDTO;
+import com.hbt.semillero.dtos.ConsultarComicDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
@@ -76,6 +77,14 @@ public class GestionarComicRest {
 			resultadoDTO.setMensajeEjecucion(e.getMessage());
 		}
 		return resultadoDTO;
+	}
+	
+	@GET
+	@Path("/consultarComic")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public ConsultarComicDTO consultarComic(@QueryParam("idComic") Long idComic) {
+		return this.gestionarComicLocal.consultarComic(idComic);
 	}
 
 }

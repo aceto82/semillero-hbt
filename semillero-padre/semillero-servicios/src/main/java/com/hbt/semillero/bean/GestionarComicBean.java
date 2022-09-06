@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 
 import com.hbt.semillero.dtos.ComicDTO;
+import com.hbt.semillero.dtos.ConsultarComicDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 import com.hbt.semillero.entity.Comic;
@@ -21,7 +22,9 @@ import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
 
 /**
  * <b>Descripción:<b> Clase que determina la logica de verificar y procesar los
- * datos <b>Caso de Uso:<b> Semillero2022
+ * datos 
+ * 
+ * <b>Caso de Uso:<b> Semillero2022
  * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
@@ -118,7 +121,8 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	}
 
 	/**
-	 * Metodo encargado de pasar los datos del DTO a la clase entidad
+	 * Metodo encargado de pasar los datos del DTO a la clase entidad 
+	 * 
 	 * <b>Caso de Uso</b> Semillero2022
 	 * 
 	 * @author Diego Armando Ortiz Bastidas
@@ -142,4 +146,37 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		comic.setCantidad(comicDTO.getCantidad());
 		return comic;
 	}
+
+	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public ConsultarComicDTO consultarComic(Long idComic) {
+		LOGGER.info("Inicia ejecucion consultarComic() ");
+
+		ConsultarComicDTO dto = new ConsultarComicDTO();
+		String consultaComic = "SELECT c " + " FROM Comic c " + " WHERE id = :idComic ";
+		try {
+			Query queryConsultaComic = em.createQuery(consultaComic);
+			queryConsultaComic.setParameter("idComic", idComic);
+			Comic comic = (Comic) queryConsultaComic.getSingleResult();
+			dto.setComic(comic);
+			dto.setExitoso(true);
+			dto.setMensajeEjecucion("Se ha ejecutado exitosamente");
+		} catch (NonUniqueResultException nure) {
+			LOGGER.info("Se ha presentado NonUniqueResultException: " + nure.getMessage());
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("Existen registros duplicados para el id " + idComic);
+		} catch (NoResultException nre) {
+			LOGGER.info("Se ha presentado NoResultException: " + nre.getMessage());
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("No existen registros para el comic con id " + idComic);
+		} catch (Exception e) {
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("Se ha presentado un error tecnico " + e.getMessage());
+			LOGGER.info("Se ha presentado un error tecnico " + e.getMessage());
+		}
+		LOGGER.info("Finaliza ejecucion consultarComic() ");
+
+		return dto;
+	}
+
 }

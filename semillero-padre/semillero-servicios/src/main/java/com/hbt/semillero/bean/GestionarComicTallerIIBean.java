@@ -144,12 +144,12 @@ public class GestionarComicTallerIIBean implements IGestionarComicTallerIILocal 
 	/**
 	 * Metodo encargado de verificar si la cadena es un numero tipo short
 	 * 
-	 * <b>Caso de Uso</b>
+	 * <b>Caso de Uso</b> Semillero2022
 	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
 	 * @param cadena
-	 * @return
+	 * @return boolean
 	 */
 	private static boolean isNumeric(String cadena) {
 		try {
