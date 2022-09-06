@@ -45,14 +45,28 @@ public interface IGestionarComicLocal {
 	 * @throws Exception
 	 */
 	public ResultadoDTO crearComic(ComicDTO comicDTO) throws Exception;
-	
+
 	/**
-	 * Metodo encargado de consultar todos los datos de un comic
-	 * <b>Caso de Uso</b> Semillero2022
+	 * Metodo encargado de consultar todos los datos de un comic <b>Caso de Uso</b>
+	 * Semillero2022
+	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
 	 * @param idComic
 	 * @return ConsultaComicDTO
 	 */
 	public ConsultarComicDTO consultarComic(Long idComic);
+
+	/**
+	 * Metodo encargado de actualizar la información de un comic
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param comicDTO
+	 * @return ResultadoDTO
+	 * @throws Exception
+	 */
+	public ResultadoDTO ActualizarComic(ComicDTO comicDTO) throws Exception;
 }
