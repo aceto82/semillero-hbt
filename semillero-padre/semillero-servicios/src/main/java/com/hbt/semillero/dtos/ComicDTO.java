@@ -48,7 +48,7 @@ public class ComicDTO {
 	 * Atributo que permite identificar si el comic es de tipo AVENTURAS, BELICO,
 	 * HUMORISTICO, DEPORTIVO, FANTASTICO, CIENCIA_FICCION, HISTORICO, HORROR
 	 */
-	private TematicaEnum tematicaEnum;
+	private String tematicaEnum;
 
 	/*
 	 * Atributo que determina el Conjunto de publicaciones de la que el comic es
@@ -85,7 +85,7 @@ public class ComicDTO {
 	/*
 	 * Atributo que Define si el comic tiene existencia para la venta o no
 	 */
-	private EstadoEnum estadoEnum;
+	private String estadoEnum;
 
 	/*
 	 * Atributo que determina la Cantidad de comics en inventario disponibles para
@@ -99,7 +99,7 @@ public class ComicDTO {
 	 * @param estadoEnum
 	 * @param precio
 	 */
-	public ComicDTO(String nombre, EstadoEnum estadoEnum, BigDecimal precio) {		
+	public ComicDTO(String nombre, String estadoEnum, BigDecimal precio) {		
 		this.nombre = nombre;
 		this.precio = precio;
 		this.estadoEnum = estadoEnum;
