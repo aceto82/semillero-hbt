@@ -120,7 +120,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		Comic comic = new Comic();
 		comic.setId(comicDTO.getId());
 		this.actualizarComicDTOToComic(comicDTO, comic);
-				//this.convertirComicDTOToComic(comicDTO);
+		// this.convertirComicDTOToComic(comicDTO);
 		em.persist(comic);
 
 		ResultadoDTO resultadoDTO = new ResultadoDTO();
@@ -129,7 +129,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 
 		LOGGER.info("Finaliza ejecucion crearComic() ");
 		return resultadoDTO;
-	}	
+	}
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
@@ -253,6 +253,38 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		comic.setFechaVenta(comicDTO.getFechaVenta());
 		comic.setEstadoEnum(EstadoEnum.valueOf(comicDTO.getEstadoEnum()));
 		comic.setCantidad(comicDTO.getCantidad());
+	}
+
+	/**
+	 * @see com.hbt.semillero.poo.interfaces.IGestionarComicLocal#EliminarComic(java.lang.Long)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public ResultadoDTO EliminarComic(Long idComic) throws Exception {
+		LOGGER.info("Inicia ejecucion EliminarComic() ");
+
+		if (idComic == null || idComic == 0) {
+			throw new Exception("El campo id es requerido");
+		}
+
+		ResultadoDTO resultadoDTO = new ResultadoDTO();
+
+		try {
+			Comic comic = em.find(Comic.class, idComic);
+			em.remove(comic);
+			resultadoDTO.setExitoso(true);
+			resultadoDTO.setMensajeEjecucion("El comic ha sido eliminado exitosamente");
+
+		} catch (IllegalArgumentException nure) {
+			LOGGER.info("Se ha presentado IllegalArgumentException: " + nure.getMessage());
+			throw new Exception("No existen registros para el comic con id " + idComic);
+		} catch (Exception e) {
+			LOGGER.info("Se ha presentado un error tecnico " + e.getMessage());
+			throw new Exception("Se ha presentado un error tecnico " + e.getMessage());
+		}
+
+		LOGGER.info("Finaliza ejecucion EliminarComic() ");
+		return resultadoDTO;
 	}
 
 }

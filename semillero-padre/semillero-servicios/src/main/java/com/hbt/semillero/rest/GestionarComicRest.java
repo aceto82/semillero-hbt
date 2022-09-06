@@ -2,6 +2,7 @@ package com.hbt.semillero.rest;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,7 +19,7 @@ import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
 
 /**
  * <b>Descripción:<b> Clase que determina donde se configura la api rest con sus
- * respectivos endpoits
+ * respectivos endpoits para la gestion de los comics
  * 
  * <b>Caso de Uso:<b> Semillero2022
  * 
@@ -79,7 +80,18 @@ public class GestionarComicRest {
 		}
 		return resultadoDTO;
 	}
-	
+
+	/**
+	 * Metodo encargado de generar el endpoint tipo GET para consultar toda la
+	 * informacion de un comic, segun el id especificado
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param idComic
+	 * @return ResultadoDTO
+	 */
 	@GET
 	@Path("/consultarComic")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -87,7 +99,18 @@ public class GestionarComicRest {
 	public ConsultarComicDTO consultarComic(@QueryParam("idComic") Long idComic) {
 		return this.gestionarComicLocal.consultarComic(idComic);
 	}
-	
+
+	/**
+	 * Metodo encargado de generar el endpoint tipo PUT para actualizar la
+	 * informacion de un comic, con la informacion recibida en formato json
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param comicDTO
+	 * @return ResultadoDTO
+	 */
 	@PUT
 	@Path("/actualizarComic")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -96,6 +119,32 @@ public class GestionarComicRest {
 		ResultadoDTO resultadoDTO = new ResultadoDTO();
 		try {
 			resultadoDTO = this.gestionarComicLocal.ActualizarComic(comicDTO);
+		} catch (Exception e) {
+			resultadoDTO.setExitoso(false);
+			resultadoDTO.setMensajeEjecucion(e.getMessage());
+		}
+		return resultadoDTO;
+	}
+
+	/**
+	 * Metodo encargado de generar el endpoint tipo DELETE para borrar la
+	 * informacion de un comic, segun el id del mismo
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param idComic
+	 * @return ResultadoDTO
+	 */
+	@DELETE
+	@Path("/eliminarComic")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ResultadoDTO eliminarComic(@QueryParam("idComic") Long idComic) {
+		ResultadoDTO resultadoDTO = new ResultadoDTO();
+		try {
+			resultadoDTO = this.gestionarComicLocal.EliminarComic(idComic);
 		} catch (Exception e) {
 			resultadoDTO.setExitoso(false);
 			resultadoDTO.setMensajeEjecucion(e.getMessage());
