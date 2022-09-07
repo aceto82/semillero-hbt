@@ -20,10 +20,13 @@ export class CrearPersonaComponent implements OnInit {
   public imagen: any;
 
 
+  //Taller angular
 
+  public comicsTaller: Array<ComicDTO>
+  public comicBorrado: ComicDTO;
+  public mostrarMensajeBorrado: boolean = false;
+  public mostrarMensajeError: boolean = false;
 
-  public comicsTaller:Array<ComicDTO>
-  
   constructor() { }
 
   ngOnInit() {
@@ -124,10 +127,13 @@ export class CrearPersonaComponent implements OnInit {
     console.log(JSON.stringify(this.imagen));
     alert("Info imagen " + JSON.stringify(this.imagen));
   }
-  
+
+  //Taller Angular
+
   private crearComicsTallerAngular(): Array<ComicDTO> {
     let listaComics: Array<ComicDTO> = new Array<ComicDTO>();
     let onepiece: ComicDTO = new ComicDTO("One Piece", TematicaEnum.AVENTURA, 280);
+    onepiece.id = 1;
     onepiece.editorial = "Shueisha";
     onepiece.coleccion = "Manga Shonen";
     onepiece.numeroPaginas = 103;
@@ -138,6 +144,7 @@ export class CrearPersonaComponent implements OnInit {
     onepiece.cantidad = 54;
 
     let futari: ComicDTO = new ComicDTO("Futari Ecchi", TematicaEnum.BELICO, 89);
+    futari.id = 2;
     futari.editorial = "Hakusensha";
     futari.coleccion = "Manga Seinen";
     futari.numeroPaginas = 45;
@@ -148,6 +155,7 @@ export class CrearPersonaComponent implements OnInit {
     futari.cantidad = 0;
 
     let captainsubasa: ComicDTO = new ComicDTO("Captain Tsubasa", TematicaEnum.AVENTURA, 79);
+    captainsubasa.id = 3;
     captainsubasa.editorial = "Shueisha";
     captainsubasa.coleccion = "Manga Shonen/Seinen";
     captainsubasa.numeroPaginas = 103;
@@ -158,6 +166,7 @@ export class CrearPersonaComponent implements OnInit {
     captainsubasa.cantidad = 79;
 
     let gantz: ComicDTO = new ComicDTO("Gantz", TematicaEnum.CIENCIA_FICCION, 128);
+    gantz.id = 4;
     gantz.editorial = "Shueisha";
     gantz.coleccion = "Manga Seinen";
     gantz.numeroPaginas = 83;
@@ -168,6 +177,7 @@ export class CrearPersonaComponent implements OnInit {
     gantz.cantidad = 241;
 
     let naruto: ComicDTO = new ComicDTO("Naruto", TematicaEnum.AVENTURA, 172);
+    naruto.id = 5;
     naruto.editorial = "Shueisha";
     naruto.coleccion = "Manga Shonen";
     naruto.numeroPaginas = 73;
@@ -184,6 +194,22 @@ export class CrearPersonaComponent implements OnInit {
     listaComics.push(naruto);
 
     return listaComics;
+
+  }
+
+  public borraComic(posicion: number): void {
+    this.mostrarMensajeBorrado = false;
+    this.mostrarMensajeError = false;
+    if (this.comicsTaller.length < posicion || posicion<1) {
+      this.mostrarMensajeError = true;
+    } else {
+      let comicslices = this.comicsTaller.slice(posicion - 1, posicion);
+      if (comicslices.length == 1) {
+        this.mostrarMensajeBorrado = true;
+        this.comicBorrado = comicslices[0];
+        this.comicsTaller.splice(posicion-1,1)
+      }
+    }
 
   }
 
