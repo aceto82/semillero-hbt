@@ -130,6 +130,10 @@ export class CrearPersonaComponent implements OnInit {
 
   //Taller Angular
 
+  /**
+   * Crea los comics para el taller de angular
+   * @returns Array<ComicDTO>
+   */
   private crearComicsTallerAngular(): Array<ComicDTO> {
     let listaComics: Array<ComicDTO> = new Array<ComicDTO>();
     let onepiece: ComicDTO = new ComicDTO("One Piece", TematicaEnum.AVENTURA, 280);
@@ -143,7 +147,7 @@ export class CrearPersonaComponent implements OnInit {
     onepiece.estadoEnum = EstadoEnum.ACTIVO
     onepiece.cantidad = 54;
 
-    let futari: ComicDTO = new ComicDTO("Futari Ecchi", TematicaEnum.BELICO, 89);
+    let futari: ComicDTO = new ComicDTO("Futari Ecchi", TematicaEnum.HUMORISTICO, 89);
     futari.id = 2;
     futari.editorial = "Hakusensha";
     futari.coleccion = "Manga Seinen";
@@ -197,20 +201,19 @@ export class CrearPersonaComponent implements OnInit {
 
   }
 
+  /**
+   * Borra un comic de una lista, segun el numero de posicion dado
+   * @param posicion 
+   */
   public borraComic(posicion: number): void {
     this.mostrarMensajeBorrado = false;
     this.mostrarMensajeError = false;
-    if (this.comicsTaller.length < posicion || posicion<1) {
+    if (this.comicsTaller.length < posicion || posicion < 1) {
       this.mostrarMensajeError = true;
     } else {
-      let comicslices = this.comicsTaller.slice(posicion - 1, posicion);
-      if (comicslices.length == 1) {
-        this.mostrarMensajeBorrado = true;
-        this.comicBorrado = comicslices[0];
-        this.comicsTaller.splice(posicion-1,1)
-      }
+      this.mostrarMensajeBorrado = true;
+      this.comicBorrado = this.comicsTaller.splice(posicion - 1, 1)[0];
     }
-
   }
 
 }
