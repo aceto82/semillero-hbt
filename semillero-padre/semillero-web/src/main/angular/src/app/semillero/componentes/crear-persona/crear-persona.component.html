@@ -4,5 +4,25 @@
 <p>{{imagen | json}}</p>
 <label>Ingrese el path de la imagen:</label>
 <input id="pathImagen" type="text" class="form-control-plaintext" [(ngModel)]="imagen.url">
-<img [src]="imagen.url" name="urlImagen" [height]="imagen.height" [width]="imagen.width" (click)="mostrarDescripcionimagen()">
+<img [src]="imagen.url" name="urlImagen" [height]="imagen.height" [width]="imagen.width"
+    (click)="mostrarDescripcionimagen()">
 
+<h2>Taller Angular</h2>
+<div class="row">
+    <div *ngFor="let item of comicsTaller" class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{item.nombre}}</h5>
+            <p class="card-text">{{item.autores}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Tematica: {{item.tematicaEnum}}</li>
+            <li class="list-group-item">Editorial: {{item.editorial}}</li>
+            <li class="list-group-item">Coleccion: {{item.coleccion}}</li>
+            <li class="list-group-item">Fecha venta: {{item.fechaVenta}}</li>
+            <li class="list-group-item">Paginas: {{item.numeroPaginas}}</li>
+            <li class="list-group-item">Cantidad: {{item.cantidad}}</li>
+            <li class="list-group-item">Color: {{item.color}}</li>
+            <li class="list-group-item">Estado: {{item.estadoEnum}}</li>
+        </ul>
+    </div>
+</div>
