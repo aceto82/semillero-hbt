@@ -18,7 +18,15 @@ export class CrearPersonaComponent implements OnInit {
   public comicsTematicaHumoristico: Array<ComicDTO>;
 
   public imagen: any;
-  
+
+
+  //Taller angular
+
+  public comicsTaller: Array<ComicDTO>
+  public comicBorrado: ComicDTO;
+  public mostrarMensajeBorrado: boolean = false;
+  public mostrarMensajeError: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -58,6 +66,10 @@ export class CrearPersonaComponent implements OnInit {
         console.log("Lista comics humoristico: " + key + " " + JSON.stringify(value));
       }
     });
+
+
+    //Taller Angular
+    this.comicsTaller = this.crearComicsTallerAngular();
   }
 
   private asignarImagen(url: string, height: number, width: number): any {
@@ -114,6 +126,94 @@ export class CrearPersonaComponent implements OnInit {
   public mostrarDescripcionimagen(): void {
     console.log(JSON.stringify(this.imagen));
     alert("Info imagen " + JSON.stringify(this.imagen));
-  }  
+  }
+
+  //Taller Angular
+
+  /**
+   * Crea los comics para el taller de angular
+   * @returns Array<ComicDTO>
+   */
+  private crearComicsTallerAngular(): Array<ComicDTO> {
+    let listaComics: Array<ComicDTO> = new Array<ComicDTO>();
+    let onepiece: ComicDTO = new ComicDTO("One Piece", TematicaEnum.AVENTURA, 280);
+    onepiece.id = 1;
+    onepiece.editorial = "Shueisha";
+    onepiece.coleccion = "Manga Shonen";
+    onepiece.numeroPaginas = 103;
+    onepiece.autores = "Eiichiro Oda";
+    onepiece.color = false;
+    onepiece.fechaVenta = new Date("2022-08-10");
+    onepiece.estadoEnum = EstadoEnum.ACTIVO
+    onepiece.cantidad = 54;
+
+    let futari: ComicDTO = new ComicDTO("Futari Ecchi", TematicaEnum.HUMORISTICO, 89);
+    futari.id = 2;
+    futari.editorial = "Hakusensha";
+    futari.coleccion = "Manga Seinen";
+    futari.numeroPaginas = 45;
+    futari.autores = "Katsu Aki";
+    futari.color = false;
+    futari.fechaVenta = new Date("2019-08-10");
+    futari.estadoEnum = EstadoEnum.INACTIVO
+    futari.cantidad = 0;
+
+    let captainsubasa: ComicDTO = new ComicDTO("Captain Tsubasa", TematicaEnum.AVENTURA, 79);
+    captainsubasa.id = 3;
+    captainsubasa.editorial = "Shueisha";
+    captainsubasa.coleccion = "Manga Shonen/Seinen";
+    captainsubasa.numeroPaginas = 103;
+    captainsubasa.autores = "Yoichi Takahashi";
+    captainsubasa.color = false;
+    captainsubasa.fechaVenta = null;
+    captainsubasa.estadoEnum = EstadoEnum.INACTIVO
+    captainsubasa.cantidad = 79;
+
+    let gantz: ComicDTO = new ComicDTO("Gantz", TematicaEnum.CIENCIA_FICCION, 128);
+    gantz.id = 4;
+    gantz.editorial = "Shueisha";
+    gantz.coleccion = "Manga Seinen";
+    gantz.numeroPaginas = 83;
+    gantz.autores = "Hiroya Oku";
+    gantz.color = false;
+    gantz.fechaVenta = new Date("2022-07-09");
+    gantz.estadoEnum = EstadoEnum.ACTIVO
+    gantz.cantidad = 241;
+
+    let naruto: ComicDTO = new ComicDTO("Naruto", TematicaEnum.AVENTURA, 172);
+    naruto.id = 5;
+    naruto.editorial = "Shueisha";
+    naruto.coleccion = "Manga Shonen";
+    naruto.numeroPaginas = 73;
+    naruto.autores = "Masashi Kishimoto";
+    naruto.color = false;
+    naruto.fechaVenta = new Date("2022-02-10");
+    naruto.estadoEnum = EstadoEnum.ACTIVO
+    naruto.cantidad = 189;
+
+    listaComics.push(onepiece);
+    listaComics.push(futari);
+    listaComics.push(captainsubasa);
+    listaComics.push(gantz);
+    listaComics.push(naruto);
+
+    return listaComics;
+
+  }
+
+  /**
+   * Borra un comic de una lista, segun el numero de posicion dado
+   * @param posicion 
+   */
+  public borraComic(posicion: number): void {
+    this.mostrarMensajeBorrado = false;
+    this.mostrarMensajeError = false;
+    if (this.comicsTaller.length < posicion || posicion < 1) {
+      this.mostrarMensajeError = true;
+    } else {
+      this.mostrarMensajeBorrado = true;
+      this.comicBorrado = this.comicsTaller.splice(posicion - 1, 1)[0];
+    }
+  }
 
 }
