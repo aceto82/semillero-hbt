@@ -25,7 +25,11 @@ export class MenuComponent implements OnInit {
    * Evento angular que se ejecuta al iniciar el componente
    */
   ngOnInit(): void {
-
+    this.loadScript('assets/js/jquery.min.js');
+    this.loadScript('assets/js/browser.min.js');
+    this.loadScript('assets/js/breakpoints.min.js');
+    this.loadScript('assets/js/util.js');
+    this.loadScript('assets/js/main.js');
   }
 
   /**
@@ -33,7 +37,7 @@ export class MenuComponent implements OnInit {
    * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
    */
   public navegarGestionarComic(): void {
-    
+    this.router.navigate(['gestionarComic']);
   }
 
   /**
@@ -46,5 +50,15 @@ export class MenuComponent implements OnInit {
 
   public navegarGestionarCompra(): void {
     //WIP
+  }
+
+  public loadScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 }
