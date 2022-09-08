@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BienvenidaComponent } from './semillero/componentes/home/bienvenida-component';
 import { MenuComponent } from './semillero/componentes/menu/menu-component';
 import { CrearPersonaComponent } from './semillero/componentes/crear-persona/crear-persona.component';
-import { GestionaComicComponent } from './semillero/componentes/gestiona-comic/gestiona-comic.component';
+import { GestionarComicComponent } from './semillero/componentes/gestionar-comic/gestionar-comic.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { GestionaComicComponent } from './semillero/componentes/gestiona-comic/g
     MenuComponent,
     BienvenidaComponent,
     CrearPersonaComponent,
-    GestionaComicComponent,
+    GestionarComicComponent,
 
   ],
   imports: [

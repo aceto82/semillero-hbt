@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComicTallerDTO } from '../../dto/comic-taller.dto';
 import { ComicDTO } from '../../dto/comic.dto';
 import { EstadoEnum } from './enums/estado.enum';
 import { TematicaEnum } from './enums/tematica.enum';
@@ -22,7 +23,7 @@ export class CrearPersonaComponent implements OnInit {
 
   //Taller angular
 
-  public comicsTaller: Array<ComicDTO>
+  public comicsTaller: Array<ComicTallerDTO>
   public comicBorrado: ComicDTO;
   public mostrarMensajeBorrado: boolean = false;
   public mostrarMensajeError: boolean = false;
@@ -39,13 +40,13 @@ export class CrearPersonaComponent implements OnInit {
 
     let comics = new Map<string, Array<ComicDTO>>();
 
-    this.comicsTematicaHorror = new Array<ComicDTO>()
-    let comicBatman = new ComicDTO("Batman", TematicaEnum.HORROR, 900);
-    let comicDragonBall = new ComicDTO("Dragon Ball", TematicaEnum.HORROR, 800);
+    this.comicsTematicaHorror = new Array<ComicTallerDTO>()
+    let comicBatman = new ComicTallerDTO("Batman", TematicaEnum.HORROR, 900);
+    let comicDragonBall = new ComicTallerDTO("Dragon Ball", TematicaEnum.HORROR, 800);
 
-    this.comicsTematicaHumoristico = new Array<ComicDTO>()
-    let comicChavo = new ComicDTO("Chavo del 8", TematicaEnum.HUMORISTICO, 1900);
-    let comicChapulin = new ComicDTO("Chapulin colorado", TematicaEnum.HUMORISTICO, 600);
+    this.comicsTematicaHumoristico = new Array<ComicTallerDTO>()
+    let comicChavo = new ComicTallerDTO("Chavo del 8", TematicaEnum.HUMORISTICO, 1900);
+    let comicChapulin = new ComicTallerDTO("Chapulin colorado", TematicaEnum.HUMORISTICO, 600);
 
     this.comicsTematicaHorror.push(comicBatman);
     this.comicsTematicaHorror.push(comicDragonBall);
@@ -134,9 +135,9 @@ export class CrearPersonaComponent implements OnInit {
    * Crea los comics para el taller de angular
    * @returns Array<ComicDTO>
    */
-  private crearComicsTallerAngular(): Array<ComicDTO> {
-    let listaComics: Array<ComicDTO> = new Array<ComicDTO>();
-    let onepiece: ComicDTO = new ComicDTO("One Piece", TematicaEnum.AVENTURA, 280);
+  private crearComicsTallerAngular(): Array<ComicTallerDTO> {
+    let listaComics: Array<ComicTallerDTO> = new Array<ComicTallerDTO>();
+    let onepiece: ComicTallerDTO = new ComicTallerDTO("One Piece", TematicaEnum.AVENTURA, 280);
     onepiece.id = 1;
     onepiece.editorial = "Shueisha";
     onepiece.coleccion = "Manga Shonen";
@@ -147,7 +148,7 @@ export class CrearPersonaComponent implements OnInit {
     onepiece.estadoEnum = EstadoEnum.ACTIVO
     onepiece.cantidad = 54;
 
-    let futari: ComicDTO = new ComicDTO("Futari Ecchi", TematicaEnum.HUMORISTICO, 89);
+    let futari: ComicTallerDTO = new ComicTallerDTO("Futari Ecchi", TematicaEnum.HUMORISTICO, 89);
     futari.id = 2;
     futari.editorial = "Hakusensha";
     futari.coleccion = "Manga Seinen";
@@ -158,7 +159,7 @@ export class CrearPersonaComponent implements OnInit {
     futari.estadoEnum = EstadoEnum.INACTIVO
     futari.cantidad = 0;
 
-    let captainsubasa: ComicDTO = new ComicDTO("Captain Tsubasa", TematicaEnum.AVENTURA, 79);
+    let captainsubasa: ComicTallerDTO = new ComicTallerDTO("Captain Tsubasa", TematicaEnum.AVENTURA, 79);
     captainsubasa.id = 3;
     captainsubasa.editorial = "Shueisha";
     captainsubasa.coleccion = "Manga Shonen/Seinen";
@@ -169,7 +170,7 @@ export class CrearPersonaComponent implements OnInit {
     captainsubasa.estadoEnum = EstadoEnum.INACTIVO
     captainsubasa.cantidad = 79;
 
-    let gantz: ComicDTO = new ComicDTO("Gantz", TematicaEnum.CIENCIA_FICCION, 128);
+    let gantz: ComicTallerDTO = new ComicTallerDTO("Gantz", TematicaEnum.CIENCIA_FICCION, 128);
     gantz.id = 4;
     gantz.editorial = "Shueisha";
     gantz.coleccion = "Manga Seinen";
@@ -180,7 +181,7 @@ export class CrearPersonaComponent implements OnInit {
     gantz.estadoEnum = EstadoEnum.ACTIVO
     gantz.cantidad = 241;
 
-    let naruto: ComicDTO = new ComicDTO("Naruto", TematicaEnum.AVENTURA, 172);
+    let naruto: ComicTallerDTO = new ComicTallerDTO("Naruto", TematicaEnum.AVENTURA, 172);
     naruto.id = 5;
     naruto.editorial = "Shueisha";
     naruto.coleccion = "Manga Shonen";
