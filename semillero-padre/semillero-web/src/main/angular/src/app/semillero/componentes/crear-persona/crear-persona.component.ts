@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ComicTallerDTO } from '../../dto/comic-taller.dto';
 import { ComicDTO } from '../../dto/comic.dto';
-import { EstadoEnum } from './enums/estado.enum';
-import { TematicaEnum } from './enums/tematica.enum';
+import { EstadoEnum } from '../../enums/estado.enum';
+import { TematicaEnum } from '../../enums/tematica.enum';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { TematicaEnum } from './enums/tematica.enum';
 })
 export class CrearPersonaComponent implements OnInit {
 
-  public saludo: string;
+  public saludo: any;
+  public saludo2: any;
 
   public comics: Array<any>;
   public comicsTematicaHorror: Array<ComicDTO>;
@@ -28,10 +30,15 @@ export class CrearPersonaComponent implements OnInit {
   public mostrarMensajeBorrado: boolean = false;
   public mostrarMensajeError: boolean = false;
 
-  constructor() { }
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['es', 'en']);
+    translate.setDefaultLang('es');
+    translate.use('es');
+  }
 
   ngOnInit() {
     this.saludo = "Hola semillero 2022";
+    this.saludo2 = {mensaje: "DIEGO ORTIZ"};
     this.comics = this.crearComics();
     let url = "https://apod.nasa.gov/apod/image/2202/AuroraPillars_Correia_960.jpg";
     let height: number = 400;

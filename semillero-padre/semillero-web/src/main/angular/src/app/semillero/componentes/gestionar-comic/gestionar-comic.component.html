@@ -1,18 +1,19 @@
 <div class="container">
     <form>
-        <h1>Gestionar Comic</h1>
+        <!-- <h1>Gestionar Comic</h1> -->
+        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}">gestionarComic.titulo</h1>
         <hr>
         <br>
         <pre>{{ comicDTO | json }}</pre>
 
         <div class="row">
             <div class="col-6">
-                <label for="txtNombre">Nombre:</label>
+                <label for="txtNombre" translate>Nombre:</label>
                 <input id="txtNombre" type="text" class="form-control" maxlength="50" name="nombre"
                     [(ngModel)]="comicDTO.nombre">
             </div>
             <div class="col-6">
-                <label for="txtEditorial">Editorial:</label>
+                <label for="txtEditorial" translate>Editorial:</label>
                 <input id="txtEditorial" type="text" class="form-control" maxlength="50" name="editorial"
                     [(ngModel)]="comicDTO.editorial">
             </div>

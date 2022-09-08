@@ -1,0 +1,7 @@
+{
+    "titulo" : "Modulo persona {{ mensaje }}",
+    "gestionarComic.titulo" : "Gestionar Comicccc {{ nombreSemillero }}",
+    "gestionarComic.nombre" : "Nombresdsd:",
+    "gestionarComic.editorial" : "Editorial:"
+
+}

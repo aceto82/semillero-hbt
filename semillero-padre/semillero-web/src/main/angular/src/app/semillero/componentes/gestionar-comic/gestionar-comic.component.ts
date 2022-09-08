@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from '../../dto/comic.dto';
+import { MultiLanguage } from '../../multiLanguage/multiLanguage';
 
 @Component({
   selector: 'gestionar-comic',
   templateUrl: './gestionar-comic.component.html'
 })
-export class GestionarComicComponent implements OnInit {
+export class GestionarComicComponent extends MultiLanguage implements OnInit {
 
   public comicDTO: ComicDTO;
   public comicDTOData: ComicDTO;
@@ -14,7 +16,9 @@ export class GestionarComicComponent implements OnInit {
   public tituloComplemento: any;
   public mostrarData: boolean;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { 
+    super(translate);
+  }
 
   ngOnInit() {
     this.tituloComplemento = {

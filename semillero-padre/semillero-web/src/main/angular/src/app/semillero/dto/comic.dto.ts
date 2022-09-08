@@ -1,5 +1,5 @@
-import { EstadoEnum } from "../componentes/crear-persona/enums/estado.enum";
-import { TematicaEnum } from "../componentes/crear-persona/enums/tematica.enum";
+import { EstadoEnum } from "../enums/estado.enum";
+import { TematicaEnum } from "../enums/tematica.enum";
 
 export class ComicDTO{
     public id:number;
