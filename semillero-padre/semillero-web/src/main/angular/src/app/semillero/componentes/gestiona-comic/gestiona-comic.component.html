@@ -1,0 +1,114 @@
+<div class="container">
+    <form>
+        <h1>Gestionar Comic</h1>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <label for="txtNombre">Nombre:</label>
+                <input id="txtNombre" type="text" class="form-control" maxlength="50" name="nombre">
+            </div>
+            <div class="col-6">
+                <label for="txtEditorial">Editorial:</label>
+                <input id="txtEditorial" type="text" class="form-control" maxlength="50" name="editorial">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="listTematica">Tematica:</label>
+                    <select name="tematica" id="listTematica" class="form-control">
+                        <option value="AVENTURAS">Aventuras</option>
+                        <option value="BELICO">Belico</option>
+                        <option value="DEPORTIVO">Deportivo</option>
+                        <option value="FANTASTICO">Fantastico</option>
+                        <option value="CIENCIA_FICCION">Ciencia Ficcion</option>
+                        <option value="HISTORICO">Historico</option>
+                        <option value="HORROR">Horror</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="col-6">
+                <label for="txtColeccion">Coleccion:</label>
+                <input id="txtColeccion" type="text" class="form-control" maxlength="50" name="coleccion">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="txtNumPaginas">Numero paginas:</label>
+                <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numPaginas">
+            </div>
+            <div class="col-6">
+                <label for="txtPrecio">Precio:</label>
+                <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="txtAutores">Autores:</label>
+                <textarea name="autores" id="txtAutores" rows="3"></textarea>
+            </div>
+            <div class="col-6">
+                <label for="color">A color:</label>
+                <br>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input">
+                    <label for="customRadioInline1" class="custom-control-label">Si</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="color" [value]="false" class="custom-control-input">
+                    <label for="customRadioInline2" class="custom-control-label">No</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span></span>
+            </div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-primary">Crear</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tematica</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">A color</th>
+                            <th scope="col">Acciones</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let comic of listaComics; let i=index;">
+                            <th scope="row">{{i}}</th>
+                            <td>{{comic.nombre | uppercase}}</td>
+                            <td>{{comic.tematica | lowercase}}</td>
+                            <td>{{comic.precio | number: '.2'}}</td>
+                            <td>{{comic.color ? 'Si':'No'}}</td>
+                            <td>
+                                <i class="fas fa-search 2x ml-1" (click)="imprimirInfoComic(i)" title="Consultar"></i>
+                                <i class="fas fa-pencil-alt 2x ml-1" title="Editar"></i>
+                                <i class="fas fa-times-circle 2x ml-1" title="Eliminar"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="mostrarItem" class="alert alert-info">
+            Se ha creado exitosamente el comic
+            <button type="button" class="btn btn-primary" (click)="cerrar()">Cerrar</button>
+        </div>
+    </form>
+</div>
