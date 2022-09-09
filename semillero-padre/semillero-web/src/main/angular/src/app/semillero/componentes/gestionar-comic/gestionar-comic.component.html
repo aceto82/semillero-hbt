@@ -1,7 +1,8 @@
 <div class="container">
-    <form>
+    <form [formGroup]="gestionarComicForm">
         <!-- <h1>Gestionar Comic</h1> -->
-        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}">gestionarComic.titulo</h1>
+        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}">gestionarComic.titulo
+        </h1>
         <hr>
         <br>
         <pre>{{ comicDTO | json }}</pre>
@@ -9,22 +10,27 @@
         <div class="row">
             <div class="col-6">
                 <label for="txtNombre" translate>Nombre:</label>
-                <input id="txtNombre" type="text" class="form-control" maxlength="50" name="nombre"
-                    [(ngModel)]="comicDTO.nombre">
+                <input id="txtNombre" type="text" class="form-control" maxlength="50" formControlName="nombre"
+                    [ngClass]="{'is-invalid':validoFormulario && f.nombre.errors}">
+                    <div *ngIf="validoFormulario && f.nombre.errors" class="">
+                        <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido</span>
+                    </div>
             </div>
             <div class="col-6">
                 <label for="txtEditorial" translate>Editorial:</label>
-                <input id="txtEditorial" type="text" class="form-control" maxlength="50" name="editorial"
-                    [(ngModel)]="comicDTO.editorial">
+                <input id="txtEditorial" type="text" class="form-control" maxlength="50" formControlName="editorial" [ngClass]="{'is-invalid':validoFormulario && f.editorial.errors}">
+                    <div *ngIf="validoFormulario && f.editorial.errors" class="">
+                        <span class="text-danger" *ngIf="f.editorial.errors.required">Campo requerido</span>
+                    </div>
             </div>
         </div>
 
-        <div class="row" *ngIf="listaComics.length>0">
+        <div class="row">
             <div class="col-6">
                 <div class="form-group">
                     <label for="listTematica">Tematica:</label>
-                    <select name="tematica" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum">
-                        <option value="AVENTURAS">Aventuras</option>
+                    <select formControlName="tematicaEnum" id="listTematica" class="form-control" (change)="agregarValidacionColeccion()">
+                        <option value="AVENTURA">Aventuras</option>
                         <option value="BELICO">Belico</option>
                         <option value="DEPORTIVO">Deportivo</option>
                         <option value="FANTASTICO">Fantastico</option>
@@ -37,40 +43,46 @@
             </div>
             <div class="col-6">
                 <label for="txtColeccion">Coleccion:</label>
-                <input id="txtColeccion" type="text" class="form-control" maxlength="50" name="coleccion"
-                    [(ngModel)]="comicDTO.coleccion">
+                <input id="txtColeccion" type="text" class="form-control" maxlength="50" formControlName="coleccion" [ngClass]="{'is-invalid':validoFormulario && f.coleccion.errors}">
+                <div *ngIf="validoFormulario && f.coleccion.errors" class="">
+                    <span class="text-danger" *ngIf="f.coleccion.errors.required">Campo requerido</span>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-6">
                 <label for="txtNumPaginas">Numero paginas:</label>
-                <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numPaginas"
-                    [(ngModel)]="comicDTO.numeroPaginas">
+                <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" formControlName="numeroPaginas" [ngClass]="{'is-invalid':validoFormulario && f.numeroPaginas.errors}">
+                <div *ngIf="validoFormulario && f.numeroPaginas.errors" class="">
+                    <span class="text-danger" *ngIf="f.numeroPaginas.errors.required">Campo requerido</span>
+                </div>
             </div>
             <div class="col-6">
                 <label for="txtPrecio">Precio:</label>
-                <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
-                    [(ngModel)]="comicDTO.precio">
+                <input id="txtPrecio" type="number" class="form-control" maxlength="50" formControlName="precio" [ngClass]="{'is-invalid':validoFormulario && f.precio.errors}">
+                <div *ngIf="validoFormulario && f.precio.errors" class="">
+                    <span class="text-danger" *ngIf="f.precio.errors.required">Campo requerido</span>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-6">
                 <label for="txtAutores">Autores:</label>
-                <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores"></textarea>
+                <textarea formControlName="autores" id="txtAutores" rows="3" ></textarea>
             </div>
             <div class="col-6">
                 <label for="color">A color:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input"
-                        [(ngModel)]="comicDTO.color">
+                    <input type="radio" id="customRadioInline1" formControlName="color" [value]="true" class="custom-control-input"
+                        >
                     <label for="customRadioInline1" class="custom-control-label">Si</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="color" [value]="false"
-                        class="custom-control-input" [(ngModel)]="comicDTO.color">
+                    <input type="radio" id="customRadioInline2" formControlName="color" [value]="false"
+                        class="custom-control-input" >
                     <label for="customRadioInline2" class="custom-control-label">No</label>
                 </div>
 
@@ -85,7 +97,12 @@
             </div>
         </div>
 
-        <div class="row">
+        <div *ngIf="mostrarItem" class="alert alert-info mt-2 mb-2" role="alert">
+            Se ha creado exitosamente el comic
+            <button type="button" class="btn btn-primary" (click)="cerrar()">Cerrar</button>
+        </div>
+
+        <div class="row" *ngIf="listaComics.length>0">
             <div class="col-12">
                 <table class="table">
                     <thead>
@@ -117,10 +134,7 @@
             </div>
         </div>
 
-        <div *ngIf="mostrarItem" class="alert alert-info" role="alert">
-            Se ha creado exitosamente el comic
-            <button type="button" class="btn btn-primary" (click)="cerrar()">Cerrar</button>
-        </div>
+      
 
         <div *ngIf="mostrarData" class="alert alert-info" role="alert">
             ITEM SELECCIONADO:
