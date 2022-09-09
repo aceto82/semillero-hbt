@@ -1,8 +1,23 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "src/main/angular"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"angular.enable-strict-mode-prompt": false
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"type": "firefox",
+				"request": "launch",
+				"reAttach": true,
+				"name": "Launch localhost Firefox",
+				"url": "http://localhost:4200",
+				"webRoot": "${workspaceFolder}"
+			}
+		]
+	}
 }
