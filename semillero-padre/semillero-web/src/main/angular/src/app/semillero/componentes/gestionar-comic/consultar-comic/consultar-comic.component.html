@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <label for="txtNombre" translate>gestionarComic.nombre:</label>
+            <input id="txtNombre" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.nombre"
+                disabled>
+
+        </div>
+        <div class="col-6">
+            <label for="txtEditorial" translate>gestionarComic.editorial:</label>
+            <input id="txtEditorial" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.editorial"
+                disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="listTematica">Tematica:</label>
+                <select name="tematicaEnum" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum"
+                    disabled>
+                    <option value="AVENTURA">Aventuras</option>
+                    <option value="BELICO">Belico</option>
+                    <option value="DEPORTIVO">Deportivo</option>
+                    <option value="FANTASTICO">Fantastico</option>
+                    <option value="CIENCIA_FICCION">Ciencia Ficcion</option>
+                    <option value="HISTORICO">Historico</option>
+                    <option value="HORROR">Horror</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <label for="txtColeccion">Coleccion:</label>
+            <input id="txtColeccion" type="text" class="form-control" maxlength="50" name="coleccion"
+                [(ngModel)]="comicDTO.coleccion" disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label for="txtNumPaginas">Numero paginas:</label>
+            <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numeroPaginas"
+                [(ngModel)]="comicDTO.numeroPaginas" disabled>
+
+        </div>
+        <div class="col-6">
+            <label for="txtPrecio">Precio:</label>
+            <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
+                [(ngModel)]="comicDTO.precio" disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label for="txtAutores">Autores:</label>
+            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
+        </div>
+        <div class="col-6">
+            <label for="color">A color:</label>
+            <br>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input"
+                    [(ngModel)]="comicDTO.color" disabled>
+                <label for="customRadioInline1" class="custom-control-label">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="color" [value]="false" class="custom-control-input"
+                    [(ngModel)]="comicDTO.color" disabled>
+                <label for="customRadioInline2" class="custom-control-label">No</label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <span></span>
+        </div>
+        <div class="col-6 text-right ">
+            <button type="button" class="btn btn-primary" (click)="regresar()">Regresar</button>
+        </div>
+    </div>
+</div>

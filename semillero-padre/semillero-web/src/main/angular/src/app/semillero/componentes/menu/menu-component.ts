@@ -34,15 +34,15 @@ export class MenuComponent implements OnInit {
 
   /**
    * @description Metodo encargado de direccionar al componente de gestionar comic
-   * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+   * @author 
    */
   public navegarGestionarComic(): void {
-    this.router.navigate(['gestionarComic']);
+    this.router.navigate(['gestionar-comic']);
   }
 
   /**
    * @description Metodo encargado de direccionar al componente de gestionar comic
-   * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+   * @author 
    */
   public navegarHome(): void {
     this.router.navigate(['bienvenida']);

@@ -9,19 +9,20 @@
 
         <div class="row">
             <div class="col-6">
-                <label for="txtNombre" translate>Nombre:</label>
+                <label for="txtNombre" >{{'gestionarComic.nombre' | translate}}:</label>
                 <input id="txtNombre" type="text" class="form-control" maxlength="50" formControlName="nombre"
                     [ngClass]="{'is-invalid':validoFormulario && f.nombre.errors}">
-                    <div *ngIf="validoFormulario && f.nombre.errors" class="">
-                        <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido</span>
-                    </div>
+                <div *ngIf="validoFormulario && f.nombre.errors">
+                    <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido</span>
+                </div>
             </div>
             <div class="col-6">
-                <label for="txtEditorial" translate>Editorial:</label>
-                <input id="txtEditorial" type="text" class="form-control" maxlength="50" formControlName="editorial" [ngClass]="{'is-invalid':validoFormulario && f.editorial.errors}">
-                    <div *ngIf="validoFormulario && f.editorial.errors" class="">
-                        <span class="text-danger" *ngIf="f.editorial.errors.required">Campo requerido</span>
-                    </div>
+                <label for="txtEditorial" >{{'gestionarComic.editorial' | translate}}:</label>
+                <input id="txtEditorial" type="text" class="form-control" maxlength="50" formControlName="editorial"
+                    [ngClass]="{'is-invalid':validoFormulario && f.editorial.errors}">
+                <div *ngIf="validoFormulario && f.editorial.errors">
+                    <span class="text-danger" *ngIf="f.editorial.errors.required">Campo requerido</span>
+                </div>
             </div>
         </div>
 
@@ -29,7 +30,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="listTematica">Tematica:</label>
-                    <select formControlName="tematicaEnum" id="listTematica" class="form-control" (change)="agregarValidacionColeccion()">
+                    <select formControlName="tematicaEnum" id="listTematica" class="form-control"
+                        (change)="agregarValidacionColeccion()">
                         <option value="AVENTURA">Aventuras</option>
                         <option value="BELICO">Belico</option>
                         <option value="DEPORTIVO">Deportivo</option>
@@ -38,13 +40,18 @@
                         <option value="HISTORICO">Historico</option>
                         <option value="HORROR">Horror</option>
                     </select>
+                    <div *ngIf="validoFormulario && f.tematicaEnum.errors">
+                        <span class="text-danger" *ngIf="f.tematicaEnum.errors.required">Campo requerido</span>
+                    </div>
                 </div>
+                
 
             </div>
             <div class="col-6">
                 <label for="txtColeccion">Coleccion:</label>
-                <input id="txtColeccion" type="text" class="form-control" maxlength="50" formControlName="coleccion" [ngClass]="{'is-invalid':validoFormulario && f.coleccion.errors}">
-                <div *ngIf="validoFormulario && f.coleccion.errors" class="">
+                <input id="txtColeccion" type="text" class="form-control" maxlength="50" formControlName="coleccion"
+                    [ngClass]="{'is-invalid':validoFormulario && f.coleccion.errors}">
+                <div *ngIf="validoFormulario && f.coleccion.errors">
                     <span class="text-danger" *ngIf="f.coleccion.errors.required">Campo requerido</span>
                 </div>
             </div>
@@ -53,15 +60,18 @@
         <div class="row">
             <div class="col-6">
                 <label for="txtNumPaginas">Numero paginas:</label>
-                <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" formControlName="numeroPaginas" [ngClass]="{'is-invalid':validoFormulario && f.numeroPaginas.errors}">
-                <div *ngIf="validoFormulario && f.numeroPaginas.errors" class="">
+                <input id="txtNumPaginas" type="number" class="form-control" maxlength="50"
+                    formControlName="numeroPaginas"
+                    [ngClass]="{'is-invalid':validoFormulario && f.numeroPaginas.errors}">
+                <div *ngIf="validoFormulario && f.numeroPaginas.errors">
                     <span class="text-danger" *ngIf="f.numeroPaginas.errors.required">Campo requerido</span>
                 </div>
             </div>
             <div class="col-6">
                 <label for="txtPrecio">Precio:</label>
-                <input id="txtPrecio" type="number" class="form-control" maxlength="50" formControlName="precio" [ngClass]="{'is-invalid':validoFormulario && f.precio.errors}">
-                <div *ngIf="validoFormulario && f.precio.errors" class="">
+                <input id="txtPrecio" type="number" class="form-control" maxlength="50" formControlName="precio"
+                    [ngClass]="{'is-invalid':validoFormulario && f.precio.errors}">
+                <div *ngIf="validoFormulario && f.precio.errors">
                     <span class="text-danger" *ngIf="f.precio.errors.required">Campo requerido</span>
                 </div>
             </div>
@@ -70,19 +80,19 @@
         <div class="row">
             <div class="col-6">
                 <label for="txtAutores">Autores:</label>
-                <textarea formControlName="autores" id="txtAutores" rows="3" ></textarea>
+                <textarea formControlName="autores" id="txtAutores" rows="3"></textarea>
             </div>
             <div class="col-6">
                 <label for="color">A color:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" formControlName="color" [value]="true" class="custom-control-input"
-                        >
+                    <input type="radio" id="customRadioInline1" formControlName="color" [value]="true"
+                        class="custom-control-input">
                     <label for="customRadioInline1" class="custom-control-label">Si</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline2" formControlName="color" [value]="false"
-                        class="custom-control-input" >
+                        class="custom-control-input">
                     <label for="customRadioInline2" class="custom-control-label">No</label>
                 </div>
 
@@ -124,7 +134,9 @@
                             <td>{{comic.color ? 'Si':'No'}}</td>
                             <!-- <td>{{comic.fechaVenta | date: "MM-dd-yy" }}</td> -->
                             <td>
-                                <i class="fas fa-search 2x ml-1" (click)="imprimirDataComic(i)" title="Consultar"></i>
+                                <i class="fas fa-search 2x ml-1" (click)="irAConsularComic(comic)" title="Consultar"></i>
+                                <!-- <i class="fas fa-search 2x ml-1" [routerLink]="['/consultar-comic', comic]" 
+                                    routerLinkActive="router-link-active" title="Consultar"></i>-->
                                 <i class="fas fa-pencil-alt 2x ml-1" title="Editar"></i>
                                 <i class="fas fa-times-circle 2x ml-1" title="Eliminar"></i>
                             </td>
@@ -134,12 +146,12 @@
             </div>
         </div>
 
-      
 
-        <div *ngIf="mostrarData" class="alert alert-info" role="alert">
+
+        <!-- <div *ngIf="mostrarData" class="alert alert-info" role="alert">
             ITEM SELECCIONADO:
             <pre>{{ comicDTOData | json }}</pre>
             <button type="button" class="btn btn-primary" (click)="cerrar()">Cerrar</button>
-        </div>
+        </div> -->
     </form>
 </div>

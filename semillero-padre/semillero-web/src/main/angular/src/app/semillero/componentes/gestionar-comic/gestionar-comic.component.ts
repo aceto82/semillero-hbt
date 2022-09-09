@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from '../../dto/comic.dto';
 import { TematicaEnum } from '../../enums/tematica.enum';
@@ -20,7 +21,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public mostrarData: boolean;
   public validoFormulario: boolean;
 
-  constructor(public translate: TranslateService, private formBuilder: FormBuilder) {
+  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router) {
     super(translate);
     this.gestionarComicForm = this.formBuilder.group({
       nombre: [null, Validators.required],
@@ -59,9 +60,19 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   private limpiarForm(): void {
     this.gestionarComicForm.reset(); // opcion 1 limpiar formulario
 
+    // this.gestionarComicForm.disable();
+    // this.gestionarComicForm.enable();
+
     // opcion 2 limpiar formulario
-    //this.f.nombre.setValue(null);
-    // ....
+    // this.f.nombre.setValue(null);
+    // this.f.editorial.setValue(null); 
+    // this.f.tematicaEnum.setValue(null); 
+    // this.f.coleccion.setValue(null); 
+    // this.f.numeroPaginas.setValue(null); 
+    // this.f.precio.setValue(null); 
+    // this.f.autores.setValue(null); 
+    // this.f.color.setValue(true);
+    // this.f.cantidad.setValue(null); 
   }
 
   public cerrar(): void {
@@ -81,13 +92,19 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public agregarValidacionColeccion(): void {
     let tematiaEnumRequiereColeccion = [TematicaEnum.AVENTURA.toUpperCase(), TematicaEnum.HORROR.toUpperCase()];
     let tematicaSeleccionada = this.f.tematicaEnum.value;
+    // this.f.coleccion.enable();
     this.f.coleccion.clearValidators();
     this.f.coleccion.updateValueAndValidity();
     if (tematiaEnumRequiereColeccion.indexOf(tematicaSeleccionada) >= 0) {
+      // this.f.coleccion.disable();
       this.f.coleccion.setValidators(Validators.required);
       this.f.coleccion.updateValueAndValidity();
     }
 
+  }
+
+  public irAConsularComic(comic: ComicDTO):void{
+    this.router.navigate(['consultar-comic', comic], { skipLocationChange : true });
   }
 
 }
