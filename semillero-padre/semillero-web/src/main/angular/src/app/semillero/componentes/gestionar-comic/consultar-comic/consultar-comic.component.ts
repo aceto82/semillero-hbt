@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from 'src/app/semillero/dto/comic.dto';
-import { ComicServicio } from 'src/app/semillero/servicios/comic.servicio.service';
+import { MultiLanguage } from 'src/app/semillero/multiLanguage/multiLanguage';
 
 @Component({
   selector: 'app-consultar-comic',
   templateUrl: './consultar-comic.component.html'
   
 })
-export class ConsultarComicComponent implements OnInit {
+export class ConsultarComicComponent extends MultiLanguage implements OnInit {
 
   public comicDTO: ComicDTO;  
 
-  constructor(private router: Router, private activeRoute:ActivatedRoute, private comicServicio:ComicServicio) { }
+  constructor(public translate: TranslateService,private router: Router, private activeRoute:ActivatedRoute) { 
+    super(translate);
+  }
 
   ngOnInit() {
     this.comicDTO = new ComicDTO();    

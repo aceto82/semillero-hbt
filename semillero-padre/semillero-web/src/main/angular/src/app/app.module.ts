@@ -14,6 +14,7 @@ import { GestionarComicComponent } from './semillero/componentes/gestionar-comic
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConsultarComicComponent } from './semillero/componentes/gestionar-comic/consultar-comic/consultar-comic.component';
+import { EditarComicComponent } from './semillero/componentes/gestionar-comic/editar-comic/editar-comic.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CrearPersonaComponent,
     GestionarComicComponent,
     ConsultarComicComponent,
+    EditarComicComponent,
 
   ],
   imports: [

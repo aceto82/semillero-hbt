@@ -107,8 +107,8 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
 
   }
 
-  public irAConsularComic(comic: ComicDTO): void {
-    this.comicServicio.setListComics(this.listaComics);
+  public irAConsultarComic(comic: ComicDTO): void {
+    //this.comicServicio.setListComics(this.listaComics);
     this.router.navigate(['consultar-comic', comic], { skipLocationChange: true });
   }
 
@@ -128,6 +128,11 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
       labelkey = TematicaEnum[value];
     }
     return labelkey;
+  }
+
+  public irAEditarComic(comic: ComicDTO): void {
+    //this.comicServicio.setListComics(this.listaComics);
+    this.router.navigate(['editar-comic', comic], { skipLocationChange: true });
   }
 
 }

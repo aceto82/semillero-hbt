@@ -21,6 +21,8 @@
     "gestionarComic.eliminar":"Eliminar",
 
     "consultarComic.regresar":"Regresar",
+    "editarComic.guardar":"Guardar",
+    "editarComic.msj.editarok":"Se ha guardado exitosamente el comic",
 
     "enum.estado.activo":"Activo",
     "enum.estado.inactivo":"Inactivo",

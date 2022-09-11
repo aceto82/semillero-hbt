@@ -1,11 +1,8 @@
 <div class="container">
-    <form [formGroup]="gestionarComicForm">
-        <!-- <h1>Gestionar Comic</h1> -->
-        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}">gestionarComic.titulo
-        </h1>
-        <hr>
-        <br>
-        <pre>{{ comicDTO | json }}</pre>
+    <div *ngIf="mostrarItem" class="alert alert-success mt-4 mb-4" role="alert">
+        {{'editarComic.msj.editarok' | translate}}
+    </div>
+    <form [formGroup]="editarComicForm">
 
         <div class="row">
             <div class="col-6">
@@ -32,8 +29,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
-                    <select formControlName="tematicaEnum" id="listTematica" class="form-control"
-                        (change)="agregarValidacionColeccion()">
+                    <select formControlName="tematicaEnum" id="listTematica" class="form-control">
                         <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
                         <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
                         <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
@@ -94,13 +90,13 @@
                 <label for="color">{{'gestionarComic.color' | translate}}:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" formControlName="color" [value]="true"
+                    <input type="radio" id="customRadioInline1" formControlName="color" [value]="'true'"
                         class="custom-control-input">
                     <label for="customRadioInline1" class="custom-control-label">{{'gestionarComic.color.si' |
                         translate}}</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" formControlName="color" [value]="false"
+                    <input type="radio" id="customRadioInline2" formControlName="color" [value]="'false'"
                         class="custom-control-input">
                     <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                         translate}}</label>
@@ -108,65 +104,20 @@
 
             </div>
         </div>
+
         <div class="row mt-4 mb-4">
-            <div class="col-6">
-                <span></span>
+            <div class="col-8"></div>
+            <div class="col-2 text-right ">
+                <button type="button" class="btn btn-success" (click)="actualizar()"><i class='fas fa-save'></i> {{'editarComic.guardar' |
+                    translate}}</button>
             </div>
-            <div class="col-6 text-right">
-                <button type="button" class="btn btn-primary" (click)="crearComic()"><i class="fas fa-plus-circle"></i> {{'gestionarComic.btn.crear' |
+            <div class="col-2 text-right ">
+                <button type="button" class="btn btn-primary" (click)="regresar()"><i class='fas fa-arrow-alt-circle-left'></i> {{'consultarComic.regresar' |
                     translate}}</button>
             </div>
         </div>
-
-        <div *ngIf="mostrarItem" class="alert alert-info mt-4 mb-4" role="alert">
-            {{'gestionarComic.msj.crearok' | translate}}
-            <button type="button" class="btn btn-primary" (click)="cerrar()"><i class="fas fa-check-circle"></i> {{'gestionarComic.msj.cerrar' |
-                translate}}</button>
-        </div>
-
-        <div class="row" *ngIf="listaComics.length>0">
-            <div class="col-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{'gestionarComic.nombre' | translate}}</th>
-                            <th scope="col">{{'gestionarComic.tematica' | translate}}</th>
-                            <th scope="col">{{'gestionarComic.precio' | translate}}</th>
-                            <th scope="col">{{'gestionarComic.color' | translate}}</th>
-                            <th scope="col">{{'gestionarComic.acciones' | translate}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let comic of listaComics; let i=index;">
-                            <th scope="row">{{i}}</th>
-                            <td>{{comic.nombre | uppercase}}</td>
-                            <td>{{getLabelTematica(comic.tematicaEnum) | translate }}</td>
-                            <td>{{comic.precio | number: '.2'}}</td>
-                            <td>{{getLabelColor(comic.color) | translate }}</td>
-                            <!-- <td>{{comic.fechaVenta | date: "MM-dd-yy" }}</td> -->
-                            <td>
-                                <i class="fas fa-search 2x ml-1" (click)="irAConsultarComic(comic)"
-                                    title="{{'gestionarComic.consultar' | translate}}"></i>
-                                <!-- <i class="fas fa-search 2x ml-1" [routerLink]="['/consultar-comic', comic]" 
-                                    routerLinkActive="router-link-active" title="Consultar"></i>-->  
-                                <i class="fas fa-pencil-alt 2x ml-1" (click)="irAEditarComic(comic)" 
-                                    title="{{'gestionarComic.editar' | translate}}"></i>
-                                <i class="fas fa-times-circle 2x ml-1"
-                                    title="{{'gestionarComic.eliminar' | translate}}"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-
-        <!-- <div *ngIf="mostrarData" class="alert alert-info" role="alert">
-            ITEM SELECCIONADO:
-            <pre>{{ comicDTOData | json }}</pre>
-            <button type="button" class="btn btn-primary" (click)="cerrar()">Cerrar</button>
-        </div> -->
+        <input type="hidden" formControlName="id"/>
+        <input type="hidden" formControlName="fechaVenta"/>
+        <input type="hidden" formControlName="estadoEnum"/>        
     </form>
 </div>
