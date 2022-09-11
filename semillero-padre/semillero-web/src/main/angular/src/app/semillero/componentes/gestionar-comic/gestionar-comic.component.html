@@ -1,13 +1,12 @@
 <div class="container">
     <form [formGroup]="gestionarComicForm">
         <!-- <h1>Gestionar Comic</h1> -->
-        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}">gestionarComic.titulo
+        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}" class="mt-2 mb-2">gestionarComic.titulo
         </h1>
         <hr>
-        <br>
-        <pre>{{ comicDTO | json }}</pre>
-
-        <div class="row">
+        <!-- <br>
+        <pre>{{ comicDTO | json }}</pre> -->
+        <div class="row mt-2">
             <div class="col-6">
                 <label for="txtNombre">{{'gestionarComic.nombre' | translate}}:</label>
                 <input id="txtNombre" type="text" class="form-control" maxlength="50" formControlName="nombre"

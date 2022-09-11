@@ -3,8 +3,11 @@
         {{'editarComic.msj.editarok' | translate}}
     </div>
     <form [formGroup]="editarComicForm">
-
-        <div class="row">
+        <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}" class="mt-2 mb-2">
+            gestionarComic.titulo</h1>
+        <h3 class="mt-2 mb-2">{{'editarComic.titulo' | translate}} (ID: {{f.id.value}})</h3>
+        <hr>
+        <div class="row mt-2">
             <div class="col-6">
                 <label for="txtNombre">{{'gestionarComic.nombre' | translate}}:</label>
                 <input id="txtNombre" type="text" class="form-control" maxlength="50" formControlName="nombre"

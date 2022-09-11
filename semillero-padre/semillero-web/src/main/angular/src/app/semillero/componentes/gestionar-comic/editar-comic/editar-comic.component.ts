@@ -19,11 +19,16 @@ export class EditarComicComponent extends MultiLanguage implements OnInit {
   public validoFormulario: boolean;
   public mostrarItem: boolean;
 
+  public tituloComplemento: any;
+
   constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private activeRoute: ActivatedRoute, private comicServicio: ComicServicio) {
     super(translate);
   }
 
   ngOnInit() {
+    this.tituloComplemento = {
+      nombreSemillero: "Semillero 2022"
+    }
     this.comicDTO = new ComicDTO();
     this.listComics = this.comicServicio.getListComics();
     this.comicDTO = <ComicDTO>this.activeRoute.snapshot.params;
