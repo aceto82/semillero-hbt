@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from '../../dto/comic.dto';
 import { TematicaEnum } from '../../enums/tematica.enum';
 import { MultiLanguage } from '../../multiLanguage/multiLanguage';
+import { ComicServicio } from '../../servicios/comic.servicio.service';
 
 @Component({
   selector: 'gestionar-comic',
@@ -21,7 +22,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public mostrarData: boolean;
   public validoFormulario: boolean;
 
-  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private comicServicio: ComicServicio) {
     super(translate);
     this.gestionarComicForm = this.formBuilder.group({
       nombre: [null, Validators.required],
@@ -40,7 +41,10 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.tituloComplemento = {
       nombreSemillero: "Semillero 2022"
     }
-    this.listaComics = new Array<ComicDTO>();
+    this.listaComics = this.comicServicio.getListComics(); //new Array<ComicDTO>();
+    // if (this.activeRoute.snapshot.params ){
+    //   this.listaComics = <Array<ComicDTO>> this.activeRoute.snapshot.params;
+    // }
     this.comicDTO = new ComicDTO();
   }
 
@@ -90,7 +94,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   }
 
   public agregarValidacionColeccion(): void {
-    let tematiaEnumRequiereColeccion = [TematicaEnum.AVENTURA.toUpperCase(), TematicaEnum.HORROR.toUpperCase()];
+    let tematiaEnumRequiereColeccion = [TematicaEnum.AVENTURAS.toUpperCase(), TematicaEnum.HORROR.toUpperCase()];
     let tematicaSeleccionada = this.f.tematicaEnum.value;
     // this.f.coleccion.enable();
     this.f.coleccion.clearValidators();
@@ -103,8 +107,18 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
 
   }
 
-  public irAConsularComic(comic: ComicDTO):void{
-    this.router.navigate(['consultar-comic', comic], { skipLocationChange : true });
+  public irAConsularComic(comic: ComicDTO): void {
+    this.comicServicio.setListComics(this.listaComics);
+    this.router.navigate(['consultar-comic', comic], { skipLocationChange: true });
+  }
+
+  public getLabelComicColor(value: boolean): string {
+    let labelkey:string = value ? "gestionarComic.color.si" : "gestionarComic.color.no";
+    //let label: string = "";
+    // this.translate.get(labelkey).subscribe((res: string) => {
+    //   label = res;
+    // });
+    return labelkey;
   }
 
 }

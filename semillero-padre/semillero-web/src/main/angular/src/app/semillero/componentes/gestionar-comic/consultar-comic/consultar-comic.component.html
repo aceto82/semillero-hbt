@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <label for="txtNombre" translate>gestionarComic.nombre:</label>
+            <label for="txtNombre">{{'gestionarComic.nombre' | translate}}:</label>
             <input id="txtNombre" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.nombre"
                 disabled>
 
         </div>
         <div class="col-6">
-            <label for="txtEditorial" translate>gestionarComic.editorial:</label>
+            <label for="txtEditorial">{{'gestionarComic.editorial' | translate}}:</label>
             <input id="txtEditorial" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.editorial"
                 disabled>
 
@@ -17,22 +17,23 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label for="listTematica">Tematica:</label>
+                <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
                 <select name="tematicaEnum" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum"
                     disabled>
-                    <option value="AVENTURA">Aventuras</option>
-                    <option value="BELICO">Belico</option>
-                    <option value="DEPORTIVO">Deportivo</option>
-                    <option value="FANTASTICO">Fantastico</option>
-                    <option value="CIENCIA_FICCION">Ciencia Ficcion</option>
-                    <option value="HISTORICO">Historico</option>
-                    <option value="HORROR">Horror</option>
+                    <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+                        <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
+                        <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
+                        <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
+                        <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
+                        <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
+                        <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
+                        <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
                 </select>
             </div>
 
         </div>
         <div class="col-6">
-            <label for="txtColeccion">Coleccion:</label>
+            <label for="txtColeccion">{{'gestionarComic.coleccion' | translate}}:</label>
             <input id="txtColeccion" type="text" class="form-control" maxlength="50" name="coleccion"
                 [(ngModel)]="comicDTO.coleccion" disabled>
 
@@ -41,13 +42,13 @@
 
     <div class="row">
         <div class="col-6">
-            <label for="txtNumPaginas">Numero paginas:</label>
+            <label for="txtNumPaginas">{{'gestionarComic.numeropagina' | translate}}:</label>
             <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numeroPaginas"
                 [(ngModel)]="comicDTO.numeroPaginas" disabled>
 
         </div>
         <div class="col-6">
-            <label for="txtPrecio">Precio:</label>
+            <label for="txtPrecio">{{'gestionarComic.precio' | translate}}:</label>
             <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
                 [(ngModel)]="comicDTO.precio" disabled>
 
@@ -56,21 +57,23 @@
 
     <div class="row">
         <div class="col-6">
-            <label for="txtAutores">Autores:</label>
+            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
             <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
         </div>
         <div class="col-6">
-            <label for="color">A color:</label>
+            <label for="color">{{'gestionarComic.color' | translate}}:</label>
             <br>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input"
+                <input type="radio" id="customRadioInline1" name="color" [value]="'true'" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
-                <label for="customRadioInline1" class="custom-control-label">Si</label>
+                <label for="customRadioInline1" class="custom-control-label">{{'gestionarComic.color.si' |
+                    translate}}</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="color" [value]="false" class="custom-control-input"
+                <input type="radio" id="customRadioInline2" name="color" [value]="'false'" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
-                <label for="customRadioInline2" class="custom-control-label">No</label>
+                <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
+                    translate}}</label>
             </div>
 
         </div>
@@ -81,7 +84,8 @@
             <span></span>
         </div>
         <div class="col-6 text-right ">
-            <button type="button" class="btn btn-primary" (click)="regresar()">Regresar</button>
+            <button type="button" class="btn btn-primary" (click)="regresar()">{{'consultarComic.regresar' |
+                translate}}</button>
         </div>
     </div>
 </div>

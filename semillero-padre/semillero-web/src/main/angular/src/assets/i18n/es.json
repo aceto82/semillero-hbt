@@ -1,7 +1,36 @@
 {
     "titulo" : "Modulo persona {{ mensaje }}",
     "gestionarComic.titulo" : "Gestionar Comic {{ nombreSemillero }}",
-    "gestionarComic.nombre" : "Nombresdsd",
-    "gestionarComic.editorial" : "Editorial"
+    "gestionarComic.nombre" : "Nombre",
+    "gestionarComic.editorial" : "Editorial",
+    "gestionarComic.camporequerido": "Campo requerido",
+    "gestionarComic.tematica":"Tematica",
+    "gestionarComic.coleccion":"Coleccion",
+    "gestionarComic.numeropagina":"Numero paginas",
+    "gestionarComic.precio":"Precio",
+    "gestionarComic.autores":"Autores",
+    "gestionarComic.color":"A color",
+    "gestionarComic.color.si":"Si",
+    "gestionarComic.color.no":"No",
+    "gestionarComic.btn.crear":"Crear",
+    "gestionarComic.msj.crearok":"Se ha creado exitosamente el comic",
+    "gestionarComic.msj.cerrar":"Cerrar",
+    "gestionarComic.acciones":"Acciones",
+    "gestionarComic.consultar":"Consultar",
+    "gestionarComic.editar":"Editar",
+    "gestionarComic.eliminar":"Eliminar",
 
+    "consultarComic.regresar":"Regresar",
+
+    "enum.estado.activo":"Activo",
+    "enum.estado.inactivo":"Inactivo",
+
+    "enum.tematica.aventuras":"Aventuras",
+    "enum.tematica.belico":"Belico",
+    "enum.tematica.humoristico":"Humoristico",
+    "enum.tematica.deportivo":"Deportivo",
+    "enum.tematica.fantastico":"Fantastico",
+    "enum.tematica.cienciaficcion":"Ciencia Ficcion",
+    "enum.tematica.historico":"Historico",
+    "enum.tematica.horror":"Horror"
 }

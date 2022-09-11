@@ -8,8 +8,7 @@ import { TematicaEnum } from '../../enums/tematica.enum';
 
 @Component({
   selector: 'app-crear-persona',
-  templateUrl: './crear-persona.component.html',
-  styleUrls: ['./crear-persona.component.css']
+  templateUrl: './crear-persona.component.html'
 })
 export class CrearPersonaComponent implements OnInit {
 
@@ -94,7 +93,7 @@ export class CrearPersonaComponent implements OnInit {
       nombre: "Superman",
       estado: EstadoEnum.ACTIVO,
       precio: 120,
-      tematica: TematicaEnum.AVENTURA,
+      tematica: TematicaEnum.AVENTURAS,
       fechaVenta: null
     }
 
@@ -102,7 +101,7 @@ export class CrearPersonaComponent implements OnInit {
       nombre: "Thor",
       estado: EstadoEnum.ACTIVO,
       precio: 120,
-      tematica: TematicaEnum.AVENTURA,
+      tematica: TematicaEnum.AVENTURAS,
       fechaVenta: null
     }
 
@@ -110,7 +109,7 @@ export class CrearPersonaComponent implements OnInit {
       nombre: "Spiderman",
       estado: EstadoEnum.ACTIVO,
       precio: 120,
-      tematica: TematicaEnum.AVENTURA,
+      tematica: TematicaEnum.AVENTURAS,
       fechaVenta: null
     }
 
@@ -118,7 +117,7 @@ export class CrearPersonaComponent implements OnInit {
       nombre: "Hulk",
       estado: EstadoEnum.ACTIVO,
       precio: 120,
-      tematica: TematicaEnum.AVENTURA,
+      tematica: TematicaEnum.AVENTURAS,
       fechaVenta: null
     }
     listaComics = new Array<any>();
@@ -144,7 +143,7 @@ export class CrearPersonaComponent implements OnInit {
    */
   private crearComicsTallerAngular(): Array<ComicTallerDTO> {
     let listaComics: Array<ComicTallerDTO> = new Array<ComicTallerDTO>();
-    let onepiece: ComicTallerDTO = new ComicTallerDTO("One Piece", TematicaEnum.AVENTURA, 280);
+    let onepiece: ComicTallerDTO = new ComicTallerDTO("One Piece", TematicaEnum.AVENTURAS, 280);
     onepiece.id = 1;
     onepiece.editorial = "Shueisha";
     onepiece.coleccion = "Manga Shonen";
@@ -166,7 +165,7 @@ export class CrearPersonaComponent implements OnInit {
     futari.estadoEnum = EstadoEnum.INACTIVO
     futari.cantidad = 0;
 
-    let captainsubasa: ComicTallerDTO = new ComicTallerDTO("Captain Tsubasa", TematicaEnum.AVENTURA, 79);
+    let captainsubasa: ComicTallerDTO = new ComicTallerDTO("Captain Tsubasa", TematicaEnum.AVENTURAS, 79);
     captainsubasa.id = 3;
     captainsubasa.editorial = "Shueisha";
     captainsubasa.coleccion = "Manga Shonen/Seinen";
@@ -188,7 +187,7 @@ export class CrearPersonaComponent implements OnInit {
     gantz.estadoEnum = EstadoEnum.ACTIVO
     gantz.cantidad = 241;
 
-    let naruto: ComicTallerDTO = new ComicTallerDTO("Naruto", TematicaEnum.AVENTURA, 172);
+    let naruto: ComicTallerDTO = new ComicTallerDTO("Naruto", TematicaEnum.AVENTURAS, 172);
     naruto.id = 5;
     naruto.editorial = "Shueisha";
     naruto.coleccion = "Manga Shonen";

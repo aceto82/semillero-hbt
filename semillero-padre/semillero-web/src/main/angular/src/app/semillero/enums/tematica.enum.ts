@@ -1,7 +1,10 @@
 export enum TematicaEnum{
     HORROR="Horror",
-    AVENTURA="Aventura",
+    AVENTURAS="Aventuras",
     BELICO="Belico",
     CIENCIA_FICCION="Ciencia ficcion",
     HUMORISTICO="Humoristico",
+    DEPORTIVO="Deportivo",
+    FANTASTICO="Fantastico",
+    HISTORICO="Historico",
 }

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
  * @description Componente menu, el cual contiene la logica para direccionar a los modulos
  * desarrollados
  * 
- * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+ * @author 
  */
 @Component({
   selector: 'menu-page',
