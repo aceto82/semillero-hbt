@@ -108,7 +108,7 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4 mb-4">
             <div class="col-6">
                 <span></span>
             </div>
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div *ngIf="mostrarItem" class="alert alert-info mt-2 mb-2" role="alert">
+        <div *ngIf="mostrarItem" class="alert alert-info mt-4 mb-4" role="alert">
             {{'gestionarComic.msj.crearok' | translate}}
             <button type="button" class="btn btn-primary" (click)="cerrar()">{{'gestionarComic.msj.cerrar' |
                 translate}}</button>
@@ -141,9 +141,9 @@
                         <tr *ngFor="let comic of listaComics; let i=index;">
                             <th scope="row">{{i}}</th>
                             <td>{{comic.nombre | uppercase}}</td>
-                            <td>{{comic.tematicaEnum | lowercase }}</td>
+                            <td>{{getLabelTematica(comic.tematicaEnum) | translate }}</td>
                             <td>{{comic.precio | number: '.2'}}</td>
-                            <td>{{getLabelComicColor(comic.color) | translate }}</td>
+                            <td>{{getLabelColor(comic.color) | translate }}</td>
                             <!-- <td>{{comic.fechaVenta | date: "MM-dd-yy" }}</td> -->
                             <td>
                                 <i class="fas fa-search 2x ml-1" (click)="irAConsularComic(comic)"

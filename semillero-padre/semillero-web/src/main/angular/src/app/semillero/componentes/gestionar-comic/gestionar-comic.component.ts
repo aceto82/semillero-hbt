@@ -75,7 +75,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     // this.f.numeroPaginas.setValue(null); 
     // this.f.precio.setValue(null); 
     // this.f.autores.setValue(null); 
-    // this.f.color.setValue(true);
+    this.f.color.setValue(true);
     // this.f.cantidad.setValue(null); 
   }
 
@@ -112,12 +112,21 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.router.navigate(['consultar-comic', comic], { skipLocationChange: true });
   }
 
-  public getLabelComicColor(value: boolean): string {
-    let labelkey:string = value ? "gestionarComic.color.si" : "gestionarComic.color.no";
+  public getLabelColor(value: boolean): string {
+    let labelkey: string = value ? "gestionarComic.color.si" : "gestionarComic.color.no";
     //let label: string = "";
     // this.translate.get(labelkey).subscribe((res: string) => {
     //   label = res;
     // });
+    return labelkey;
+  }
+
+  public getLabelTematica(value: string): string {
+    let labelkey: string = "";
+
+    if (TematicaEnum[value] != undefined) {
+      labelkey = TematicaEnum[value];
+    }
     return labelkey;
   }
 
