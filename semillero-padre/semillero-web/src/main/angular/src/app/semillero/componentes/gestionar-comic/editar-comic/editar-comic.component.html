@@ -1,7 +1,4 @@
 <div class="container">
-    <div *ngIf="mostrarItem" class="alert alert-success mt-4 mb-4" role="alert">
-        {{'editarComic.msj.editarok' | translate}}
-    </div>
     <form [formGroup]="editarComicForm">
         <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}" class="mt-2 mb-2">
             gestionarComic.titulo</h1>
@@ -104,23 +101,27 @@
                     <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                         translate}}</label>
                 </div>
-
             </div>
         </div>
 
         <div class="row mt-4 mb-4">
             <div class="col-8"></div>
             <div class="col-2 text-right ">
-                <button type="button" class="btn btn-success" (click)="actualizar()"><i class='fas fa-save'></i> {{'editarComic.guardar' |
+                <button type="button" class="btn btn-success" (click)="actualizar()"><i class='fas fa-save'></i>
+                    {{'editarComic.guardar' |
                     translate}}</button>
             </div>
             <div class="col-2 text-right ">
-                <button type="button" class="btn btn-primary" (click)="regresar()"><i class='fas fa-arrow-alt-circle-left'></i> {{'consultarComic.regresar' |
+                <button type="button" class="btn btn-primary" (click)="regresar()"><i
+                        class='fas fa-arrow-alt-circle-left'></i> {{'consultarComic.regresar' |
                     translate}}</button>
             </div>
         </div>
-        <input type="hidden" formControlName="id"/>
-        <input type="hidden" formControlName="fechaVenta"/>
-        <input type="hidden" formControlName="estadoEnum"/>        
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="fechaVenta" />
+        <input type="hidden" formControlName="estadoEnum" />
     </form>
+    <div *ngIf="mostrarItem" class="alert alert-success mt-4 mb-4" role="alert">
+        {{'editarComic.msj.editarok' | translate}}
+    </div>
 </div>

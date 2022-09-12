@@ -20,12 +20,19 @@
     "gestionarComic.consultar": "Consultar",
     "gestionarComic.editar": "Editar",
     "gestionarComic.eliminar": "Eliminar",
+    "gestionarComic.modalBorrar.titulo":"Confirmar borrar comic",
+    "gestionarComic.modalBorrar.msj":"¿Realmente quiere eliminar el comic {{ nombreComic }}?",
+    "gestionarComic.modalBorrar.confirmar":"Confirmar",
+    "gestionarComic.msj.borrar.ok":"Se ha borrado correctamente el comic: ",
+    "gestionarComic.msj.borrar.error":"Error al tratar de borrar el comic: ",
+
     "consultarComic.regresar": "Regresar",
     "consultarComic.titulo": "Consultar comic",
 
     "editarComic.titulo": "Editar comic",
     "editarComic.guardar": "Guardar",
     "editarComic.msj.editarok": "Se ha guardado exitosamente el comic",
+    
 
     "enum.estado.activo": "Activo",
     "enum.estado.inactivo": "Inactivo",

@@ -67,7 +67,7 @@ export class EditarComicComponent extends MultiLanguage implements OnInit {
       }
     });
     if (index != - 1) {
-      this.comicDTO.color = this.f.color.value=="true";
+      this.comicDTO.color = this.f.color.value == "true";
       this.listComics[index] = this.comicDTO;
     }
     //this.regresar();
