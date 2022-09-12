@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -10,6 +10,16 @@ import { AppComponent } from './app.component';
 import { BienvenidaComponent } from './semillero/componentes/home/bienvenida-component';
 import { MenuComponent } from './semillero/componentes/menu/menu-component';
 import { CrearPersonaComponent } from './semillero/componentes/crear-persona/crear-persona.component';
+import { GestionarComicComponent } from './semillero/componentes/gestionar-comic/gestionar-comic.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ConsultarComicComponent } from './semillero/componentes/gestionar-comic/consultar-comic/consultar-comic.component';
+import { EditarComicComponent } from './semillero/componentes/gestionar-comic/editar-comic/editar-comic.component';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -17,6 +27,9 @@ import { CrearPersonaComponent } from './semillero/componentes/crear-persona/cre
     MenuComponent,
     BienvenidaComponent,
     CrearPersonaComponent,
+    GestionarComicComponent,
+    ConsultarComicComponent,
+    EditarComicComponent,
 
   ],
   imports: [
@@ -25,13 +38,20 @@ import { CrearPersonaComponent } from './semillero/componentes/crear-persona/cre
     HttpModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
-  	{ provide: APP_BASE_HREF, useValue: '/SemilleroHBT' }
+    { provide: APP_BASE_HREF, useValue: '/SemilleroHBT' }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }

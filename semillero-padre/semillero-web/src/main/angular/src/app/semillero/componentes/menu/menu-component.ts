@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
  * @description Componente menu, el cual contiene la logica para direccionar a los modulos
  * desarrollados
  * 
- * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+ * @author 
  */
 @Component({
   selector: 'menu-page',
@@ -25,20 +25,24 @@ export class MenuComponent implements OnInit {
    * Evento angular que se ejecuta al iniciar el componente
    */
   ngOnInit(): void {
-
+    this.loadScript('assets/js/jquery.min.js');
+    this.loadScript('assets/js/browser.min.js');
+    this.loadScript('assets/js/breakpoints.min.js');
+    this.loadScript('assets/js/util.js');
+    this.loadScript('assets/js/main.js');
   }
 
   /**
    * @description Metodo encargado de direccionar al componente de gestionar comic
-   * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+   * @author 
    */
   public navegarGestionarComic(): void {
-    
+    this.router.navigate(['gestionar-comic']);
   }
 
   /**
    * @description Metodo encargado de direccionar al componente de gestionar comic
-   * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+   * @author 
    */
   public navegarHome(): void {
     this.router.navigate(['bienvenida']);
@@ -46,5 +50,15 @@ export class MenuComponent implements OnInit {
 
   public navegarGestionarCompra(): void {
     //WIP
+  }
+
+  public loadScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 }

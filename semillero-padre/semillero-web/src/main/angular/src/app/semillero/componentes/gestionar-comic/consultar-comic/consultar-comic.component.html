@@ -1,0 +1,96 @@
+<div class="container">
+    <h1 translate [translateParams]="{nombreSemillero : tituloComplemento.nombreSemillero}" class="mt-2 mb-2">
+        gestionarComic.titulo</h1>
+    <h3 class="mt-2 mb-2">{{'consultarComic.titulo' | translate}} (ID: {{comicDTO.id}})</h3>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-6">
+            <label for="txtNombre">{{'gestionarComic.nombre' | translate}}:</label>
+            <input id="txtNombre" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.nombre"
+                disabled>
+
+        </div>
+        <div class="col-6">
+            <label for="txtEditorial">{{'gestionarComic.editorial' | translate}}:</label>
+            <input id="txtEditorial" type="text" class="form-control" maxlength="50" [(ngModel)]="comicDTO.editorial"
+                disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
+                <select name="tematicaEnum" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum"
+                    disabled>
+                    <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+                    <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
+                    <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
+                    <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
+                    <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
+                    <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
+                    <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
+                    <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <label for="txtColeccion">{{'gestionarComic.coleccion' | translate}}:</label>
+            <input id="txtColeccion" type="text" class="form-control" maxlength="50" name="coleccion"
+                [(ngModel)]="comicDTO.coleccion" disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label for="txtNumPaginas">{{'gestionarComic.numeropagina' | translate}}:</label>
+            <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numeroPaginas"
+                [(ngModel)]="comicDTO.numeroPaginas" disabled>
+
+        </div>
+        <div class="col-6">
+            <label for="txtPrecio">{{'gestionarComic.precio' | translate}}:</label>
+            <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
+                [(ngModel)]="comicDTO.precio" disabled>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
+            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
+        </div>
+        <div class="col-6">
+            <label for="color">{{'gestionarComic.color' | translate}}:</label>
+            <br>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="color" [value]="'true'" class="custom-control-input"
+                    [(ngModel)]="comicDTO.color" disabled>
+                <label for="customRadioInline1" class="custom-control-label">{{'gestionarComic.color.si' |
+                    translate}}</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="color" [value]="'false'" class="custom-control-input"
+                    [(ngModel)]="comicDTO.color" disabled>
+                <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
+                    translate}}</label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <span></span>
+        </div>
+        <div class="col-6 text-right ">
+            <button type="button" class="btn btn-primary" (click)="regresar()"><i
+                    class='fas fa-arrow-alt-circle-left'></i> {{'consultarComic.regresar' |
+                translate}}</button>
+        </div>
+    </div>
+</div>

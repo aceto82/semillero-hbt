@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 /**
  * @description Componente bienvenida, el cual contiene la imagen de bienvenida al semillero
  * 
- * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+ * @author
  */
 @Component({
   selector: 'bienvenida',
@@ -15,7 +15,7 @@ export class BienvenidaComponent implements OnInit {
   public urlImagen : string;
   
   constructor(private router : Router, private activatedRoute: ActivatedRoute) {
-    console.log("entro al constructor del componente bienvenida");
+    // console.log("entro al constructor del componente bienvenida");
   }
 
   ngOnInit(): void {
