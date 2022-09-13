@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ComicDTO } from '../dto/comic.dto';
 import { ConsultarComicDTO } from '../dto/consultar-comic.dto';
+import { ObtenerComicsDTO } from '../dto/obtener-comics.dto';
 import { ResultadoDTO } from '../dto/resultado-dto';
 
 @Injectable({
@@ -12,8 +13,8 @@ export class GestionarComicService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public obtenerComics(): Observable<any> {
-    return this.httpClient.get('http://localhost:8085/semillero-servicios/rest/gestionComicRest/obtenerComics');
+  public obtenerComics(): Observable<ObtenerComicsDTO> {
+    return this.httpClient.get<ObtenerComicsDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/obtenerComics');
   }
 
   public crearComic(comicDTO: ComicDTO): Observable<ResultadoDTO> {
@@ -27,6 +28,11 @@ export class GestionarComicService {
 
   public actualizarComic(comicDTO: ComicDTO): Observable<ResultadoDTO> {
     return this.httpClient.put<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/actualizarComic', comicDTO);
+  }
+
+  public eliminarComic(idComic:string): Observable<ResultadoDTO>{
+    let parametros = new HttpParams().set("idComic", idComic);
+    return this.httpClient.delete<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/eliminarComic', { params: parametros });
   }
 
   public consultarNombrePrecioComic(idComic: string): Observable<any> {

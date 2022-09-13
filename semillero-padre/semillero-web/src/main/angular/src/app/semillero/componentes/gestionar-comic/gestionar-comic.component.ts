@@ -27,11 +27,12 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public msjBorrar: string;
   public comicBorrar: ComicDTO;
   public mostrarItemBorrar: boolean;
-  public indexComicBorrado: number;
+  //public indexComicBorrado: number;  
   public mostrarMensajeError: boolean;
 
   public mensajeEjecucion: string;
   public mostrarMensajeFallido: boolean;
+
 
   constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService) {
     super(translate);
@@ -174,24 +175,42 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.router.navigate(['editar-comic', comic], { skipLocationChange: true });
   }
 
-  public confirmaBorrarComic(index: number): void {
+  public confirmaBorrarComic(comic: ComicDTO): void {
     let label: string = "";
-    this.indexComicBorrado = index;
-    this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: this.listaComics[index].nombre }).subscribe((res: string) => {
+    this.comicBorrar = comic;
+    this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: comic.nombre }).subscribe((res: string) => {
       label = res;
     });
     this.msjBorrar = label;
   }
 
+  // public confirmaBorrarComic(index: number): void {
+  //   let label: string = "";
+  //   this.indexComicBorrado = index;
+  //   this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: this.listaComics[index].nombre }).subscribe((res: string) => {
+  //     label = res;
+  //   });
+  //   this.msjBorrar = label;
+  // }
+
   public borrarComic(): void {
     this.mostrarItemBorrar = false;
     this.mostrarMensajeError = false;
-    if (this.listaComics.length < this.indexComicBorrado || this.indexComicBorrado < 1) {
-      this.mostrarMensajeError = true;
-    } else {
-      this.mostrarItemBorrar = true;
-      this.comicBorrar = this.listaComics.splice(this.indexComicBorrado, 1)[0];
-    }
+    this.gestionarComicService.eliminarComic(String(this.comicBorrar.id)).subscribe(resultado => {
+      if (resultado.exitoso) {
+        this.mostrarItemBorrar = true;
+        this.obtenerComics();
+      }
+      else {
+        this.mostrarMensajeError = true;
+      }
+    });
+    // if (this.listaComics.length < this.indexComicBorrado || this.indexComicBorrado < 1) {
+    //   this.mostrarMensajeError = true;
+    // } else {
+    //   this.mostrarItemBorrar = true;
+    //   this.comicBorrar = this.listaComics.splice(this.indexComicBorrado, 1)[0];
+    // }
   }
 
 }
