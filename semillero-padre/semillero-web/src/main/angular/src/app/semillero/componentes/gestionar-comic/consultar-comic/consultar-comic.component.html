@@ -49,37 +49,41 @@
             <label for="txtNumPaginas">{{'gestionarComic.numeropagina' | translate}}:</label>
             <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numeroPaginas"
                 [(ngModel)]="comicDTO.numeroPaginas" disabled>
-
         </div>
         <div class="col-6">
             <label for="txtPrecio">{{'gestionarComic.precio' | translate}}:</label>
             <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
                 [(ngModel)]="comicDTO.precio" disabled>
-
         </div>
     </div>
 
     <div class="row">
         <div class="col-6">
-            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
-            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
-        </div>
-        <div class="col-6">
             <label for="color">{{'gestionarComic.color' | translate}}:</label>
             <br>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="color" [value]="'true'" class="custom-control-input"
+                <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
                 <label for="customRadioInline1" class="custom-control-label">{{'gestionarComic.color.si' |
                     translate}}</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="color" [value]="'false'" class="custom-control-input"
+                <input type="radio" id="customRadioInline2" name="color" [value]="false" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
                 <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                     translate}}</label>
             </div>
-
+        </div>
+        <div class="col-6">
+            <label for="txtCantidad">{{'gestionarComic.cantidad' | translate}}:</label>
+            <input id="txtCantidad" type="number" class="form-control" maxlength="50" name="cantidad"
+                [(ngModel)]="comicDTO.cantidad" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="off-3 col-6">
+            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
+            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
         </div>
     </div>
 

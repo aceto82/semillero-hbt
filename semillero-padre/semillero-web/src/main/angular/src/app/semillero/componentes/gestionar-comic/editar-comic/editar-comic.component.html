@@ -81,11 +81,7 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-6">
-                <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
-                <textarea formControlName="autores" id="txtAutores" rows="3"></textarea>
-            </div>
+        <div class="row">            
             <div class="col-6">
                 <label for="color">{{'gestionarComic.color' | translate}}:</label>
                 <br>
@@ -101,6 +97,22 @@
                     <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                         translate}}</label>
                 </div>
+            </div>
+            <div class="col-6">
+                <label for="txtCantidad">{{'gestionarComic.cantidad' | translate}}:</label>
+                <input id="txtCantidad" type="number" class="form-control" maxlength="50" formControlName="cantidad"
+                    [ngClass]="{'is-invalid':validoFormulario && f.cantidad.errors}">
+                <div *ngIf="validoFormulario && f.cantidad.errors">
+                    <span class="text-danger" *ngIf="f.cantidad.errors.required">{{'gestionarComic.camporequerido' |
+                        translate}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="off-3 col-6">
+                <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
+                <textarea formControlName="autores" id="txtAutores" rows="3"></textarea>
             </div>
         </div>
 
