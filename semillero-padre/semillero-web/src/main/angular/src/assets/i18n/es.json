@@ -13,6 +13,7 @@
     "gestionarComic.color": "A color",
     "gestionarComic.color.si": "Si",
     "gestionarComic.color.no": "No",
+    "gestionarComic.cantidad": "Cantidad",
     "gestionarComic.btn.crear": "Crear",
     "gestionarComic.msj.crearok": "Se ha creado exitosamente el comic",
     "gestionarComic.msj.cerrar": "Cerrar",

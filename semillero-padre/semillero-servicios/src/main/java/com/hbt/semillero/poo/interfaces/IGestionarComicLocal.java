@@ -85,6 +85,14 @@ public interface IGestionarComicLocal {
 	 */
 	public ResultadoDTO EliminarComic(Long idComic) throws Exception;
 	
-	
+	/**
+	 * Metodo encargado de generar un listado de todos los comics 
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 *  
+	 * @return ObtenerComicsDTO
+	 */
 	public ObtenerComicsDTO obtenerComics();
 }

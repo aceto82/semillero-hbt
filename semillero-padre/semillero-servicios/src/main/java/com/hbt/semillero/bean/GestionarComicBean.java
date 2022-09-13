@@ -116,6 +116,8 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		if (comicDTO.getNombre() == null) {
 			throw new Exception("El campo nombre es requerido");
 		}
+		
+		comicDTO.setEstadoEnum("ACTIVO");
 
 		verificaEnum(TematicaEnum.values(), comicDTO.getTematicaEnum(), "tematicaEnum");
 
@@ -299,24 +301,22 @@ public class GestionarComicBean implements IGestionarComicLocal {
 
 		ObtenerComicsDTO dto = new ObtenerComicsDTO();
 		String consultaComics = "SELECT c " + " FROM Comic c ";
-		
-		List<Comic> comicsList = new ArrayList<>();
+
+		List<ComicDTO> comicsList = new ArrayList<>();
 		try {
-			Query queryConsultaComic = em.createQuery(consultaComics);			
-			comicsList = queryConsultaComic.getResultList();
-//			comics.forEach( (comic) ->{
-//				ComicDTO comicDTO = new ComicDTO();
-//				this.actualizarComicToComicDTO(comic, comicDTO);
-//				comicsList.add(comicDTO);
-//			} );
+			Query queryConsultaComic = em.createQuery(consultaComics);
+			List<Comic> comics = queryConsultaComic.getResultList();
+			if (comics.isEmpty()) {
+				dto.setExitoso(Boolean.FALSE);
+				dto.setMensajeEjecucion("No existen comics");
+				return dto;
+			}
+			comics.forEach((comic) -> {
+				comicsList.add(this.convertirComicToComicDTO(comic));
+			});
 			dto.setComicsList(comicsList);
 			dto.setExitoso(true);
 			dto.setMensajeEjecucion("Se ha ejecutado exitosamente");
-		} catch (NoResultException nre) {
-			LOGGER.info("Se ha presentado NoResultException: " + nre.getMessage());
-			dto.setComicsList(comicsList);
-			dto.setExitoso(false);
-			dto.setMensajeEjecucion("No existen registros en la tabla");
 		} catch (Exception e) {
 			dto.setComicsList(comicsList);
 			dto.setExitoso(false);
@@ -327,29 +327,31 @@ public class GestionarComicBean implements IGestionarComicLocal {
 
 		return dto;
 	}
-	
+
 	/**
-	 * Metodo encargado de actualizar los datos de la entidad comic al DTO 
+	 * Metodo encargado de convertir los datos de la entidad comic al DTO
 	 * 
 	 * <b>Caso de Uso</b> Semillero2022
 	 * 
 	 * @author Diego Armando Ortiz Bastidas
 	 * 
-	 * @param comicDTO
 	 * @param comic
 	 */
-	private void actualizarComicToComicDTO(Comic comic, ComicDTO comicDTO) {
-		comicDTO.setNombre(comic.getNombre());
-		comicDTO.setEditorial(comic.getEditorial());
-		comicDTO.setTematicaEnum(comic.getTematicaEnum().toString());
-		comicDTO.setColeccion(comic.getColeccion());
-		comicDTO.setNumeroPaginas(comic.getNumeroPaginas());
-		comicDTO.setPrecio(comic.getPrecio());
-		comicDTO.setAutores(comic.getAutores());
-		comicDTO.setColor(comic.getColor());
-		comicDTO.setFechaVenta(comic.getFechaVenta());
-		comicDTO.setEstadoEnum(comic.getEstadoEnum().toString());
-		comicDTO.setCantidad(comic.getCantidad());
+	private ComicDTO convertirComicToComicDTO(Comic comic) {
+		ComicDTO dto = new ComicDTO();
+		dto.setId(comic.getId());
+		dto.setNombre(comic.getNombre());
+		dto.setEditorial(comic.getEditorial());
+		dto.setTematicaEnum(comic.getTematicaEnum().toString());
+		dto.setColeccion(comic.getColeccion());
+		dto.setNumeroPaginas(comic.getNumeroPaginas());
+		dto.setPrecio(comic.getPrecio());
+		dto.setAutores(comic.getAutores());
+		dto.setColor(comic.getColor());
+		dto.setFechaVenta(comic.getFechaVenta());
+		dto.setEstadoEnum(comic.getEstadoEnum().toString());
+		dto.setCantidad(comic.getCantidad());
+		return dto;
 	}
 
 }

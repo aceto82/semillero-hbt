@@ -6,7 +6,6 @@ package com.hbt.semillero.dtos;
 import java.io.Serializable;
 import java.util.List;
 
-import com.hbt.semillero.entity.Comic;
 import com.hbt.semillero.util.JsonUtils;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +13,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase que determina el resultado de obtener el listado de
+ * los comics si es exitoso
+ * 
  * <b>Caso de Uso:<b> Semillero2022
+ * 
  * @author Diego Armando Ortiz Bastidas
  * @version 1.0
  */
@@ -24,18 +26,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ObtenerComicsDTO extends ResultadoDTO implements Serializable {
 
-	
 	/*
-	 * Atributo que determina  
+	 * Atributo que determina el serial version UID
 	 */
 	private static final long serialVersionUID = -5890222870713887571L;
+	
 	/*
-	 * Atributo que determina el listado de los nombres de los comics que no superan
-	 * la longitud recibida en el proceso
+	 * Atributo que determina el listado de los comics 
 	 */
-	private List<Comic> comicsList;
-	
-	
+	private List<ComicDTO> comicsList;
+
 	/**
 	 * Método encargado de convertir los datos recibidos en JSON al tipo ComicDTO.
 	 * <b>Caso de Uso:</b> Semillero2022

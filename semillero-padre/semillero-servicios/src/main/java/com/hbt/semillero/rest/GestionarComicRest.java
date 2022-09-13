@@ -154,8 +154,7 @@ public class GestionarComicRest {
 	}
 	
 	/**
-	 * Metodo encargado de generar el endpoint tipo GET para consultar toda la
-	 * informacion de un comic, segun el id especificado
+	 * Metodo encargado de generar el endpoint tipo GET para generar el listado de los comics
 	 * 
 	 * <b>Caso de Uso</b> Semillero2022
 	 * 
