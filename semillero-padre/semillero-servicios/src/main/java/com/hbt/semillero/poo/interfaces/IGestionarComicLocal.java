@@ -4,6 +4,7 @@ import javax.ejb.Local;
 
 import com.hbt.semillero.dtos.ComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicDTO;
+import com.hbt.semillero.dtos.ObtenerComicsDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 
@@ -83,4 +84,7 @@ public interface IGestionarComicLocal {
 	 * @throws Exception
 	 */
 	public ResultadoDTO EliminarComic(Long idComic) throws Exception;
+	
+	
+	public ObtenerComicsDTO obtenerComics();
 }

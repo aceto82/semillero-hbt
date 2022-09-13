@@ -1,5 +1,8 @@
 package com.hbt.semillero.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -15,6 +18,7 @@ import org.apache.log4j.Logger;
 
 import com.hbt.semillero.dtos.ComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicDTO;
+import com.hbt.semillero.dtos.ObtenerComicsDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 import com.hbt.semillero.entity.Comic;
@@ -285,6 +289,67 @@ public class GestionarComicBean implements IGestionarComicLocal {
 
 		LOGGER.info("Finaliza ejecucion EliminarComic() ");
 		return resultadoDTO;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public ObtenerComicsDTO obtenerComics() {
+		LOGGER.info("Inicia ejecucion obtenerComics() ");
+
+		ObtenerComicsDTO dto = new ObtenerComicsDTO();
+		String consultaComics = "SELECT c " + " FROM Comic c ";
+		
+		List<Comic> comicsList = new ArrayList<>();
+		try {
+			Query queryConsultaComic = em.createQuery(consultaComics);			
+			comicsList = queryConsultaComic.getResultList();
+//			comics.forEach( (comic) ->{
+//				ComicDTO comicDTO = new ComicDTO();
+//				this.actualizarComicToComicDTO(comic, comicDTO);
+//				comicsList.add(comicDTO);
+//			} );
+			dto.setComicsList(comicsList);
+			dto.setExitoso(true);
+			dto.setMensajeEjecucion("Se ha ejecutado exitosamente");
+		} catch (NoResultException nre) {
+			LOGGER.info("Se ha presentado NoResultException: " + nre.getMessage());
+			dto.setComicsList(comicsList);
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("No existen registros en la tabla");
+		} catch (Exception e) {
+			dto.setComicsList(comicsList);
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("Se ha presentado un error tecnico " + e.getMessage());
+			LOGGER.info("Se ha presentado un error tecnico " + e.getMessage());
+		}
+		LOGGER.info("Finaliza ejecucion obtenerComics() ");
+
+		return dto;
+	}
+	
+	/**
+	 * Metodo encargado de actualizar los datos de la entidad comic al DTO 
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param comicDTO
+	 * @param comic
+	 */
+	private void actualizarComicToComicDTO(Comic comic, ComicDTO comicDTO) {
+		comicDTO.setNombre(comic.getNombre());
+		comicDTO.setEditorial(comic.getEditorial());
+		comicDTO.setTematicaEnum(comic.getTematicaEnum().toString());
+		comicDTO.setColeccion(comic.getColeccion());
+		comicDTO.setNumeroPaginas(comic.getNumeroPaginas());
+		comicDTO.setPrecio(comic.getPrecio());
+		comicDTO.setAutores(comic.getAutores());
+		comicDTO.setColor(comic.getColor());
+		comicDTO.setFechaVenta(comic.getFechaVenta());
+		comicDTO.setEstadoEnum(comic.getEstadoEnum().toString());
+		comicDTO.setCantidad(comic.getCantidad());
 	}
 
 }
