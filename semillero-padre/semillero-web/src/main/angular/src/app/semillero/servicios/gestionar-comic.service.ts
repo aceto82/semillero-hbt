@@ -25,6 +25,10 @@ export class GestionarComicService {
     return this.httpClient.get<ConsultarComicDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/consultarComic', { params: parametros });
   }
 
+  public actualizarComic(comicDTO: ComicDTO): Observable<ResultadoDTO> {
+    return this.httpClient.put<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/actualizarComic', comicDTO);
+  }
+
   public consultarNombrePrecioComic(idComic: string): Observable<any> {
     let parametros = new HttpParams().set("idComic", idComic);
 
