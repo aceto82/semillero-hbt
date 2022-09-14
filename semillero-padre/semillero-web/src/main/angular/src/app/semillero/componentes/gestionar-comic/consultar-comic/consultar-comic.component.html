@@ -24,14 +24,16 @@
                 <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
                 <select name="tematicaEnum" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum"
                     disabled>
-                    <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+                    <option *ngFor="let item of tematicas | keyvalue" value="{{item.key}}">{{item.value | translate}}
+                    </option>
+                    <!-- <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
                     <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
                     <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
                     <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
                     <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
                     <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
                     <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
-                    <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
+                    <option value="HORROR">{{'enum.tematica.horror' | translate}}</option> -->
                 </select>
             </div>
 
@@ -49,37 +51,41 @@
             <label for="txtNumPaginas">{{'gestionarComic.numeropagina' | translate}}:</label>
             <input id="txtNumPaginas" type="number" class="form-control" maxlength="50" name="numeroPaginas"
                 [(ngModel)]="comicDTO.numeroPaginas" disabled>
-
         </div>
         <div class="col-6">
             <label for="txtPrecio">{{'gestionarComic.precio' | translate}}:</label>
             <input id="txtPrecio" type="number" class="form-control" maxlength="50" name="precio"
                 [(ngModel)]="comicDTO.precio" disabled>
-
         </div>
     </div>
 
     <div class="row">
         <div class="col-6">
-            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
-            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
-        </div>
-        <div class="col-6">
             <label for="color">{{'gestionarComic.color' | translate}}:</label>
             <br>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="color" [value]="'true'" class="custom-control-input"
+                <input type="radio" id="customRadioInline1" name="color" [value]="true" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
                 <label for="customRadioInline1" class="custom-control-label">{{'gestionarComic.color.si' |
                     translate}}</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="color" [value]="'false'" class="custom-control-input"
+                <input type="radio" id="customRadioInline2" name="color" [value]="false" class="custom-control-input"
                     [(ngModel)]="comicDTO.color" disabled>
                 <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                     translate}}</label>
             </div>
-
+        </div>
+        <div class="col-6">
+            <label for="txtCantidad">{{'gestionarComic.cantidad' | translate}}:</label>
+            <input id="txtCantidad" type="number" class="form-control" maxlength="50" name="cantidad"
+                [(ngModel)]="comicDTO.cantidad" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="off-3 col-6">
+            <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
+            <textarea name="autores" id="txtAutores" rows="3" [(ngModel)]="comicDTO.autores" disabled></textarea>
         </div>
     </div>
 

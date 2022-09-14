@@ -1,4 +1,4 @@
 export enum EstadoEnum{
-    ACTIVO="Activo",
-    INACTIVO="Inactivo",
+    ACTIVO="enum.estado.activo",
+    INACTIVO="enum.estado.inactivo",
 }

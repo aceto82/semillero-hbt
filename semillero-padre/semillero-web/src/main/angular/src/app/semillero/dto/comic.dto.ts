@@ -5,14 +5,14 @@ export class ComicDTO {
     public id: number;
     public nombre: string;
     public editorial: string;
-    public tematicaEnum: string;
+    public tematicaEnum: TematicaEnum;
     public coleccion: String;
     public numeroPaginas: number;
     public precio: number;
     public autores: string;
     public fechaVenta: Date;
     public color: boolean;
-    public estadoEnum: string;
+    public estadoEnum: EstadoEnum;
     public cantidad: number;
 
     // constructor(nombre:string, tematicaEnum:TematicaEnum, precio:number){

@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from '../../dto/comic.dto';
+import { ObtenerComicsDTO } from '../../dto/obtener-comics.dto';
 import { TematicaEnum } from '../../enums/tematica.enum';
 import { MultiLanguage } from '../../multiLanguage/multiLanguage';
 import { ComicServicio } from '../../servicios/comic.servicio.service';
+import { GestionarComicService } from '../../servicios/gestionar-comic.service';
 
 @Component({
   selector: 'gestionar-comic',
@@ -25,10 +27,16 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public msjBorrar: string;
   public comicBorrar: ComicDTO;
   public mostrarItemBorrar: boolean;
-  public indexComicBorrado: number;
+  //public indexComicBorrado: number;  
   public mostrarMensajeError: boolean;
 
-  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private comicServicio: ComicServicio) {
+  public mensajeEjecucion: string;
+  public mostrarMensajeFallido: boolean;
+
+  public tematicas: Map<string, string>;
+
+
+  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService) {
     super(translate);
     this.gestionarComicForm = this.formBuilder.group({
       nombre: [null, Validators.required],
@@ -39,7 +47,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
       precio: [null, Validators.required],
       autores: [null],
       color: [true],
-      cantidad: [null],
+      cantidad: [null, Validators.required],
     });
   }
 
@@ -47,25 +55,56 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.tituloComplemento = {
       nombreSemillero: "Semillero 2022"
     }
-    this.listaComics = this.comicServicio.getListComics(); //new Array<ComicDTO>();
+    this.listaComics = new Array<ComicDTO>();
+    this.obtenerComics();
     // if (this.activeRoute.snapshot.params ){
     //   this.listaComics = <Array<ComicDTO>> this.activeRoute.snapshot.params;
     // }
     this.comicDTO = new ComicDTO();
+    this.tematicas = new Map<string, string>();
+    Object.keys(TematicaEnum).forEach(value => {
+      this.tematicas.set(value, TematicaEnum[value]);
+    });
+  }
+
+  private obtenerComics(): void {
+    this.gestionarComicService.obtenerComics().subscribe((resultado: ObtenerComicsDTO) => {
+      if (resultado.exitoso) {
+        this.listaComics = resultado.comicsList;
+      } else {
+        this.mensajeEjecucion = resultado.mensajeEjecucion;
+        this.mostrarMensajeFallido = resultado.exitoso;
+      }
+    });
   }
 
   public crearComic(): void {
+    this.mostrarMensajeFallido = false;
     if (this.gestionarComicForm.invalid) {
       this.validoFormulario = true;
       return;
     }
     this.comicDTO = this.gestionarComicForm.value;
-    this.comicDTO.id = this.listaComics.length + 30;
-    this.validoFormulario = false;
-    this.listaComics.push(this.comicDTO);
+
+    this.gestionarComicService.crearComic(this.comicDTO).subscribe(resultado => {
+      if (resultado.exitoso) {
+        this.obtenerComics();
+        this.mostrarItem = true;
+        this.limpiarForm();
+      } else {
+        this.mostrarMensajeFallido = !resultado.exitoso;
+        this.mensajeEjecucion = resultado.mensajeEjecucion;
+      }
+      this.validoFormulario = false;      
+    }, error => {
+      console.log(error);
+    });
+    //this.comicDTO.id = this.listaComics.length + 30;
+    //this.validoFormulario = false;
+    //this.listaComics.push(this.comicDTO);
     //this.comicDTO = new ComicDTO();
-    this.mostrarItem = true;
-    this.limpiarForm();
+    //this.mostrarItem = true;
+    //this.limpiarForm();
   }
 
   private limpiarForm(): void {
@@ -141,24 +180,42 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.router.navigate(['editar-comic', comic], { skipLocationChange: true });
   }
 
-  public confirmaBorrarComic(index: number): void {
+  public confirmaBorrarComic(comic: ComicDTO): void {
     let label: string = "";
-    this.indexComicBorrado = index;
-    this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: this.listaComics[index].nombre }).subscribe((res: string) => {
+    this.comicBorrar = comic;
+    this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: comic.nombre }).subscribe((res: string) => {
       label = res;
     });
     this.msjBorrar = label;
   }
 
+  // public confirmaBorrarComic(index: number): void {
+  //   let label: string = "";
+  //   this.indexComicBorrado = index;
+  //   this.translate.get('gestionarComic.modalBorrar.msj', { nombreComic: this.listaComics[index].nombre }).subscribe((res: string) => {
+  //     label = res;
+  //   });
+  //   this.msjBorrar = label;
+  // }
+
   public borrarComic(): void {
     this.mostrarItemBorrar = false;
     this.mostrarMensajeError = false;
-    if (this.listaComics.length < this.indexComicBorrado || this.indexComicBorrado < 1) {
-      this.mostrarMensajeError = true;
-    } else {
-      this.mostrarItemBorrar = true;
-      this.comicBorrar = this.listaComics.splice(this.indexComicBorrado, 1)[0];
-    }
+    this.gestionarComicService.eliminarComic(String(this.comicBorrar.id)).subscribe(resultado => {
+      if (resultado.exitoso) {
+        this.mostrarItemBorrar = true;
+        this.obtenerComics();
+      }
+      else {
+        this.mostrarMensajeError = true;
+      }
+    });
+    // if (this.listaComics.length < this.indexComicBorrado || this.indexComicBorrado < 1) {
+    //   this.mostrarMensajeError = true;
+    // } else {
+    //   this.mostrarItemBorrar = true;
+    //   this.comicBorrar = this.listaComics.splice(this.indexComicBorrado, 1)[0];
+    // }
   }
 
 }

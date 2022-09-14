@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.hbt.semillero.dtos.ComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicDTO;
+import com.hbt.semillero.dtos.ObtenerComicsDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 import com.hbt.semillero.poo.interfaces.IGestionarComicLocal;
@@ -150,6 +151,23 @@ public class GestionarComicRest {
 			resultadoDTO.setMensajeEjecucion(e.getMessage());
 		}
 		return resultadoDTO;
+	}
+	
+	/**
+	 * Metodo encargado de generar el endpoint tipo GET para generar el listado de los comics
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @return ObtenerComicsDTO
+	 */
+	@GET
+	@Path("/obtenerComics")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObtenerComicsDTO obtenerComics() {
+		return this.gestionarComicLocal.obtenerComics();
 	}
 
 }

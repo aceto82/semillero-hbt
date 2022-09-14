@@ -4,6 +4,7 @@ import javax.ejb.Local;
 
 import com.hbt.semillero.dtos.ComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicDTO;
+import com.hbt.semillero.dtos.ObtenerComicsDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 
@@ -83,4 +84,15 @@ public interface IGestionarComicLocal {
 	 * @throws Exception
 	 */
 	public ResultadoDTO EliminarComic(Long idComic) throws Exception;
+	
+	/**
+	 * Metodo encargado de generar un listado de todos los comics 
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 *  
+	 * @return ObtenerComicsDTO
+	 */
+	public ObtenerComicsDTO obtenerComics();
 }

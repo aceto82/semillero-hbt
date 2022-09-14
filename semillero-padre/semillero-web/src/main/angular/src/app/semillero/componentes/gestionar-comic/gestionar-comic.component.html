@@ -34,14 +34,18 @@
                     <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
                     <select formControlName="tematicaEnum" id="listTematica" class="form-control"
                         (change)="agregarValidacionColeccion()">
-                        <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+
+                        <option *ngFor="let item of tematicas | keyvalue" value="{{item.key}}">{{item.value |
+                            translate}}</option>
+
+                        <!-- <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
                         <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
                         <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
                         <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
                         <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
                         <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
                         <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
-                        <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
+                        <option value="HORROR">{{'enum.tematica.horror' | translate}}</option> -->
                     </select>
                     <div *ngIf="validoFormulario && f.tematicaEnum.errors">
                         <span class="text-danger"
@@ -49,8 +53,6 @@
                             translate}}</span>
                     </div>
                 </div>
-
-
             </div>
             <div class="col-6">
                 <label for="txtColeccion">{{'gestionarComic.coleccion' | translate}}:</label>
@@ -87,10 +89,6 @@
 
         <div class="row">
             <div class="col-6">
-                <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
-                <textarea formControlName="autores" id="txtAutores" rows="3"></textarea>
-            </div>
-            <div class="col-6">
                 <label for="color">{{'gestionarComic.color' | translate}}:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
@@ -105,6 +103,21 @@
                     <label for="customRadioInline2" class="custom-control-label">{{'gestionarComic.color.no' |
                         translate}}</label>
                 </div>
+            </div>
+            <div class="col-6">
+                <label for="txtCantidad">{{'gestionarComic.cantidad' | translate}}:</label>
+                <input id="txtCantidad" type="number" class="form-control" maxlength="50" formControlName="cantidad"
+                    [ngClass]="{'is-invalid':validoFormulario && f.cantidad.errors}">
+                <div *ngIf="validoFormulario && f.cantidad.errors">
+                    <span class="text-danger" *ngIf="f.cantidad.errors.required">{{'gestionarComic.camporequerido' |
+                        translate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="off-3 col-6">
+                <label for="txtAutores">{{'gestionarComic.autores' | translate}}:</label>
+                <textarea formControlName="autores" id="txtAutores" rows="3"></textarea>
             </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -139,6 +152,13 @@
             </button>
         </div>
 
+        <div *ngIf="mostrarMensajeFallido" class="alert alert-warning mt-4 mb-4" role="alert">
+            {{ mensajeEjecucion }}
+            <button type="button" class="close text-secondary" style="height: 0;" (click)="cerrar()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         <div class="row" *ngIf="listaComics.length>0">
             <div class="col-12">
                 <table class="table">
@@ -168,7 +188,7 @@
                                 <i class="fas fa-pencil-alt 2x ml-1" (click)="irAEditarComic(comic)"
                                     title="{{'gestionarComic.editar' | translate}}"></i>
                                 <i class="fas fa-times-circle 2x ml-1" title="{{'gestionarComic.eliminar' | translate}}"
-                                    (click)="confirmaBorrarComic(i)" data-toggle="modal"
+                                    (click)="confirmaBorrarComic(comic)" data-toggle="modal"
                                     data-target="#staticBackdrop"></i>
                             </td>
                         </tr>

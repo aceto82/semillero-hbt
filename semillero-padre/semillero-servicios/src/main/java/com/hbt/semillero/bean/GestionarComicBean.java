@@ -1,5 +1,8 @@
 package com.hbt.semillero.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -15,6 +18,7 @@ import org.apache.log4j.Logger;
 
 import com.hbt.semillero.dtos.ComicDTO;
 import com.hbt.semillero.dtos.ConsultarComicDTO;
+import com.hbt.semillero.dtos.ObtenerComicsDTO;
 import com.hbt.semillero.dtos.ConsultaNombrePrecioComicDTO;
 import com.hbt.semillero.dtos.ResultadoDTO;
 import com.hbt.semillero.entity.Comic;
@@ -112,13 +116,15 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		if (comicDTO.getNombre() == null) {
 			throw new Exception("El campo nombre es requerido");
 		}
+		
+		comicDTO.setEstadoEnum(EstadoEnum.ACTIVO);
 
 		verificaEnum(TematicaEnum.values(), comicDTO.getTematicaEnum(), "tematicaEnum");
 
 		verificaEnum(EstadoEnum.values(), comicDTO.getEstadoEnum(), "estadoEnum");
 
 		Comic comic = new Comic();
-		comic.setId(comicDTO.getId());
+		//comic.setId(comicDTO.getId());
 		this.actualizarComicDTOToComic(comicDTO, comic);
 		// this.convertirComicDTOToComic(comicDTO);
 		em.persist(comic);
@@ -244,14 +250,15 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	private void actualizarComicDTOToComic(ComicDTO comicDTO, Comic comic) {
 		comic.setNombre(comicDTO.getNombre());
 		comic.setEditorial(comicDTO.getEditorial());
-		comic.setTematicaEnum(TematicaEnum.valueOf(comicDTO.getTematicaEnum()));
+		//comic.setTematicaEnum(TematicaEnum.valueOf(comicDTO.getTematicaEnum()));
+		comic.setTematicaEnum(comicDTO.getTematicaEnum());
 		comic.setColeccion(comicDTO.getColeccion());
 		comic.setNumeroPaginas(comicDTO.getNumeroPaginas());
 		comic.setPrecio(comicDTO.getPrecio());
 		comic.setAutores(comicDTO.getAutores());
 		comic.setColor(comicDTO.getColor());
 		comic.setFechaVenta(comicDTO.getFechaVenta());
-		comic.setEstadoEnum(EstadoEnum.valueOf(comicDTO.getEstadoEnum()));
+		comic.setEstadoEnum(comicDTO.getEstadoEnum());
 		comic.setCantidad(comicDTO.getCantidad());
 	}
 
@@ -285,6 +292,67 @@ public class GestionarComicBean implements IGestionarComicLocal {
 
 		LOGGER.info("Finaliza ejecucion EliminarComic() ");
 		return resultadoDTO;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public ObtenerComicsDTO obtenerComics() {
+		LOGGER.info("Inicia ejecucion obtenerComics() ");
+
+		ObtenerComicsDTO dto = new ObtenerComicsDTO();
+		String consultaComics = "SELECT c " + " FROM Comic c ";
+
+		List<ComicDTO> comicsList = new ArrayList<>();
+		try {
+			Query queryConsultaComic = em.createQuery(consultaComics);
+			List<Comic> comics = queryConsultaComic.getResultList();
+			if (comics.isEmpty()) {
+				dto.setExitoso(Boolean.FALSE);
+				dto.setMensajeEjecucion("No existen comics");
+				return dto;
+			}
+			comics.forEach((comic) -> {
+				comicsList.add(this.convertirComicToComicDTO(comic));
+			});
+			dto.setComicsList(comicsList);
+			dto.setExitoso(true);
+			dto.setMensajeEjecucion("Se ha ejecutado exitosamente");
+		} catch (Exception e) {
+			dto.setComicsList(comicsList);
+			dto.setExitoso(false);
+			dto.setMensajeEjecucion("Se ha presentado un error tecnico " + e.getMessage());
+			LOGGER.info("Se ha presentado un error tecnico " + e.getMessage());
+		}
+		LOGGER.info("Finaliza ejecucion obtenerComics() ");
+
+		return dto;
+	}
+
+	/**
+	 * Metodo encargado de convertir los datos de la entidad comic al DTO
+	 * 
+	 * <b>Caso de Uso</b> Semillero2022
+	 * 
+	 * @author Diego Armando Ortiz Bastidas
+	 * 
+	 * @param comic
+	 */
+	private ComicDTO convertirComicToComicDTO(Comic comic) {
+		ComicDTO dto = new ComicDTO();
+		dto.setId(comic.getId());
+		dto.setNombre(comic.getNombre());
+		dto.setEditorial(comic.getEditorial());
+		dto.setTematicaEnum(comic.getTematicaEnum());
+		dto.setColeccion(comic.getColeccion());
+		dto.setNumeroPaginas(comic.getNumeroPaginas());
+		dto.setPrecio(comic.getPrecio());
+		dto.setAutores(comic.getAutores());
+		dto.setColor(comic.getColor());
+		dto.setFechaVenta(comic.getFechaVenta());
+		dto.setEstadoEnum(comic.getEstadoEnum());
+		dto.setCantidad(comic.getCantidad());
+		return dto;
 	}
 
 }
