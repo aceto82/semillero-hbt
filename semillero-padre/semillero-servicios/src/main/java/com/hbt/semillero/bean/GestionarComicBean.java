@@ -124,7 +124,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		verificaEnum(EstadoEnum.values(), comicDTO.getEstadoEnum(), "estadoEnum");
 
 		Comic comic = new Comic();
-		comic.setId(comicDTO.getId());
+		//comic.setId(comicDTO.getId());
 		this.actualizarComicDTOToComic(comicDTO, comic);
 		// this.convertirComicDTOToComic(comicDTO);
 		em.persist(comic);

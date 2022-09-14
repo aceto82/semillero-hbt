@@ -90,13 +90,12 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
       if (resultado.exitoso) {
         this.obtenerComics();
         this.mostrarItem = true;
+        this.limpiarForm();
       } else {
         this.mostrarMensajeFallido = !resultado.exitoso;
         this.mensajeEjecucion = resultado.mensajeEjecucion;
       }
-
-      this.validoFormulario = false;
-      this.limpiarForm();
+      this.validoFormulario = false;      
     }, error => {
       console.log(error);
     });
