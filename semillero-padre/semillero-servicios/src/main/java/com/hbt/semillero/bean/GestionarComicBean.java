@@ -117,7 +117,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 			throw new Exception("El campo nombre es requerido");
 		}
 		
-		comicDTO.setEstadoEnum("ACTIVO");
+		comicDTO.setEstadoEnum(EstadoEnum.ACTIVO);
 
 		verificaEnum(TematicaEnum.values(), comicDTO.getTematicaEnum(), "tematicaEnum");
 
@@ -250,14 +250,15 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	private void actualizarComicDTOToComic(ComicDTO comicDTO, Comic comic) {
 		comic.setNombre(comicDTO.getNombre());
 		comic.setEditorial(comicDTO.getEditorial());
-		comic.setTematicaEnum(TematicaEnum.valueOf(comicDTO.getTematicaEnum()));
+		//comic.setTematicaEnum(TematicaEnum.valueOf(comicDTO.getTematicaEnum()));
+		comic.setTematicaEnum(comicDTO.getTematicaEnum());
 		comic.setColeccion(comicDTO.getColeccion());
 		comic.setNumeroPaginas(comicDTO.getNumeroPaginas());
 		comic.setPrecio(comicDTO.getPrecio());
 		comic.setAutores(comicDTO.getAutores());
 		comic.setColor(comicDTO.getColor());
 		comic.setFechaVenta(comicDTO.getFechaVenta());
-		comic.setEstadoEnum(EstadoEnum.valueOf(comicDTO.getEstadoEnum()));
+		comic.setEstadoEnum(comicDTO.getEstadoEnum());
 		comic.setCantidad(comicDTO.getCantidad());
 	}
 
@@ -342,14 +343,14 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		dto.setId(comic.getId());
 		dto.setNombre(comic.getNombre());
 		dto.setEditorial(comic.getEditorial());
-		dto.setTematicaEnum(comic.getTematicaEnum().toString());
+		dto.setTematicaEnum(comic.getTematicaEnum());
 		dto.setColeccion(comic.getColeccion());
 		dto.setNumeroPaginas(comic.getNumeroPaginas());
 		dto.setPrecio(comic.getPrecio());
 		dto.setAutores(comic.getAutores());
 		dto.setColor(comic.getColor());
 		dto.setFechaVenta(comic.getFechaVenta());
-		dto.setEstadoEnum(comic.getEstadoEnum().toString());
+		dto.setEstadoEnum(comic.getEstadoEnum());
 		dto.setCantidad(comic.getCantidad());
 		return dto;
 	}

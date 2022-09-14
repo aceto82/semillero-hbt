@@ -33,6 +33,8 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public mensajeEjecucion: string;
   public mostrarMensajeFallido: boolean;
 
+  public tematicas: Map<string, string>;
+
 
   constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService) {
     super(translate);
@@ -59,6 +61,10 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     //   this.listaComics = <Array<ComicDTO>> this.activeRoute.snapshot.params;
     // }
     this.comicDTO = new ComicDTO();
+    this.tematicas = new Map<string, string>();
+    Object.keys(TematicaEnum).forEach(value => {
+      this.tematicas.set(value, TematicaEnum[value]);
+    });
   }
 
   private obtenerComics(): void {

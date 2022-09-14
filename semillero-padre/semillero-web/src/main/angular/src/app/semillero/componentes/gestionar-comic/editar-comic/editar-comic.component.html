@@ -30,14 +30,16 @@
                 <div class="form-group">
                     <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
                     <select formControlName="tematicaEnum" id="listTematica" class="form-control">
-                        <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+                        <option *ngFor="let item of tematicas | keyvalue" value="{{item.key}}">{{item.value |
+                            translate}}</option>
+                        <!-- <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
                         <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
                         <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
                         <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
                         <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
                         <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
                         <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
-                        <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
+                        <option value="HORROR">{{'enum.tematica.horror' | translate}}</option> -->
                     </select>
                     <div *ngIf="validoFormulario && f.tematicaEnum.errors">
                         <span class="text-danger"
@@ -81,7 +83,7 @@
             </div>
         </div>
 
-        <div class="row">            
+        <div class="row">
             <div class="col-6">
                 <label for="color">{{'gestionarComic.color' | translate}}:</label>
                 <br>

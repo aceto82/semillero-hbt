@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from 'src/app/semillero/dto/comic.dto';
+import { TematicaEnum } from 'src/app/semillero/enums/tematica.enum';
 import { MultiLanguage } from 'src/app/semillero/multiLanguage/multiLanguage';
 import { ComicServicio } from 'src/app/semillero/servicios/comic.servicio.service';
 import { GestionarComicService } from 'src/app/semillero/servicios/gestionar-comic.service';
@@ -26,17 +27,23 @@ export class EditarComicComponent extends MultiLanguage implements OnInit {
     super(translate);
   }
 
+  public tematicas: Map<string, string>;
+
   ngOnInit() {
     this.tituloComplemento = {
       nombreSemillero: "Semillero 2022"
     }
+    this.tematicas = new Map<string, string>();
+    Object.keys(TematicaEnum).forEach(value => {
+      this.tematicas.set(value, TematicaEnum[value]);
+    });
     this.comicDTO = new ComicDTO();
     //this.listComics = this.comicServicio.getListComics();
     //this.comicDTO = <ComicDTO>this.activeRoute.snapshot.params;
     this.comicDTO = <ComicDTO>this.activeRoute.snapshot.params;
-    
-    this.gestionarComicService.consultarComic(String(this.comicDTO.id)).subscribe( resultado => {
-      if (resultado.exitoso){
+
+    this.gestionarComicService.consultarComic(String(this.comicDTO.id)).subscribe(resultado => {
+      if (resultado.exitoso) {
         this.comicDTO = resultado.comic;
       }
     });
@@ -67,9 +74,9 @@ export class EditarComicComponent extends MultiLanguage implements OnInit {
     }
     this.comicDTO = <ComicDTO>this.editarComicForm.value;
     this.gestionarComicService.actualizarComic(this.comicDTO).subscribe(resultado => {
-      if (resultado.exitoso){
+      if (resultado.exitoso) {
         this.mostrarItem = true;
-        
+
       }
       this.validoFormulario = false;
     });

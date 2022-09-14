@@ -24,14 +24,16 @@
                 <label for="listTematica">{{'gestionarComic.tematica' | translate}}:</label>
                 <select name="tematicaEnum" id="listTematica" class="form-control" [(ngModel)]="comicDTO.tematicaEnum"
                     disabled>
-                    <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
+                    <option *ngFor="let item of tematicas | keyvalue" value="{{item.key}}">{{item.value | translate}}
+                    </option>
+                    <!-- <option value="AVENTURAS">{{'enum.tematica.aventuras' | translate}}</option>
                     <option value="BELICO">{{'enum.tematica.belico' | translate}}</option>
                     <option value="HUMORISTICO">{{'enum.tematica.humoristico' | translate}}</option>
                     <option value="DEPORTIVO">{{'enum.tematica.deportivo' | translate}}</option>
                     <option value="FANTASTICO">{{'enum.tematica.fantastico' | translate}}</option>
                     <option value="CIENCIA_FICCION">{{'enum.tematica.cienciaficcion' | translate}}</option>
                     <option value="HISTORICO">{{'enum.tematica.historico' | translate}}</option>
-                    <option value="HORROR">{{'enum.tematica.horror' | translate}}</option>
+                    <option value="HORROR">{{'enum.tematica.horror' | translate}}</option> -->
                 </select>
             </div>
 

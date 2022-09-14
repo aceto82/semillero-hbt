@@ -16,8 +16,8 @@ export class CrearPersonaComponent implements OnInit {
   public saludo2: any;
 
   public comics: Array<any>;
-  public comicsTematicaHorror: Array<ComicDTO>;
-  public comicsTematicaHumoristico: Array<ComicDTO>;
+  public comicsTematicaHorror: Array<ComicTallerDTO>;
+  public comicsTematicaHumoristico: Array<ComicTallerDTO>;
 
   public imagen: any;
 
@@ -25,7 +25,7 @@ export class CrearPersonaComponent implements OnInit {
   //Taller angular
 
   public comicsTaller: Array<ComicTallerDTO>
-  public comicBorrado: ComicDTO;
+  public comicBorrado: ComicTallerDTO;
   public mostrarMensajeBorrado: boolean = false;
   public mostrarMensajeError: boolean = false;
 
@@ -44,7 +44,7 @@ export class CrearPersonaComponent implements OnInit {
     let width: number = 300;
     this.imagen = this.asignarImagen(url, height, width);
 
-    let comics = new Map<string, Array<ComicDTO>>();
+    let comics = new Map<string, Array<ComicTallerDTO>>();
 
     this.comicsTematicaHorror = new Array<ComicTallerDTO>()
     let comicBatman = new ComicTallerDTO("Batman", TematicaEnum.HORROR, 900);
