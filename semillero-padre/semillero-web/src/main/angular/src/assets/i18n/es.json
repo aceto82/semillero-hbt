@@ -14,6 +14,8 @@
     "gestionarComic.color.si": "Si",
     "gestionarComic.color.no": "No",
     "gestionarComic.cantidad": "Cantidad",
+    "gestionarComic.fechaventa": "Fecha venta",
+    "gestionarComic.estado": "Estado",    
     "gestionarComic.btn.crear": "Crear",
     "gestionarComic.msj.crearok": "Se ha creado exitosamente el comic",
     "gestionarComic.msj.cerrar": "Cerrar",
@@ -26,6 +28,7 @@
     "gestionarComic.modalBorrar.confirmar":"Confirmar",
     "gestionarComic.msj.borrar.ok":"Se ha borrado correctamente el comic: ",
     "gestionarComic.msj.borrar.error":"Error al tratar de borrar el comic: ",
+    "gestionarComic.comprar": "Comprar",
 
     "consultarComic.regresar": "Regresar",
     "consultarComic.titulo": "Consultar comic",
@@ -33,6 +36,13 @@
     "editarComic.titulo": "Editar comic",
     "editarComic.guardar": "Guardar",
     "editarComic.msj.editarok": "Se ha guardado exitosamente el comic",
+
+    "comprarComic.titulo": "Comprar comic",
+    "comprarComic.btn.guardar": "Comprar comic",
+    "comprarComic.btn.cancelar": "Cancelar",
+    "comprarComic.minval": "El valor del campo esta por debajo del minimo",
+    "comprarComic.maxval": "El valor del campo supera el maximo",
+    "comprarComic.numval": "El valor debe ser numerico sin puntos o comas",
     
 
     "enum.estado.activo": "Activo",

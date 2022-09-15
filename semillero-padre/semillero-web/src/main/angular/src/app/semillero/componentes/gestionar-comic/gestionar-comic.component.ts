@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from '../../dto/comic.dto';
 import { ObtenerComicsDTO } from '../../dto/obtener-comics.dto';
+import { EstadoEnum } from '../../enums/estado.enum';
 import { TematicaEnum } from '../../enums/tematica.enum';
 import { MultiLanguage } from '../../multiLanguage/multiLanguage';
 import { ComicServicio } from '../../servicios/comic.servicio.service';
@@ -35,8 +36,10 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
 
   public tematicas: Map<string, string>;
 
+  public mostrarItemCompra: boolean;
 
-  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService) {
+
+  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService, private activeRoute: ActivatedRoute) {
     super(translate);
     this.gestionarComicForm = this.formBuilder.group({
       nombre: [null, Validators.required],
@@ -65,6 +68,11 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     Object.keys(TematicaEnum).forEach(value => {
       this.tematicas.set(value, TematicaEnum[value]);
     });
+    let data = this.activeRoute.snapshot.params;
+    if (data!=null && data!=undefined){
+      this.mensajeEjecucion = String(data.mensaje);
+      this.mostrarItemCompra = true;
+    }
   }
 
   private obtenerComics(): void {
@@ -95,7 +103,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
         this.mostrarMensajeFallido = !resultado.exitoso;
         this.mensajeEjecucion = resultado.mensajeEjecucion;
       }
-      this.validoFormulario = false;      
+      this.validoFormulario = false;
     }, error => {
       console.log(error);
     });
@@ -129,6 +137,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     this.mostrarItem = false;
     this.mostrarData = false;
     this.mostrarItemBorrar = false;
+    this.mostrarItemCompra = false;
   }
 
   public imprimirDataComic(indice: number): void {
@@ -216,6 +225,19 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     //   this.mostrarItemBorrar = true;
     //   this.comicBorrar = this.listaComics.splice(this.indexComicBorrado, 1)[0];
     // }
+  }
+
+  public irAComprarComic(comic: ComicDTO): void {
+    this.router.navigate(['comprar-comic', comic], { skipLocationChange: true });
+  }
+
+  public getLabelEstado(value: string): string {
+    let labelkey: string = "";
+
+    if (EstadoEnum[value] != undefined) {
+      labelkey = EstadoEnum[value];
+    }
+    return labelkey;
   }
 
 }
