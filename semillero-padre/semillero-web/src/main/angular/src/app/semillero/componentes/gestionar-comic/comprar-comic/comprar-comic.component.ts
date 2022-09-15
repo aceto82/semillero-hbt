@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ComicDTO } from 'src/app/semillero/dto/comic.dto';
 import { ComprarComicDTO } from 'src/app/semillero/dto/comprar-comic.dto';
 import { MultiLanguage } from 'src/app/semillero/multiLanguage/multiLanguage';
+import { ComicServicio } from 'src/app/semillero/servicios/comic.servicio.service';
 import { GestionarComicService } from 'src/app/semillero/servicios/gestionar-comic.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ComprarComicComponent extends MultiLanguage implements OnInit {
   public mostrarItem: boolean;
   public mensajeError: string;
 
-  constructor(public translate: TranslateService, private router: Router, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private gestionarComicService: GestionarComicService) {
+  constructor(public translate: TranslateService, private router: Router, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private gestionarComicService: GestionarComicService, private comicService: ComicServicio) {
     super(translate);
   }
 
@@ -64,8 +65,9 @@ export class ComprarComicComponent extends MultiLanguage implements OnInit {
     });
   }
 
-  public compraExitosa(mensaje: String): void {
-    this.router.navigate(['gestionar-comic', JSON.stringify({ 'mensaje': mensaje })], { skipLocationChange: true });
+  public compraExitosa(mensaje: string): void {
+    this.comicService.setMensaje(mensaje);
+    this.router.navigate(['gestionar-comic'], { skipLocationChange: true });
   }
 
 }

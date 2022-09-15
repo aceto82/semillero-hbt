@@ -7,14 +7,27 @@ import { ComicDTO } from '../dto/comic.dto';
 export class ComicServicio {
 
   private listaComics: Array<ComicDTO>;
+  private mensaje:string;
+  
 
   constructor() {
     this.listaComics = new Array<ComicDTO>();
+    this.mensaje = "";
     //this.listaComics = this.crearComicsPrueba();
   }
 
   public getListComics(): Array<ComicDTO> {
     return this.listaComics;
+  }
+
+  public getMensaje():string{
+    let msg = this.mensaje;
+    this.mensaje = "";
+    return msg;
+  }
+
+  public setMensaje(mensaje:string):void{
+    this.mensaje = mensaje;
   }
 
   // private crearComicsPrueba(): Array<ComicDTO> {
