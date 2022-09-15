@@ -159,6 +159,13 @@
             </button>
         </div>
 
+        <div *ngIf="mostrarItemCompra" class="alert alert-info mt-4 mb-4" role="alert">
+            {{ mensajeEjecucion }}
+            <button type="button" class="close text-secondary" style="height: 0;" (click)="cerrar()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         <div class="row" *ngIf="listaComics.length>0">
             <div class="col-12">
                 <table class="table">
@@ -169,6 +176,9 @@
                             <th scope="col">{{'gestionarComic.tematica' | translate}}</th>
                             <th scope="col">{{'gestionarComic.precio' | translate}}</th>
                             <th scope="col">{{'gestionarComic.color' | translate}}</th>
+                            <th scope="col">{{'gestionarComic.fechaventa' | translate}}</th>
+                            <th scope="col">{{'gestionarComic.cantidad' | translate}}</th>
+                            <th scope="col">{{'gestionarComic.estado' | translate}}</th>
                             <th scope="col">{{'gestionarComic.acciones' | translate}}</th>
                         </tr>
                     </thead>
@@ -179,7 +189,9 @@
                             <td>{{getLabelTematica(comic.tematicaEnum) | translate }}</td>
                             <td>{{comic.precio | number: '.2'}}</td>
                             <td>{{getLabelColor(comic.color) | translate }}</td>
-                            <!-- <td>{{comic.fechaVenta | date: "MM-dd-yy" }}</td> -->
+                            <td>{{comic.fechaVenta | date: "MM-dd-yy" }}</td>
+                            <td>{{comic.cantidad}}</td>
+                            <td>{{getLabelEstado(comic.estadoEnum) | translate }}</td>
                             <td>
                                 <i class="fas fa-search 2x ml-1" (click)="irAConsultarComic(comic)"
                                     title="{{'gestionarComic.consultar' | translate}}"></i>
@@ -190,6 +202,8 @@
                                 <i class="fas fa-times-circle 2x ml-1" title="{{'gestionarComic.eliminar' | translate}}"
                                     (click)="confirmaBorrarComic(comic)" data-toggle="modal"
                                     data-target="#staticBackdrop"></i>
+                                <i class="fas fa-dollar-sign 2x ml-1"
+                                    title="{{'gestionarComic.comprar' | translate}}" (click)="irAComprarComic(comic)"></i>
                             </td>
                         </tr>
                     </tbody>

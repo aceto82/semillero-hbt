@@ -30,7 +30,7 @@ export class GestionarComicService {
     return this.httpClient.put<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/actualizarComic', comicDTO);
   }
 
-  public eliminarComic(idComic:string): Observable<ResultadoDTO>{
+  public eliminarComic(idComic: string): Observable<ResultadoDTO> {
     let parametros = new HttpParams().set("idComic", idComic);
     return this.httpClient.delete<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionComicRest/eliminarComic', { params: parametros });
   }
@@ -41,5 +41,11 @@ export class GestionarComicService {
     //let parametros = new HttpParams().set("idComic", JSON.stringify(comicDTO));
     //return this.httpClient.get('http://localhost:8085/semillero-servicios/rest/gestionarComicRest/consultarNombrePrecioComic?idComic=' + idComic);
     return this.httpClient.get('http://localhost:8085/semillero-servicios/rest/gestionComicRest/consultarNombrePrecioComic', { params: parametros });
+  }
+
+  public comprarComic(idComic: string, cantidad: string): Observable<ResultadoDTO> {
+    let parametros = new HttpParams().append('idComic', idComic).append('cantidad', cantidad);
+    //let parametros = "?idComic="+idComic+"&cantidad="+cantidad;
+    return this.httpClient.post<ResultadoDTO>('http://localhost:8085/semillero-servicios/rest/gestionarCompraComicRest/comprarComic', null, { params: parametros });
   }
 }
