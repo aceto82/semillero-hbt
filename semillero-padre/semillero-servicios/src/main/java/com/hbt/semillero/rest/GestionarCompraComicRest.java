@@ -41,7 +41,7 @@ public class GestionarCompraComicRest {
 
 
 	/**
-	 * Metodo encargado de generar el endpoint tipo PUT para comprar un comic, segun el id del mismo
+	 * Metodo encargado de generar el endpoint tipo POST para comprar un comic, segun el id del mismo
 	 * 
 	 * <b>Caso de Uso</b> Semillero2022
 	 * 
@@ -51,7 +51,7 @@ public class GestionarCompraComicRest {
 	 * @param cantidad
 	 * @return ResultadoDTO
 	 */
-	@PUT
+	@POST
 	@Path("/comprarComic")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)

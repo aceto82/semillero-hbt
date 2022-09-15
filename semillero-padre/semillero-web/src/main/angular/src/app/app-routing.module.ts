@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ComprarComicComponent } from './semillero/componentes/gestionar-comic/comprar-comic/comprar-comic.component';
 import { ConsultarComicComponent } from './semillero/componentes/gestionar-comic/consultar-comic/consultar-comic.component';
 import { EditarComicComponent } from './semillero/componentes/gestionar-comic/editar-comic/editar-comic.component';
 import { GestionarComicComponent } from './semillero/componentes/gestionar-comic/gestionar-comic.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'gestionar-comic', component: GestionarComicComponent },
   { path: 'consultar-comic', component: ConsultarComicComponent },
   { path: 'editar-comic', component: EditarComicComponent },
+  { path: 'comprar-comic', component: ComprarComicComponent },
 
 ];
 

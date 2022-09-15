@@ -55,7 +55,7 @@ public class GestionarCompraComicBean implements IGestionarCompraComicLocal {
 	 * @see com.hbt.semillero.poo.interfaces.IGestionarComicLocal#EliminarComic(java.lang.Long)
 	 */
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public ResultadoDTO ComprarComic(Long idComic, Short cantidad) throws Exception {
 		LOGGER.info("Inicia ejecucion ComprarComic() ");
 
