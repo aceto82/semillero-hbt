@@ -39,7 +39,7 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
   public mostrarItemCompra: boolean;
 
 
-  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService, private activeRoute: ActivatedRoute) {
+  constructor(public translate: TranslateService, private formBuilder: FormBuilder, private router: Router, private gestionarComicService: GestionarComicService, private comicService: ComicServicio) {
     super(translate);
     this.gestionarComicForm = this.formBuilder.group({
       nombre: [null, Validators.required],
@@ -68,9 +68,14 @@ export class GestionarComicComponent extends MultiLanguage implements OnInit {
     Object.keys(TematicaEnum).forEach(value => {
       this.tematicas.set(value, TematicaEnum[value]);
     });
-    let data = this.activeRoute.snapshot.params;
-    if (data!=null && data!=undefined){
-      this.mensajeEjecucion = String(data.mensaje);
+    // let data = this.activeRoute.snapshot.params;
+    // if (data!=null && data!=undefined){
+    //   this.mensajeEjecucion = JSON.parse(String(data));
+    //   this.mostrarItemCompra = true;
+    // }
+    let mensaje:string = this.comicService.getMensaje();
+    if (mensaje.trim()!=''){
+      this.mensajeEjecucion = mensaje;
       this.mostrarItemCompra = true;
     }
   }
